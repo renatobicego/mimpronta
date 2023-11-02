@@ -1,0 +1,19 @@
+.swiper-pagination-bullet {
+    width: 13px;
+    height: 13px;
+    border: #1F1F1F 2px solid;
+    background-color: transparent;
+    margin: 0 7px !important;
+}
+  
+.swiper-pagination-bullet-active {
+    background: #1F1F1F;
+}
+.swiper-pagination {
+    text-align: left;
+    position: relative;
+    margin-top: 60px;
+}
+.swiper {
+    overflow: visible;
+}

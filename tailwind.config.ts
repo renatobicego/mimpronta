@@ -12,6 +12,22 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'paper-texture': 'url("/papel.jpg")'
+      },
+      colors: {
+        'azul': '#004991',
+        'negro': '#1F1F1F',
+        'rosa': '#D5B8D6',
+        'amarillo': '#D2DA54',
+        'celeste': '#2D7DAC',
+      },
+      fontFamily: {
+        'title': ['var(--font-montAlter)'],
+        'text': ['var(--font-mont)']
+      },
+      screens: {
+        'xsm': '400px',
+        '3xl': '1720px'
       },
     },
   },
