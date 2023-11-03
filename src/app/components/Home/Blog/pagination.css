@@ -12,8 +12,17 @@
 .swiper-pagination {
     text-align: left;
     position: relative;
-    margin-top: 60px;
+    margin-top: 40px;
 }
 .swiper {
     overflow: visible;
 }
+
+
+@media (max-width: 767px){
+    .swiper-pagination {
+        margin-top: 30px;
+    }
+}
+
+

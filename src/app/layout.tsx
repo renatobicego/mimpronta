@@ -4,6 +4,7 @@ import { Montserrat, Montserrat_Alternates } from 'next/font/google'
 import Header from './components/Header/Header'
 import { Suspense } from 'react'
 import Loading from './loading'
+import Footer from './components/Footer/Footer'
 
 const montserrat = Montserrat({
   weight: ['400', '500', '600', '700'],
@@ -37,6 +38,7 @@ export default function RootLayout({
         <Suspense fallback={<Loading />}>
           <Header />
           {children}
+          <Footer />
         </Suspense>
       </body>
     </html>

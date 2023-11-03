@@ -28,7 +28,8 @@ const PhraseCollage = () => {
             priority
             width={1000}
             height={800}
-            className='scale-[1.35] mt-[13vh] xsm:mt-[27vh] lg:mt-[10vh] lg:w-auto overflow-auto lg:scale-[1.15]'
+            className='scale-[1.35] mt-[13vh] xsm:mt-[27vh] lg:mt-[10vh] lg:w-auto overflow-auto lg:scale-[1.15]
+                        relative z-40'
             />
     </>
   )

@@ -26,7 +26,7 @@ const config: Config = {
         'text': ['var(--font-mont)']
       },
       screens: {
-        'xsm': '400px',
+        'xsm': '350px',
         '3xl': '1720px'
       },
     },

@@ -41,13 +41,13 @@ body, html {
     @apply flex items-center justify-between
   }
   .phrase-size {
-    @apply text-lg xsm:text-xl sm:text-2xl md:text-3xl xl:text-4xl font-title text-negro
+    @apply text-lg xsm:text-xl sm:text-2xl md:text-3xl xl:text-4xl 3xl:text-5xl font-title text-negro
   }
   .title-size {
-    @apply text-2xl xsm:text-4xl md:text-5xl lg:text-6xl font-title font-bold text-negro
+    @apply text-2xl xsm:text-3xl md:text-4xl lg:text-5xl 3xl:text-6xl font-title font-bold text-negro
   }
   .paragraph-size {
-    @apply text-sm sm:text-base md:text-lg font-text text-negro
+    @apply text-sm sm:text-base md:text-lg 2xl:text-xl font-text text-negro
   }
   .leading-phrase {
     @apply leading-8 xsm:leading-10 md:leading-[60px]
@@ -56,9 +56,16 @@ body, html {
     @apply  bg-opacity-0
   }
   .btn-primary {
-    @apply text-negro bg-amarillo py-2 px-6 md:py-4 md:px-9 paragraph-size font-bold rounded-[45px] 
-             transition duration-200 hover:btn-primary-variant active:btn-primary-variant border-[3px] border-amarillo select-none
-           
+    @apply text-negro bg-amarillo py-2 px-6 md:py-2.5 md:px-9 2xl:py-3 2xl:px-10 paragraph-size font-bold rounded-[45px] 
+    transition duration-200 hover:btn-primary-variant active:btn-primary-variant border-[3px] border-amarillo select-none 
+  }
+  .btn-primary-sm {
+    @apply btn-primary py-1.5 md:py-2 2xl:py-2.5 
+  }
+
+  .input {
+    @apply py-3 pl-6 border border-negro rounded-[20px] bg-transparent text-negro text-lg
+            placeholder:italic placeholder:text-gray-500 
   }
 }
 
@@ -67,10 +74,12 @@ body, html {
   0% {
     transform: scaleX(0.3);
     animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    border-radius: 8%;
   }
   100% {
     transform: scaleX(1);
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    border-radius: 16px;
   }
 }
 @keyframes keepSize {
@@ -91,9 +100,11 @@ body, html {
 @keyframes shrinkWidth {
   0% {
     transform: scaleX(1);
+    border-radius: 16px;
   }
   100% {
     transform: scaleX(0.3);
+    border-radius: 8%;
   }
 }
 

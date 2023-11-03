@@ -1,8 +1,9 @@
+import Image from 'next/image'
 import React from 'react'
 
 const AboutUs = () => {
   return (
-    <section className='mt-[10vh] lg:mt-[15vh] w-[80dvw] lg:w-[60dvw] flex flex-col items-center gap-4'>
+    <section className='mt-[10vh] lg:mt-[15vh] w-[80dvw] lg:w-[60dvw] flex flex-col items-center gap-4 relative'>
         <p role='definition' className='paragraph-size text-center font-semibold md:w-[70%]'>
             Transformamos habilidades en propósitos, intenciones en acciones, que ayuden a generar un impacto social positivo. 
         </p>
@@ -17,5 +18,5 @@ const AboutUs = () => {
     </section>
   )
 }
-
+// top-[33%] sm:top-[38%] md:top-[47%]
 export default AboutUs

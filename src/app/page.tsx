@@ -4,6 +4,7 @@ import AboutUs from './components/Home/AboutUs'
 import PhraseCollage from './components/Home/PhraseCollage'
 import Services from './components/Home/Services/Services'
 import Blog from './components/Home/Blog/Blog'
+import Contact from './components/Home/Contact/Contact'
 
 export default function Home() {
   return (
@@ -13,20 +14,20 @@ export default function Home() {
         alt='papel marron 2'
         width={500}
         height={1200} 
-        className='absolute left-[85dvw] top-0 lg:top-[30%] 
-                  rotate-[185deg] -scale-x-100 h-[35%] xsm:h-[40%] w-auto lg:h-auto
+        className='absolute left-[83vw] sm:left-[85dvw] top-10 lg:top-[85vh] 
+                  rotate-[185deg] -scale-x-100 h-[90vh] xsm:h-[100vh] w-auto lg:h-auto
                   lg:rotate-0 lg:scale-x-100 z-30'
       />
-      <Image 
+      {/* <Image 
         src={'/papeles/papelMarron3.png'}
         alt='Papel roto quienes somos'
         priority
         width={200}
         height={400}
         className='h-auto w-[30%] sm:w-[20%] absolute left-[80vw] sm:left-[87vw] 
-                  top-[37%] xsm:top-[40%] md:top-[47%]
+                  top-[33%] sm:top-[38%] md:top-[47%]
                   lg:hidden rotate-[195deg]  -scale-x-100 z-20'
-      />
+      /> */}
       <section className='flex w-full h-full overflow-hidden flex-col items-center relative -mt-32'>
         <Image 
           alt='fondo'
@@ -45,7 +46,17 @@ export default function Home() {
             priority
             width={200}
             height={400}
-            className='h-auto w-[20%] -z-10 lg:w-auto absolute left-0 md:-top-1/2 lg:-top-full'
+            className='h-auto w-[20%] -z-10 lg:w-auto absolute left-0 bottom-1/3 md:bottom-1/2 lg:bottom-1/2'
+          />
+          <Image 
+            src={'/papeles/papelMarron3.png'}
+            alt='Papel roto quienes somos'
+            priority
+            width={200}
+            height={400}
+            className='h-auto w-[30%] sm:w-[25%] absolute left-[80vw] sm:left-[84vw] 
+                      bottom-0
+                      lg:hidden rotate-[195deg]  -scale-x-100 z-50'
           />
           <Image 
             src={'/papeles/papelAzulRoto.png'}
@@ -59,6 +70,7 @@ export default function Home() {
       </section>
       <Services />
       <Blog />
+      <Contact />
     </main>
   )
 }
