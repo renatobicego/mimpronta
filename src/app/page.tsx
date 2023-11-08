@@ -8,7 +8,7 @@ import Contact from './components/Home/Contact/Contact'
 
 export default function Home() {
   return (
-    <main className="flex w-full overflow-hidden min-h-screen flex-col items-center pt-28 relative">
+    <main className="main overflow-hidden">
       <Image 
         src={'/papeles/papelMarron4.png'} 
         alt='papel marron 2'
@@ -56,7 +56,7 @@ export default function Home() {
             height={400}
             className='h-auto w-[30%] sm:w-[25%] absolute left-[80vw] sm:left-[84vw] 
                       bottom-0
-                      lg:hidden rotate-[195deg]  -scale-x-100 z-50'
+                      lg:hidden rotate-[195deg]  -scale-x-100 z-[49]'
           />
           <Image 
             src={'/papeles/papelAzulRoto.png'}

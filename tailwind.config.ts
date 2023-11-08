@@ -12,7 +12,8 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'paper-texture': 'url("/papel.jpg")'
+        'paper-texture': 'url("/papel.jpg")',
+        'magnifier-input': 'url("/icons/magnifier.png")',
       },
       colors: {
         'azul': '#004991',
@@ -29,6 +30,9 @@ const config: Config = {
         'xsm': '350px',
         '3xl': '1720px'
       },
+      backgroundPosition: {
+        'left-6': 'center left 1.5rem',
+      }
     },
   },
   plugins: [],

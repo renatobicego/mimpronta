@@ -1,21 +1,22 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const links = [
     {
-        href: '',
+        href: '/sobreMimpronta',
         text: 'Sobre Mimpronta'
     },
     {
-        href: '',
+        href: '/blog',
         text: 'Blog'
     },
     {
-        href: '',
+        href: '#services',
         text: 'Servicios'
     },
     {
-        href: '',
+        href: '#contact-form',
         text: 'Contacto'
     },
 ]
@@ -37,13 +38,15 @@ const legalLinks = [
 
 const Footer = () => {
   return (
-    <footer className='w-full bg-negro text-white py-16 px-[5%] lg:px-[8.335%] flex justify-between items-end font-text'>
+    <footer className='w-full bg-negro text-white py-16 space-section flex justify-between items-end font-text'>
         <div className='flex flex-col items-start gap-6'>
             <nav className='flex gap-12'>
                 <ul className='flex flex-col gap-3'>
                     {
                         links.map((link, i) => (
-                            <li key={i}>{link.text}</li>
+                            <Link key={i} href={link.href}>
+                                <li >{link.text}</li>   
+                            </Link>
                         ))
                     }
                 </ul>

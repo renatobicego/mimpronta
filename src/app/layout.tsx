@@ -33,13 +33,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='!overflow-x-hidden'>
-      <body className={`${montserrat.variable} ${montserratAlt.variable} !overflow-x-hidden touch-pan-up bg-white`}>
-        <Suspense fallback={<Loading />}>
+    <html lang="en" className='!overflow-x-hidden scroll-smooth'>
+      <body className={`${montserrat.variable} ${montserratAlt.variable} touch-pan-up bg-white`}>
           <Header />
-          {children}
+          <Suspense fallback={<Loading />}>
+            {children}
+          </Suspense>
           <Footer />
-        </Suspense>
       </body>
     </html>
   )

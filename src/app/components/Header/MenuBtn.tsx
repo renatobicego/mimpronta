@@ -9,15 +9,15 @@ const links = [
         text: 'Inicio'
     },
     {
-        href: '/',
+        href: '#services',
         text: 'Servicios'
     },
     {
-        href: '/',
+        href: '/blog',
         text: 'Blog'
     },
     {
-        href: '/',
+        href: '/sobreMimpronta',
         text: 'Nuestro Propósito'
     },
 ]
@@ -64,7 +64,7 @@ const MenuBtn = () => {
                     onAnimationEnd={handleAnimationEnd}>
                     {links.map((link, i) => {
                         return (
-                            <li key={i} className={`opacity-0 list-none ${animationOpenComplete && !shrinkNav ? 'animate-opacity' : ''}`}>
+                            <li onClick={handleClose} key={i} className={`opacity-0 list-none ${animationOpenComplete && !shrinkNav ? 'animate-opacity' : ''}`}>
                                 <Link href={link.href}>
                                     {link.text}
                                 </Link>
@@ -95,7 +95,7 @@ const MenuBtn = () => {
                         height={50}/>
                     {links.map((link, i) => {
                         return (
-                            <li key={i} className={`list-none font-semibold`}>
+                            <li onClick={handleClose} key={i} className={`list-none font-semibold`}>
                                 <Link href={link.href}>
                                     {link.text}
                                 </Link>

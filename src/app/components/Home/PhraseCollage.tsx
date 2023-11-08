@@ -15,10 +15,10 @@ const PhraseCollage = () => {
             />
         <h3 role='heading' className='phrase-size leading-phrase text-center font-semibold 
             size-section lg:w-[75%] xl:w-[65%] 2xl:w-[55%] 
-            mt-48 xsm:mt-52 md:mt-60 lg:mt-48 lg:mb-4'>
-            El mundo atraviesa momentos <br className='hidden xsm:block lg:hidden' />
-            desafiantes, y cada persona con <br  className='hidden xsm:block lg:hidden'/>
-            su <span className='font-extrabold'> impronta </span> puede transformarse <br  className='hidden xsm:block lg:hidden'/>
+            mt-48 xsm:mt-52 md:mt-[30vh] lg:mt-48 lg:mb-4'>
+            El mundo atraviesa momentos 
+            desafiantes, y cada persona con
+            su <span className='font-extrabold'> impronta </span> puede transformarse
             en <span className='font-extrabold'> agente de cambio</span>
         </h3>
         <Image 
