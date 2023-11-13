@@ -6,14 +6,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import './pagination.css'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import PostCard from './PostCard';
 import Link from 'next/link';
 
 const posts = [
     {
         title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-        subtitle: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque placeat earum eum consectetur 
-        quae ipsam culpa quis, architecto, vitae recusandae, ex maiores molestiae dolor. 
+        subtitle: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque placeat eartae recusandae, ex maiores molestiae dolor. 
         Inventore nemo doloremque laudant`
     },
     {
@@ -23,13 +21,13 @@ const posts = [
     },
     {
         title: 'Doloremque placeat earum eum consectetur quae ipsam culpa quis, architecto',
-        subtitle: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque placeat earum eum consectetur 
+        subtitle: `Lorem ipsum do adipisicing elit. Doloremque placeat earum eum consectetur 
         quae ipsam culpa quis, architecto, vitae recusandae, ex maiores molestiae dolor.`
     },
     {
         title: 'Lorem ipsum dolor sit amet consectetur',
         subtitle: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque placeat earum eum consectetur 
-        quae ipsam culpa quis, architecto, vitae recusandae, ex maiores molestiae dolor. 
+        quae ipsam culpa quis, architecto, vitaae dolor. 
         Inventore nemo doloremque laudant`
     },
     {
@@ -63,21 +61,23 @@ const Blog = () => {
                     clickable: true,
                 }}
                 autoHeight
-                spaceBetween={30}
+                spaceBetween={15}
                 modules={[Pagination]}
                 className='w-full mySwiper !ml-0'
                 slidesPerView={'auto'}>
                 {posts.map((post, i) => (
-                    <SwiperSlide key={i} className='!flex !w-5/6 !h-full sm:!w-3/4 lg:!w-[45%] flex-col !items-start gap-4'>
-                        <h6 className='font-text text-lg lg:text-xl 2xl:text-2xl'>{post.title}</h6>
-                        <p className='line-clamp-3 text-base 2xl:text-lg'>
-                            {post.subtitle}
-                        </p>
-                        <Link href={''} className='mt-4'>
-                            <button className='border-2 border-negro px-6 pb-0.5 font-medium rounded-[10px] text-lg'>
-                                Leer post
-                            </button>
-                        </Link>
+                    <SwiperSlide key={i} className='!w-5/6 !h-full sm:!w-3/4 lg:!w-[45%]'>
+                        <div className='w-full flex flex-col items-start gap-4  p-6 rounded-3xl'>
+                            <h6 className='font-text text-lg lg:text-xl 2xl:text-2xl text-justify'>{post.title}</h6>
+                            <p className='line-clamp-3 text-base 2xl:text-lg text-justify'>
+                                {post.subtitle}
+                            </p>
+                            <Link href={''} className='mt-4'>
+                                <button className='border-2 border-negro px-6 pb-0.5 font-medium rounded-[10px] text-lg'>
+                                    Leer post
+                                </button>
+                            </Link>
+                        </div>
                     </SwiperSlide>
                     // <SwiperSlide key={i} className='!w-5/6 !h-full sm:!w-3/4 lg:!w-[45%] flex-col'>
                     //     <h6 className='font-text text-lg lg:text-xl 2xl:text-2xl mb-4'>{post.title}</h6>

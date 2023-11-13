@@ -12,11 +12,11 @@ const links = [
         text: 'Blog'
     },
     {
-        href: '#services',
+        href: '/#services',
         text: 'Servicios'
     },
     {
-        href: '#contact-form',
+        href: '/#contact-form',
         text: 'Contacto'
     },
 ]
@@ -38,9 +38,10 @@ const legalLinks = [
 
 const Footer = () => {
   return (
-    <footer className='w-full bg-negro text-white py-16 space-section flex justify-between items-end font-text'>
-        <div className='flex flex-col items-start gap-6'>
-            <nav className='flex gap-12'>
+    <footer className='w-full bg-negro text-white py-16 space-section flex justify-between  font-text 
+                        flex-wrap-reverse gap-6 items-start md:flex-nowrap md:items-end'>
+        <div className='flex flex-col items-start gap-6 w-full sm:w-3/4 md:w-3/5'>
+            <nav className='flex flex-col gap-6 xsm:gap-3 xsm:justify-between xsm:flex-row sm:gap-12 sm:justify-start w-full'>
                 <ul className='flex flex-col gap-3'>
                     {
                         links.map((link, i) => (

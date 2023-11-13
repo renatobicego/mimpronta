@@ -14,8 +14,8 @@ const PhraseCollage = () => {
                         lg:rotate-0 lg:scale-x-100'
             />
         <h3 role='heading' className='phrase-size leading-phrase text-center font-semibold 
-            size-section lg:w-[75%] xl:w-[65%] 2xl:w-[55%] 
-            mt-48 xsm:mt-52 md:mt-[30vh] lg:mt-48 lg:mb-4'>
+            size-section lg:w-[65%] 2xl:w-[55%] 
+            mt-48 xsm:mt-52 md:mt-[30vh] lg:mt-40 lg:mb-4'>
             El mundo atraviesa momentos 
             desafiantes, y cada persona con
             su <span className='font-extrabold'> impronta </span> puede transformarse
@@ -28,7 +28,7 @@ const PhraseCollage = () => {
             priority
             width={1000}
             height={800}
-            className='scale-[1.35] mt-[13vh] xsm:mt-[27vh] lg:mt-[10vh] lg:w-auto overflow-auto lg:scale-[1.15]
+            className='scale-[1.35] mt-[13vh] xsm:mt-[27vh] lg:mt-0 lg:w-auto overflow-auto lg:scale-100
                         relative z-40'
             />
     </>

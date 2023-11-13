@@ -31,8 +31,8 @@ const Values = () => {
                 priority
                 width={1000}
                 height={1000}
-                className='w-full z-10'
-                src={'/papeles/papelBlanco3.png'}
+                className='w-full z-10 -scale-x-100'
+                src={'/papeles/papelBlanco.png'}
             />
             <h3 className="title-size text-white">
                 ¿En qué creemos?
@@ -52,14 +52,6 @@ const Values = () => {
                     ))
                 }
             </ul>
-            <Image 
-                alt='papel blanco 4 decorativo'
-                priority
-                width={1000}
-                height={1000}
-                className='w-full z-10'
-                src={'/papeles/papelBlanco4.png'}
-            />
         </section>
     )
 }

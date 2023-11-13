@@ -59,7 +59,7 @@ const Carousel = () => {
                     style={{ y }}
                     className="text-negro flex flex-col items-center gap-[50vh] w-full absolute text-center top-[25%] lg:top-[20%]"
                     >
-                        <div className= "w-[90%] sm:w-4/5 lg:w-3/5">
+                        <div className= "w-[90%] sm:w-4/5 lg:w-1/2">
                             <h3 className="title-size mb-6">¿Quiénes so<span className="-scale-x-100 inline-block text-rosa">m</span>os?</h3>
                             <h5 className="phrase-size leading-relaxed"> 
                                 <span className="font-text">N</span>os lo preguntamos todos los días.
@@ -67,26 +67,32 @@ const Carousel = () => {
                             </h5>
                         </div>
                         <p
-                            className="paragraph-size text-negro relative z-10 w-[80%] sm:w-3/5 lg:w-1/2 text-justify"
+                            className="phrase-size font-normal font-text text-negro relative 
+                                        z-10 w-[80%] sm:w-3/5 lg:w-1/2 2xl:w-3/5 text-justify leading-phrase"
                             >
-                                Mimpronta nace de un genuino deseo por ayudar y acompañar a personas y empresas 
-                                que quieran emprender el camino de combinar sus habilidades con las necesidades 
-                                del mundo, ya sea a través del desarrollo de negocios con propósito o a través 
-                                de la integración y visibilización de sus valores y compromisos de responsabilidad social.
+                                <span className="font-bold font-title">
+                                    mi<span className="-scale-x-100 inline-block text-rosa">m</span>pronta 
+                                </span> 
+                                {' '}nace de un genuino deseo por ayudar y acompañar 
+                                a personas y empresas que quieran emprender el camino de 
+                                <span className="font-semibold"> combinar sus habilidades con las necesidades del mundo.</span> 
 
                         </p>
-                        <div className= "w-[90%] sm:w-4/5 lg:w-3/5 flex flex-col items-center">
-                            <h3 className="title-size mb-6">¿Cual es nuestro propósito?</h3>
-                            <h5 className="phrase-size">
-                                <span className="font-text">N</span>uestro propósito es transformar 
-                                esos deseos e intenciones en verdadero impacto social.
-                            </h5>
+                        <div className= "w-[90%] sm:w-4/5 lg:w-3/5 2xl:w-1/2 flex flex-col items-center">
+                            <p className="text-base sm:text-lg md:text-xl 2xl:text-2xl font-normal font-text text-negro relative z-10  text-justify">
+                            A través del desarrollo de <span className="font-semibold">negocios con propósito </span> 
+                            o a través de la <span className="font-semibold">integración y visibilización </span>  
+                            de valores y compromisos de  responsabilidad social.  
+                            <span className="font-semibold"> Nuestro propósito es transformar intenciones en verdadero impacto social.</span> 
+                            </p>
                         </div>
                         <h4
-                            className="phrase-size text-negro relative z-10 w-[90%] sm:w-4/5 lg:w-3/5 text-center font-semibold"
+                            className="phrase-size text-negro relative z-10 w-[90%] sm:w-4/5 lg:w-3/5 
+                                        leading-relaxed text-center font-semibold italic"
                             >
-                                <span className="font-text">N</span>unca dudes que un pequeño número de ciudadanos comprometidos 
-                                puedan cambiar el mundo. De hecho, es lo único que lo ha logrado.
+                                {'"'}<span className="font-text">N</span>unca dudes que un pequeño número de ciudadanos 
+                                compro<span className="font-bold text-rosa">m</span>etidos 
+                                puedan cambiar el mundo. De hecho, es lo único que lo ha logrado{'"'}.
                         </h4>
                 </motion.div>
                 <Image 

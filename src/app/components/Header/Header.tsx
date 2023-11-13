@@ -19,7 +19,7 @@ const Header = () => {
     <header 
       style={headerStyle}
       className={`fixed top-0 flex-between left-0 z-50
-        w-screen px-[5%] lg:px-[8.335%] h-14 py-[5vh] sm:py-[6.5vh]  font-text
+        w-screen px-[5%] lg:px-[8.335%] h-14 py-[5vh] lg:py-[6.5vh]  font-text
         bg-white`}>
         <Link href={'/'} className="w-1/3 sm:w-1/4 md:w-1/5 lg:w-1/6 2xl:w-[14%]">
           <Image 
