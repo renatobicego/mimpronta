@@ -1,0 +1,33 @@
+{
+  "name": "backend-ama",
+  "version": "1.0.0",
+  "description": "rest server Asociacion Mendocina de Atletismo",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "deploy": "firebase deploy"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "express-fileupload": "^1.4.0",
+    "express-rate-limit": "^7.1.4",
+    "express-validator": "^7.0.1",
+    "firebase": "^9.23.0",
+    "firebase-admin": "^11.10.0",
+    "firebase-functions": "^4.4.1",
+    "handlebars": "^4.7.7",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.3.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
