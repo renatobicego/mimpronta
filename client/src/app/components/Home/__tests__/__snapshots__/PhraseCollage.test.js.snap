@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About Us renders unchanged 1`] = `
+<div>
+  <img
+    alt="papel marron 1"
+    class="absolute -left-2 md:left-0 top-[5%] lg:top-[8%]    rotate-180 -scale-x-100 h-[60%] w-auto lg:h-auto   lg:rotate-0 lg:scale-x-100"
+    data-nimg="1"
+    decoding="async"
+    height="700"
+    loading="lazy"
+    src="/_next/image?url=%2Fpapeles%2FpapelMarron1.png&w=640&q=75"
+    srcset="/_next/image?url=%2Fpapeles%2FpapelMarron1.png&w=256&q=75 1x, /_next/image?url=%2Fpapeles%2FpapelMarron1.png&w=640&q=75 2x"
+    style="color: transparent;"
+    width="250"
+  />
+  <img
+    alt="papel marron 2"
+    class="absolute left-[88dvw] lg:left-[90vw] top-[10%] lg:top-[120%]    rotate-[185deg] -scale-x-100 h-[60%] w-auto lg:h-auto   lg:rotate-0 lg:scale-x-100"
+    data-nimg="1"
+    decoding="async"
+    height="1200"
+    loading="lazy"
+    src="/_next/image?url=%2Fpapeles%2FpapelMarron4.png&w=1080&q=75"
+    srcset="/_next/image?url=%2Fpapeles%2FpapelMarron4.png&w=640&q=75 1x, /_next/image?url=%2Fpapeles%2FpapelMarron4.png&w=1080&q=75 2x"
+    style="color: transparent;"
+    width="500"
+  />
+  <h3
+    class="phrase-size leading-phrase text-center font-semibold    size-section lg:w-[75%] xl:w-[65%] 2xl:w-[55%]    mt-16 xsm:mt-20 md:mt-28 lg:mt-16 lg:mb-4"
+    role="heading"
+  >
+    El mundo atraviesa momentos 
+    <br
+      class="hidden xsm:block lg:hidden"
+    />
+    desafiantes, y cada persona con 
+    <br
+      class="hidden xsm:block lg:hidden"
+    />
+    su 
+    <span
+      class="font-extrabold"
+    >
+       impronta 
+    </span>
+     puede transformarse 
+    <br
+      class="hidden xsm:block lg:hidden"
+    />
+    en 
+    <span
+      class="font-extrabold"
+    >
+       agente de cambio
+    </span>
+  </h3>
+  <img
+    alt="Collage mundo"
+    class="-z-10 scale-[1.35] mt-[13dvh] xsm:mt-[27dvh] lg:mt-[10dvh] lg:w-auto overflow-auto lg:scale-[1.15]"
+    data-nimg="1"
+    decoding="async"
+    fetchpriority="high"
+    height="800"
+    role="img"
+    src="/_next/image?url=%2Fcollages%2Fmundo.png&w=2048&q=75"
+    srcset="/_next/image?url=%2Fcollages%2Fmundo.png&w=1080&q=75 1x, /_next/image?url=%2Fcollages%2Fmundo.png&w=2048&q=75 2x"
+    style="color: transparent;"
+    width="1000"
+  />
+</div>
+`;
