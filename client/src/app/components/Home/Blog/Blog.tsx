@@ -40,8 +40,8 @@ const posts = [
 
 const Blog = () => {
   return (
-    <section className='w-full mt-14 sm:mt-24 lg:mt-0 flex bg-white pb-0'>
-        <div className='w-[15%] sm:w-1/3 pb-8 pt-10 md:pt-20 lg:pb-0 bg-rosa 
+    <section className='w-full mt-4 xsm:mt-14 sm:mt-24 lg:mt-0 flex bg-white pb-0'>
+        <div className='w-[15%] sm:w-1/3 pb-8 pt-14 xsm:pt-10 md:pt-20 lg:pb-0 bg-rosa 
                         sm:bg-gradient-to-r from-rosa via-rosa  via-60% to-60% to-white 
                         relative z-10 h-auto'>
             <Image

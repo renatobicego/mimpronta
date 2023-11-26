@@ -8,7 +8,7 @@ import Contact from './components/Home/Contact/Contact'
 
 export default function Home() {
   return (
-    <main className="main overflow-hidden">
+    <main id="inicio" className="main overflow-hidden">
       <Image 
         src={'/papeles/papelMarron4.png'} 
         alt='papel marron 2'
@@ -21,9 +21,9 @@ export default function Home() {
       <section className='flex w-full h-full overflow-hidden flex-col items-center relative -mt-32'>
         <Image 
           alt='fondo'
-          priority
-          width={3000}
-          height={3000}
+          priority={true}
+          width={1500}
+          height={1500}
           className='absolute left-0 top-0 w-full object-cover h-[200vh] sm:h-[300vh] md:h-[200vh] lg:h-[320vh] opacity-50'
           src={'/papel.jpg'}
         />

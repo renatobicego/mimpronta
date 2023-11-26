@@ -3,38 +3,10 @@ import { Paragraph } from "./FormPost";
 import ParagraphInput from "./ParagraphInput";
 import { useState } from "react";
 import { Select, SelectItem, Avatar } from "@nextui-org/react";
+import { Author, useBlogData } from "@/utils/hooks/useBlogData";
 
-const users = [
-  {
-    id: "1",
-    name: "Micaela Gerbeno",
-    picture: "/blog/pp.png",
-  },
 
-  {
-    id: "2",
-    name: "Renato Bicego",
-    picture: "/blog/image2.png",
-  },
-
-  {
-    id: "3",
-    name: "Lola Bahamonde",
-    picture: "/blog/image3.png",
-  },
-];
-const categories = [
-  {
-    id: "123",
-    text: "Marketing",
-  },
-  {
-    id: "124",
-    text: "Conciencia Ambiental",
-  },
-];
-
-const SelectUser = () => {
+const SelectAuthor = ({authors} : {authors: Array<Author>}) => {
   return (
     <Select
       classNames={{
@@ -44,20 +16,21 @@ const SelectUser = () => {
       }}
       label="Seleccionar autor"
     >
-      {users.map((user, i) => (
+      {authors.map((author, i) => (
         <SelectItem
           key={i}
-          value={user.id}
+          value={author._id}
           startContent={
-            <Avatar alt="" className="w-10 h-10" src={user.picture} />
+            <Avatar alt="" className="w-10 h-10" src={author.picture} />
           }
         >
-          {user.name}
+          {author.name}
         </SelectItem>
       ))}
     </Select>
   );
 };
+
 
 const Inputs = ({
   paragraphs,
@@ -67,11 +40,11 @@ const Inputs = ({
   setParagraphs: React.Dispatch<React.SetStateAction<Paragraph[]>>;
 }) => {
   const [newAuthor, setNewAuthor] = useState(false);
-
+  const { entityData, loading, error } = useBlogData(["categories", "authors"]);
   const handleAddParagraph = () => {
     setParagraphs([
       ...paragraphs,
-      { subtitle: "", text: "", imgParagraph: { epigraph: "", href: "" } },
+      { subtitle: "", text: "", imgParagraph: { epigraph: "", src: "" } },
     ]);
   };
 
@@ -99,14 +72,14 @@ const Inputs = ({
                 placeholder="Nombre del autor"
                 className="input"
               />
-                <label htmlFor="author.picture">Foto de autor</label>
-                <Field
-                    id="author.picture"
-                    name="author.picture"
-                    placeholder="Nombre del autor"
-                    type="file"
-                    className="input"
-                />
+              <label htmlFor="author.picture">Foto de autor</label>
+              <Field
+                id="author.picture"
+                name="author.picture"
+                placeholder="Nombre del autor"
+                type="file"
+                className="input"
+              />
               <button
                 type="button"
                 className="btn-secondary py-2 rounded-3xl text-sm self-start"
@@ -117,11 +90,7 @@ const Inputs = ({
             </>
           ) : (
             <>
-              <Field
-                id="author.id"
-                name="author.id"
-                as={SelectUser}
-              />
+              <Field id="author._id" name="author._id" as={SelectAuthor} authors={entityData.authors}/>
               <button
                 type="button"
                 className="btn-secondary py-2 rounded-3xl text-sm self-start"
@@ -133,10 +102,10 @@ const Inputs = ({
           )}
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="imgPost.href">Imagen de portada</label>
+          <label htmlFor="imgPost.src">Imagen de portada</label>
           <Field
-            id="imgPost.href"
-            name="imgPost.href"
+            id="imgPost.src"
+            name="imgPost.src"
             type="file"
             className="input"
             placeholder="Imagen de portada"
@@ -152,13 +121,13 @@ const Inputs = ({
           <label htmlFor="category">Categoría</label>
           <Field
             id="category"
-            className="input self-start"
+            className="input self-start min-w-[100px]"
             name="category"
             as="select"
           >
-            {categories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.text}
+            {entityData.categories.map((category) => (
+              <option key={category._id} value={category._id}>
+                {category.name}
               </option>
             ))}
           </Field>

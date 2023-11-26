@@ -36,7 +36,7 @@ const ServiceCard = ({
                     ${marginClass} lg:hover:-translate-y-5 transition-all duration-300
                     ${colSpan} lg:[&>a]:hover:visible` }>
             
-            <Link href={'/#contact-form'} 
+            <a href={'/#contacto'} 
                     className={`absolute -left-2 -top-2 w-[105%] h-[110%] invisible paragraph-size font-semibold 
                             text-white  flex justify-center items-center lg:hover:backdrop-blur-sm 
                             z-10 rounded-[20px]`}>
@@ -49,7 +49,7 @@ const ServiceCard = ({
                             height={22} 
                             alt="Icono flecha" />  
                 </button>
-            </Link>
+            </a>
             <h6 className="font-title font-semibold text-lg lg:text-xl 2xl:text-2xl">
                 {title}
             </h6>

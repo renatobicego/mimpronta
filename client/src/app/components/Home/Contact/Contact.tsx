@@ -18,7 +18,7 @@ const Contact = () => {
   };
   return (
     <section  className='w-full flex flex-col space-section pt-20 pb-40 gap-12 bg-paper-texture relative overflow-hidden'>
-      <div id='contact-form' className='invisible absolute -top-20' ></div>
+      <div id='contacto' className='invisible absolute -top-20' ></div>
       <h5 className='title-size leading-10'>
           ¿Cómo podemos ayudarte?
       </h5>

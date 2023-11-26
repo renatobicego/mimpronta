@@ -40,12 +40,12 @@ const BlogCard = ({
         <div className="blog-post-card flex flex-col items-start justify-end 
                         font-text relative rounded-2xl text-white 
                         px-4 md:px-6 lg:px-8 pt-[20%] pb-8 lg:pb-10 hover:[&>button]:border-amarillo">
-            <div className="w-full h-full bg-gradient-to-t from-negro absolute bottom-0 left-0 -z-10 rounded-2xl"></div>
-            <div className="post-line-hover absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-[95%] h-[90%]"></div>
+            <div className="w-full h-full bg-gradient-to-t from-negro absolute bottom-0 left-0 z-[1] rounded-2xl"></div>
+            <div className="post-line-hover absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-[95%] z-10 h-[90%]"></div>
             <Image 
                 src={'/blog/' + imgSrc}
                 alt="Imagen post de blog"
-                className="-z-[11] rounded-2xl"
+                className=" rounded-2xl"
                 fill
                 objectFit="cover"
             />

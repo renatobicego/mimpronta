@@ -9,7 +9,7 @@ const links = [
         text: 'Inicio'
     },
     {
-        href: '/#services',
+        href: '/#servicios',
         text: 'Servicios'
     },
     {

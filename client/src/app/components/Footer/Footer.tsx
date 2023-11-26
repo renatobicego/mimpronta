@@ -12,11 +12,11 @@ const links = [
         text: 'Blog'
     },
     {
-        href: '/#services',
+        href: '/#servicios',
         text: 'Servicios'
     },
     {
-        href: '/#contact-form',
+        href: '/#contacto',
         text: 'Contacto'
     },
 ]
@@ -61,7 +61,7 @@ const Footer = () => {
                 </ul>
             </nav>
             <Image 
-                src={'/icons/Linkedin.png'}
+                src={'/icons/linkedin.png'}
                 alt='link profile linkedin'
                 width={40}
                 height={40} />

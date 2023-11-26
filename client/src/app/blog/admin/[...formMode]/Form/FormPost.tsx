@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import ParagraphInput from "./ParagraphInput";
 import Inputs from "./Inputs";
 import { useRouter } from "next/navigation";
+import VolverBtn from "@/app/components/VolverBtn";
+import { object, string, number, date, InferType, array, mixed } from 'yup';
 
 interface ImageBlog {
-  href: string | File;
+  src: string | File;
   epigraph: string;
 }
 
@@ -17,12 +19,12 @@ export interface Paragraph {
 }
 
 interface Author {
-  id?: string,
+  _id?: string,
   name?: string,
   picture?: string | File
 }
 
-interface MyFormValues {
+interface FormPostValues {
   title: string;
   subtitle: string;
   date: Date;
@@ -31,26 +33,54 @@ interface MyFormValues {
   category: string;
   body: Array<Paragraph>;
 }
+
+
+
+const postSchema = object({
+  title: string().required('Título obligatorio'),
+  subtitle: string().required('Subtítulo obligatorio'),
+  category: string().required('Categoria obligatorio'),
+  date: date().default(() => new Date()),
+  author: object({
+    _id: string().optional(),
+    name: string().required('Nombre del autor/a obligatorio'),
+    picture: mixed().required('Foto del autor/a obligatorio'), // Allow either string or File
+  }),
+  imgPost: object({
+    epigraph: string().optional().default(""),
+    src: mixed().required('Imagen de portada obligatoria / Error al subir la imagen de portada'), // Allow either string or File
+  }),
+  body: array(
+    object({
+      subtitle: string().optional().default(""),
+      text: string().required('Texto del párrafo obligatorio'),
+      imgParagraph: object({
+        epigraph: string().optional().default(""),
+        src: mixed().required('Error al subir la imagen de párrafo'), // Allow either string or File
+      }).optional().default(null),
+    })
+  ).min(1, 'El post debe contener al menos un párrafo'),
+})
+
 const FormPost = ({ editing = true }) => {
-  const [initialValues, setInitialValues] = useState<MyFormValues>({
+  const [initialValues, setInitialValues] = useState<FormPostValues>({
     title: "",
     subtitle: "",
     date: new Date(),
     author: {
-      id: "",
+      _id: "",
       name: "",
       picture: ""
     },
     imgPost: {
       epigraph: "",
-      href: "",
+      src: "",
     },
     category: "",
     body: [],
   });
 
-  const [paragraphs, setParagraphs] = useState<Paragraph[]>([]);
-  const router = useRouter()
+  const [paragraphs, setParagraphs] = useState<Paragraph[]>([]) 
 
   useEffect(() => {
     if (editing) {
@@ -61,29 +91,33 @@ const FormPost = ({ editing = true }) => {
     }
   }, [editing]);
 
+  const handleSubmitPost = (values: FormPostValues, actions: any) => {
+    alert(JSON.stringify(values, null, 2));
+    actions.setSubmitting(false);
+  }
+
+  const validateFormPost = (values: FormPostValues) => {
+    const errors: Partial<FormPostValues> = {}
+    const fieldsToValidate = ['title', 'subtitle', 'category']
+    fieldsToValidate.forEach((field) => {
+      if(!field){
+
+      }
+    })
+    
+  }
+
   return (
     <main className="size-section py-28">
-      <button onClick={router.back} className="flex items-center gap-2 mb-4">
-        <Image
-          alt="Volver icono"
-          className="rotate-180 mt-0.5"
-          width={20}
-          height={20}
-          src={'/icons/chevronB.png'}
-        />
-        Volver
-      </button>
+      <VolverBtn />
       <h4 className="phrase-size font-semibold font-text mb-4">
         Escribir post
       </h4>
       <Formik
         initialValues={{ ...initialValues, body: paragraphs }}
         enableReinitialize
-        onSubmit={(values, actions) => {
-          console.log({ values, actions });
-          alert(JSON.stringify(values, null, 2));
-          actions.setSubmitting(false);
-        }}
+        validate={validateFormPost}
+        onSubmit={handleSubmitPost}
       >
         <Inputs paragraphs={paragraphs} setParagraphs={setParagraphs} />
       </Formik>

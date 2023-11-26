@@ -35,14 +35,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className='!overflow-x-hidden scroll-smooth'>
-      <body className={`${montserrat.variable} ${montserratAlt.variable} touch-pan-up bg-white`}>
-        <Providers>
-          <Header />
-          <Suspense fallback={<Loading />}>
-            {children}
-          </Suspense>
-          <Footer />
-        </Providers>
+      <body className={`${montserrat.variable} ${montserratAlt.variable} bg-white`}>
+        <Suspense fallback={<Loading />}>
+          <Providers>
+            <Header />
+              {children}
+            <Footer />
+          </Providers>
+        </Suspense>
       </body>
     </html>
   )
