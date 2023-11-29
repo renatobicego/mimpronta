@@ -30,7 +30,7 @@ const PostCardAdmin = ({
           {title}
         </h5>
         <div className="flex items-center gap-2">
-          <Link href={"/blog/admin/edit/" + title}>
+          <Link href={"/blog/admin/editar/" + title}>
             <button className="btn-secondary md:text-sm 3xl:text-base">
               Editar
             </button>

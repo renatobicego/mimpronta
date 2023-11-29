@@ -1,111 +1,131 @@
-import { Field, Form, Formik } from "formik";
-import Image from "next/image";
+import { Formik } from "formik";
 import { useEffect, useState } from "react";
-import ParagraphInput from "./ParagraphInput";
 import Inputs from "./Inputs";
-import { useRouter } from "next/navigation";
 import VolverBtn from "@/app/components/VolverBtn";
-import { object, string, number, date, InferType, array, mixed } from 'yup';
+import { postSchema } from "./postSchema";
+import { useParams } from "next/navigation";
+import axios, { AxiosError } from "axios";
+import { uploadFileFirebase } from "@/utils/files/archivosFirebase";
+import { FormPostValues, Paragraph } from "./formPostTypes";
+import { useRouter } from "next/navigation";
 
-interface ImageBlog {
-  src: string | File;
-  epigraph: string;
+async function uploadImageAndUpdateProperty(
+  image: string | File,
+  pathPrefix: string
+) {
+  if (image instanceof File) {
+    const url = await uploadFileFirebase(image, pathPrefix);
+    return url as string;
+  }
+  return image;
 }
 
-export interface Paragraph {
-  subtitle: string;
-  text: string;
-  imgParagraph: ImageBlog;
-}
-
-interface Author {
-  _id?: string,
-  name?: string,
-  picture?: string | File
-}
-
-interface FormPostValues {
-  title: string;
-  subtitle: string;
-  date: Date;
-  author: Author;
-  imgPost: ImageBlog;
-  category: string;
-  body: Array<Paragraph>;
-}
-
-
-
-const postSchema = object({
-  title: string().required('Título obligatorio'),
-  subtitle: string().required('Subtítulo obligatorio'),
-  category: string().required('Categoria obligatorio'),
-  date: date().default(() => new Date()),
-  author: object({
-    _id: string().optional(),
-    name: string().required('Nombre del autor/a obligatorio'),
-    picture: mixed().required('Foto del autor/a obligatorio'), // Allow either string or File
-  }),
-  imgPost: object({
-    epigraph: string().optional().default(""),
-    src: mixed().required('Imagen de portada obligatoria / Error al subir la imagen de portada'), // Allow either string or File
-  }),
-  body: array(
-    object({
-      subtitle: string().optional().default(""),
-      text: string().required('Texto del párrafo obligatorio'),
-      imgParagraph: object({
-        epigraph: string().optional().default(""),
-        src: mixed().required('Error al subir la imagen de párrafo'), // Allow either string or File
-      }).optional().default(null),
-    })
-  ).min(1, 'El post debe contener al menos un párrafo'),
-})
-
-const FormPost = ({ editing = true }) => {
+const FormPost = () => {
   const [initialValues, setInitialValues] = useState<FormPostValues>({
     title: "",
     subtitle: "",
+    password: process.env.NEXT_PUBLIC_BLOG_PASSWORD,
     date: new Date(),
     author: {
       _id: "",
       name: "",
-      picture: ""
+      picture: "",
     },
     imgPost: {
       epigraph: "",
       src: "",
     },
     category: "",
-    body: [],
+    body: [{ subtitle: "", text: "", imgParagraph: { epigraph: "", src: "" } }],
   });
-
-  const [paragraphs, setParagraphs] = useState<Paragraph[]>([]) 
+  const { formMode } = useParams();
+  const router = useRouter()
 
   useEffect(() => {
-    if (editing) {
+    const getPreviousData = async () => {
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_URL_API}/blog/title/${formMode[1]}`
+      );
       setInitialValues((previousValues) => ({
         ...previousValues,
-        title: "Hola",
+        ...data,
+        body: data.body.map((p: Paragraph) => {
+          if (!p.imgParagraph) {
+            p.imgParagraph = {
+              src: "",
+              epigraph: "",
+            };
+          }
+          return p
+        }),
       }));
+    };
+    if (formMode[0] === "editar") {
+      getPreviousData();
     }
-  }, [editing]);
+  }, [formMode]);
 
-  const handleSubmitPost = (values: FormPostValues, actions: any) => {
-    alert(JSON.stringify(values, null, 2));
+  const handleSubmitPost = async (values: FormPostValues, actions: any) => {
+    try {
+      values.imgPost.src = await uploadImageAndUpdateProperty(
+        values.imgPost.src,
+        `blog/${values.title}/`
+      );
+
+      await Promise.all(
+        values.body.map(async (p) => {
+          if (p.imgParagraph?.src === "") {
+            p.imgParagraph = null;
+          } else if (p.imgParagraph?.src) {
+            p.imgParagraph.src = await uploadImageAndUpdateProperty(
+              p.imgParagraph.src,
+              `blog/${values.title}/`
+            );
+          }
+        })
+      );
+
+      if (values.author.picture instanceof File) {
+        values.author.picture = await uploadImageAndUpdateProperty(
+          values.author.picture,
+          `blog/authors/`
+        );
+      }
+      
+      await axios.post(`${process.env.NEXT_PUBLIC_URL_API}/blog`, values);
+      alert("Post creado");
+      router.replace(`/blog/${values.title}`)
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        const { errors } = error.response?.data;
+        const errorsServer: { [key: string]: string } = {};
+        errors.forEach((error: { path: string; msg: string }) => {
+          errorsServer[error.path] = error.msg;
+        });
+        actions.setErrors(errorsServer);
+      }
+    }
     actions.setSubmitting(false);
-  }
+  };
 
   const validateFormPost = (values: FormPostValues) => {
-    const errors: Partial<FormPostValues> = {}
-    const fieldsToValidate = ['title', 'subtitle', 'category']
-    fieldsToValidate.forEach((field) => {
-      if(!field){
+    const errors: Partial<FormPostValues> = {};
 
+    if (!values.author._id) {
+      errors.author = {};
+      if (!values.author.name) {
+        errors.author.name = "Nombre del autor/a obligatorio";
       }
-    })
-    
-  }
+      if (!values.author.picture) {
+        errors.author.picture = "Foto del autor/a obligatoria";
+      }
+    }
+    if (Object.keys(errors.author || {}).length === 0) {
+      delete errors.author;
+    }
+
+    return errors;
+  };
 
   return (
     <main className="size-section py-28">
@@ -114,12 +134,22 @@ const FormPost = ({ editing = true }) => {
         Escribir post
       </h4>
       <Formik
-        initialValues={{ ...initialValues, body: paragraphs }}
+        initialValues={initialValues}
         enableReinitialize
+        validationSchema={postSchema}
         validate={validateFormPost}
+        validateOnBlur={false}
+        validateOnChange={false}
         onSubmit={handleSubmitPost}
       >
-        <Inputs paragraphs={paragraphs} setParagraphs={setParagraphs} />
+        {({ errors, setFieldValue, values, isSubmitting }) => (
+          <Inputs
+            setFieldValue={setFieldValue}
+            errors={errors}
+            values={values}
+            isSubmitting={isSubmitting}
+          />
+        )}
       </Formik>
     </main>
   );

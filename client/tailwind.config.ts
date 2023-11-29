@@ -31,6 +31,7 @@ const config: Config = {
       },
       screens: {
         'xsm': '350px',
+        's': '475px',
         '3xl': '1720px'
       },
       backgroundPosition: {

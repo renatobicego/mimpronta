@@ -25,14 +25,10 @@ const services = [
 const Services = () => {
   return (
     <section className="w-full bg-azul px-[5%] md:px-[8.335%] pt-4 lg:pt-0 pb-20 xsm:pb-24 flex flex-col gap-4 items-start relative -mt-0.5">
-      <div id='servicios' className='invisible absolute -top-32' ></div>
+      <div id='servicios' className='invisible absolute -top-32 3xl:-top-44' ></div>
       <h4 className="title-size text-white">
         <span className="font-text">N</span>uestros servicios
       </h4>
-      {/* <p className="paragraph-size text-white lg:w-4/5"> 
-          Cada negocio tiene su impronta, por lo tanto nuestros servicios serán a medida 
-          de tu personalidad para ayudarte en la entrega de valor combinado.
-      </p> */}
       <div className="w-[98%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-min">
         {services.map((service, i) => 
           <ServiceCard 
@@ -61,7 +57,7 @@ const Services = () => {
         priority
         height={1500}
         alt="collage árboles"
-        className="absolute z-[11] top-[92%] md:top-[87%] lg:top-[54%] 2xl:top-[56%] scale-150 
+        className="absolute z-[11] top-[92%] md:top-[87%] lg:top-[54%] 2xl:top-[56%] 3xl:top-[48%] scale-150 
                   translate-x-1/4 md:scale-100 md:translate-x-0  left-0 w-full"
       />
     </section>

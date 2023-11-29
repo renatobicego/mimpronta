@@ -36,7 +36,7 @@ export default function Home() {
             priority
             width={200}
             height={400}
-            className='h-auto w-[20%] -z-10 lg:w-auto absolute left-0 bottom-1/3 md:bottom-1/2 lg:bottom-1/2'
+            className='h-auto w-[20%] lg:w-auto absolute left-0 bottom-1/3 md:bottom-1/2 lg:bottom-1/2'
           />
           <Image 
             src={'/papeles/papelMarron3.png'}

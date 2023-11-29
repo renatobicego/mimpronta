@@ -194,6 +194,10 @@ const categoriesGet = async (req, res) => {
   const categories = await CategoryBlog.find();
   return res.json(categories);
 };
+const authorsGet = async (req, res) => {
+  const authors = await Author.find();
+  return res.json(authors);
+};
 
 const deleteImage = async (id) => {
   try {
@@ -238,5 +242,6 @@ module.exports = {
   blogGetByTitle,
   blogDelete,
   categoriesGet,
-  blogGetByCategory
+  blogGetByCategory,
+  authorsGet
 };

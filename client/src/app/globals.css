@@ -56,7 +56,7 @@ body, html {
     @apply text-sm sm:text-base md:text-lg 2xl:text-xl font-text text-negro
   }
   .leading-phrase {
-    @apply leading-6 xsm:leading-8 md:leading-10 xl:leading-[50px]
+    @apply leading-6 xsm:leading-8 md:leading-10 xl:leading-[50px] 3xl:leading-[60px]
   }
   .btn-primary-variant {
     @apply  bg-opacity-0
