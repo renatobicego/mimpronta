@@ -42,6 +42,11 @@ interface ParagraphServer extends Paragraph {
   imgParagraph: ImageBlogServer | null
 }
 
+interface CategoryServer {
+  _id: string,
+  name: string
+}
+
 interface PostServer {
   _id: string
   title: string;
@@ -49,8 +54,9 @@ interface PostServer {
   date: Date;
   author: AuthorServer;
   imgPost: ImageBlogServer;
-  category: string;
+  category: CategoryServer;
   body: Array<ParagraphServer>;
 }
+
 
 export type {Author, FormPostValues, ImageBlog, Paragraph, PostServer, AuthorServer}

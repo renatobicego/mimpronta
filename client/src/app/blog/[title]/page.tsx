@@ -1,8 +1,12 @@
+"use client";
 import Image from "next/image";
-import Link from "next/link";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
 import VolverBtn from "@/app/components/VolverBtn";
+import { useParams } from "next/navigation";
+import { PostServer } from "../admin/[...formMode]/Form/formPostTypes";
+import axios from "axios";
+import Loading from "@/app/loading";
 
 const months = [
   "Enero",
@@ -16,66 +20,42 @@ const months = [
   "Septiembre",
   "Octubre",
   "Noviembre",
-  "Diiciembre",
-];
-
-const post = {
-  title: "Título del Post ",
-  subtitle:
-    "Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Atque obcaecati excepturi quisquam quas vitae architecto. ",
-  date: new Date(),
-  author: "Micaela Gerbeno",
-  imgBlog: {
-    src: "/blog/imagePost.png",
-    epigraph: "Epígrafe de la foto",
-  },
-  category: {
-    name: "Marketing",
-  },
-  body: [
-    {
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus quibusdam quisquam numquam pariatur eligendi quia soluta sequi consequatur ut suscipit dicta ab, in ipsum cum eveniet, doloremque alias ea veritatis?",
-      subtitle: "Subtítulo",
-    },
-    {
-      text: "Gorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.",
-      imgParagraph: {
-        src: "/blog/image2.png",
-        epigraph: "Epigrafe",
-      },
-    },
-    {
-      text: "Nam pulvinar blandit velit, id condimentum diam faucibus at. Aliquam lacus nisi, sollicitudin at nisi nec, fermentum congue felis. Quisque mauris dolor, fringilla sed tincidunt ac, finibus non odio. Sed vitae mauris nec ante pretium finibus. Donec nisl neque, pharetra ac elit eu, faucibus aliquam ligula. Nullam dictum, tellus tincidunt tempor laoreet, nibh elit sollicitudin felis, eget feugiat sapien diam nec nisl. Aenean gravida turpis nisi, consequat dictum risus dapibus a. Duis felis ante, varius in neque eu, tempor suscipit sem. Maecenas ullamcorper gravida sem sit amet cursus. Etiam pulvinar purus vitae justo pharetra consequat. Mauris id mi ut arcu feugiat maximus. Mauris consequat tellus id tempus aliquet.",
-      subtitle: "Subtítulo 2",
-    },
-  ],
-};
-
-const mockedRecommendedPosts = [
-  {
-    title: "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    subtitle: `Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
-                    Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.`,
-    imgSrc: "image.png",
-    id: "dsf321",
-  },
-  {
-    title: "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    subtitle: `Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
-                    Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.`,
-    imgSrc: "image2.png",
-    id: "dsf321",
-  },
-  {
-    title: "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    subtitle: `Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
-                    Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.`,
-    imgSrc: "image3.png",
-    id: "dsf321",
-  },
+  "Diciembre",
 ];
 
 const BlogPost = () => {
+  const [post, setPost] = useState<PostServer | undefined>();
+  const [recommendedPosts, setRecommendedPosts] = useState<
+    Array<PostServer> | undefined
+  >();
+  const { title } = useParams();
+  useEffect(() => {
+    const fetchPostData = async () => {
+      try {
+        const { data: postData } = await axios.get(
+          `${process.env.NEXT_PUBLIC_URL_API}/blog/title/${title}`
+        );
+        const { data: recommendedPostData } = await axios.get(
+          `${process.env.NEXT_PUBLIC_URL_API}/blog/recommended/${postData.category._id}`
+        );
+        setPost(postData);
+        setRecommendedPosts(
+          recommendedPostData.filter((p: PostServer) => p._id !== postData._id)
+        );
+      } catch (error) {
+        throw new Error("Error al traer los datos del post: " + error);
+      }
+    };
+    if (!post || !recommendedPosts) {
+      fetchPostData();
+    }
+  }, [title]);
+
+  if (!post || !recommendedPosts) {
+    return <Loading />;
+  }
+
+  const date = new Date(post.date);
   return (
     <article
       className="size-section md:w-3/4 lg:w-3/5 3xl:w-1/2 py-[13vh] lg:pt-[17vh] xl:py-[20vh] font-text
@@ -91,15 +71,15 @@ const BlogPost = () => {
       <h4 className="subtitle-size my-2 font-medium">{post.subtitle}</h4>
       <div className="w-full">
         <Image
-          src={post.imgBlog.src}
+          src={post.imgPost.src}
           alt={"Imagen de post:" + post.title}
           className="w-full h-auto"
           width={800}
           height={800}
         />
-        {post.imgBlog.epigraph && (
+        {post.imgPost.epigraph && (
           <p className="italic ml-1 mt-2 text-xs xsm:text-sm 3xl:text-base">
-            {post.imgBlog.epigraph}
+            {post.imgPost.epigraph}
           </p>
         )}
       </div>
@@ -130,30 +110,34 @@ const BlogPost = () => {
       ))}
       <div className="flex items-center gap-2 ml-1">
         <Image
-          src={"/blog/pp.png"}
-          alt={"Foto de perfil autor/a: " + post.author}
+          src={post.author.picture}
+          alt={"Foto de perfil autor/a: " + post.author.name}
           width={40}
           height={40}
           className="rounded-full"
         />
         <h6 className="text-xs xsm:text-sm 3xl:text-base">
-          {post.author} -{" "}
-          {`${post.date.getDate()} ${
-            months[post.date.getMonth()]
-          }, ${post.date.getFullYear()}`}
+          {post.author.name} -{" "}
+          {`${date.getDate()} ${
+            months[date.getMonth()]
+          }, ${date.getFullYear()}`}
         </h6>
       </div>
-      <h4 className="subtitle-size mt-6 md:mt-8">Posts Recomendados</h4>
-      <div className="flex flex-col w-full md:w-5/6 xl:w-3/4 gap-4">
-        {mockedRecommendedPosts.map((post, i) => (
-          <BlogCard
-            key={i}
-            recommended
-            title={post.title}
-            imgSrc={post.imgSrc}
-          />
-        ))}
-      </div>
+      {recommendedPosts.length > 0 && (
+        <>
+          <h4 className="subtitle-size mt-6 md:mt-8">Posts Recomendados</h4>
+          <div className="flex flex-col w-full md:w-5/6 xl:w-3/4 gap-4">
+            {recommendedPosts.map((post) => (
+              <BlogCard
+                key={post._id}
+                recommended
+                title={post.title}
+                imgSrc={post.imgPost.src}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </article>
   );
 };
