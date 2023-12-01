@@ -1,11 +1,12 @@
-'use client'
+"use client";
 
-import {NextUIProvider} from '@nextui-org/react'
+import { NextUIProvider } from "@nextui-org/react";
+import { PostsProvider } from "./postsContext";
 
-export function Providers({children}: { children: React.ReactNode }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <NextUIProvider>
-      {children}
+      <PostsProvider>{children}</PostsProvider>
     </NextUIProvider>
-  )
+  );
 }

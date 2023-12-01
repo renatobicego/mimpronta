@@ -8,6 +8,7 @@ import axios, { AxiosError } from "axios";
 import { uploadFileFirebase } from "@/utils/files/archivosFirebase";
 import { FormPostValues, Paragraph } from "./formPostTypes";
 import { useRouter } from "next/navigation";
+import { usePosts } from "@/app/postsContext";
 
 async function uploadImageAndUpdateProperty(
   image: string | File,
@@ -40,15 +41,21 @@ const FormPost = () => {
   });
   const { formMode } = useParams();
   const router = useRouter()
+  const {fetchPosts} = usePosts()
 
   useEffect(() => {
     const getPreviousData = async () => {
+      const title = decodeURIComponent(formMode[1])
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_URL_API}/blog/title/${formMode[1]}`
+        `${process.env.NEXT_PUBLIC_URL_API}/blog/title/${title}`
       );
+      if(!data){
+        return router.replace('/blog/admin/publicar')
+      }
       setInitialValues((previousValues) => ({
         ...previousValues,
         ...data,
+        category: data.category._id,
         body: data.body.map((p: Paragraph) => {
           if (!p.imgParagraph) {
             p.imgParagraph = {
@@ -85,15 +92,23 @@ const FormPost = () => {
         })
       );
 
-      if (values.author.picture instanceof File) {
+      if (values.author.picture instanceof File && formMode[0] !== "editar") {
         values.author.picture = await uploadImageAndUpdateProperty(
           values.author.picture,
           `blog/authors/`
         );
       }
-      
-      await axios.post(`${process.env.NEXT_PUBLIC_URL_API}/blog`, values);
-      alert("Post creado");
+
+      if(formMode[0] === "editar"){
+        await axios.put(`${process.env.NEXT_PUBLIC_URL_API}/blog/${values._id}`, values);
+        await fetchPosts()
+        alert("Post editado");
+      }else{
+        await axios.post(`${process.env.NEXT_PUBLIC_URL_API}/blog`, values);
+        await fetchPosts()
+        alert("Post creado");
+      }
+      actions.resetForm()
       router.replace(`/blog/${values.title}`)
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -128,10 +143,10 @@ const FormPost = () => {
   };
 
   return (
-    <main className="size-section py-28">
+    <main className="size-section py-28 ">
       <VolverBtn />
       <h4 className="phrase-size font-semibold font-text mb-4">
-        Escribir post
+        {formMode[0] === "editar" ? 'Editar post' : 'Escribir post' }
       </h4>
       <Formik
         initialValues={initialValues}
@@ -147,6 +162,7 @@ const FormPost = () => {
             setFieldValue={setFieldValue}
             errors={errors}
             values={values}
+            editing={formMode[0] === "editar"}
             isSubmitting={isSubmitting}
           />
         )}

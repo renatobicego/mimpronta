@@ -17,7 +17,7 @@ const BlogCard = ({
         return (
             <div className="w-full flex rounded-2xl border-2 border-gray-300">
                 <Image 
-                    src={'/blog/' + imgSrc}
+                    src={imgSrc}
                     width={300}
                     height={300}
                     alt={"Foto post recomendado con título: "}
@@ -43,7 +43,7 @@ const BlogCard = ({
             <div className="w-full h-full bg-gradient-to-t from-negro absolute bottom-0 left-0 z-[1] rounded-2xl"></div>
             <div className="post-line-hover absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-[95%] z-10 h-[90%]"></div>
             <Image 
-                src={'/blog/' + imgSrc}
+                src={imgSrc}
                 alt="Imagen post de blog"
                 className=" rounded-2xl"
                 fill

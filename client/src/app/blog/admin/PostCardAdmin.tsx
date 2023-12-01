@@ -1,4 +1,5 @@
-"use client"
+"use client";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -6,20 +7,25 @@ import React from "react";
 const PostCardAdmin = ({
   imgSrc,
   title,
+  id,
+  fetchPosts
 }: {
   imgSrc: string;
   title: string;
+  id: string;
+  fetchPosts: Function
 }) => {
-  const handleDelete = () => {
+  const handleDelete = async () => {
     const shouldDelete = confirm("¿Está seguro que desea borrar este post?");
     if (shouldDelete) {
-      console.log("bborrado");
+      await axios.delete(`${process.env.NEXT_PUBLIC_URL_API}/blog/${id}/${process.env.NEXT_PUBLIC_BLOG_PASSWORD}`);
+      await fetchPosts()
     }
   };
   return (
     <div className="w-3/5 flex rounded-2xl border-2 border-gray-300">
       <Image
-        src={"/blog/" + imgSrc}
+        src={imgSrc}
         width={300}
         height={300}
         alt={"Foto post recomendado con título: "}

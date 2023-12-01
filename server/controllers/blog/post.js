@@ -1,10 +1,28 @@
 const { borrarArchivoFirebase } = require("../../helpers");
-const { Post, Author, Image, Paragraph, CategoryBlog } = require("../../models");
+const {
+  Post,
+  Author,
+  Image,
+  Paragraph,
+  CategoryBlog,
+} = require("../../models");
+
+const createParagraph = async(paragraph) => {
+  // Si el párrafo tiene imagen, crear la relación
+  if (paragraph.imgParagraph?.src.length > 2) {
+    const newImage = new Image(paragraph.imgParagraph);
+    paragraph.imgParagraph = await newImage.save();
+  }
+  const savedParagraph = new Paragraph(paragraph);
+  return await savedParagraph.save();
+}
 
 const blogPost = async (req, res) => {
+  // Obtener datos
   let data = req.body;
 
   try {
+    // Si está creando el autor, crearlo
     if (!data.author._id) {
       const newAuthor = new Author({
         name: data.author.name,
@@ -13,22 +31,21 @@ const blogPost = async (req, res) => {
       data.author = await newAuthor.save();
     }
 
+    //Crear los párrafos
     const bodyPromises = data.body.map(async (paragraph) => {
-      if (paragraph.imgParagraph?.src.length > 2) {
-        const newImage = new Image(paragraph.imgParagraph);
-        paragraph.imgParagraph = await newImage.save();
-      }
-      const savedParagraph = new Paragraph(paragraph);
-      return await savedParagraph.save();
+      // Si el párrafo tiene imagen, crear la relación
+      return await createParagraph(paragraph)
     });
 
+    // Guardar los párrafos en la data
     data.body = await Promise.all(bodyPromises);
 
-    const imgPost = new Image(data.imgPost)
-    data.imgPost = await imgPost.save()
+    // Crear la imagen de portada
+    const imgPost = new Image(data.imgPost);
+    data.imgPost = await imgPost.save();
 
+    // Crear post
     const post = new Post(data);
-
     await post.save();
     return res.json(post);
   } catch (error) {
@@ -37,35 +54,72 @@ const blogPost = async (req, res) => {
 };
 
 const blogPut = async (req, res) => {
+  // Obtener id
   const { id } = req.params;
+  // Obtener datos
   const { _id, ...rest } = req.body;
 
   try {
-    
-    if (!rest.author._id) {
-      const newAuthor = new Author({
-        name: rest.author.name,
-        picture: rest.author.picture,
-      });
-      rest.author = await newAuthor.save();
-    }else {
-      await Author.findByIdAndUpdate(rest.author._id, rest.author)
-    }
-
+    // Manejar los párrafos
     const bodyPromises = rest.body.map(async (paragraph) => {
-      if (paragraph.imgParagraph) {
-        const id = paragraph.imgParagraph._id
-        await Image.findByIdAndUpdate(id, paragraph.imgParagraph)
+      // Editando párrafos (se envía con el id)
+      if (paragraph._id !== undefined) {
+        // Tiene imagen?
+        if (paragraph.imgParagraph) {
+          // Si ya está creada (viene con id) actuaslizarla
+          if (paragraph.imgParagraph._id) {
+            const id = paragraph.imgParagraph._id;
+            await Image.findByIdAndUpdate(id, paragraph.imgParagraph);
+          } else {
+            // Sino crearla
+            const newImage = new Image(paragraph.imgParagraph);
+            paragraph.imgParagraph = await newImage.save();
+          }
+        }
+        // Actualizar párrafp
+        const updatedParagraph = await Paragraph.findByIdAndUpdate(
+          paragraph._id,
+          paragraph
+        );
+        // Está borrando la imagen (dejando el párrafo sin imagen) (updatedParagraph es el valor anterior del registro)
+        if (updatedParagraph.imgParagraph && !paragraph.imgParagraph) {
+          await Image.findByIdAndDelete(updatedParagraph.imgParagraph._id);
+        }
+        return updatedParagraph;
+
+        
+      } else {//Creando el párrafo
+        return await createParagraph(paragraph)
       }
-      return await Paragraph.findByIdAndUpdate(paragraph._id, paragraph);
     });
 
+    // Guardar los párrafos
     rest.body = await Promise.all(bodyPromises);
-    if(rest.imgPost){
-      await Image.findByIdAndUpdate(rest.imgPost._id, rest.imgPost)
+    //Actualizar imagen de portada
+    if (rest.imgPost) {
+      await Image.findByIdAndUpdate(rest.imgPost._id, rest.imgPost);
     }
 
+    // actualizar
     const post = await Post.findByIdAndUpdate(id, rest);
+
+    // Obtener párrafos que fueron eliminados del post
+    const paragraphsToDelete = post.body.filter(
+      (postParagraph) =>
+        !rest.body.some((restParagraph) =>
+          restParagraph._id.equals(postParagraph)
+        )
+    );
+    // Borrarlos y borrar si tiene imagen
+    for (const paragraphToDelete of paragraphsToDelete) {
+      const paragraphDeleted = await Paragraph.findByIdAndDelete(
+        paragraphToDelete
+      );
+      if (paragraphDeleted.imgParagraph) {
+        await Image.findByIdAndDelete(paragraphDeleted.imgParagraph);
+      }
+    }
+
     return res.json(post);
   } catch (error) {
     return res.status(500).json({ msg: error.message });
@@ -73,16 +127,12 @@ const blogPut = async (req, res) => {
 };
 
 const blogGet = async (req, res) => {
-  // Limitar respuesta
-  const { limit = 6, from = 0 } = req.query;
 
   try {
     // Query
     const [total, posts] = await Promise.all([
       Post.countDocuments(),
       Post.find()
-        .skip(Number(from))
-        .limit(Number(limit))
         .populate("imgPost", "src")
         .populate("category", "name")
         .sort({ fecha: "desc" })
@@ -209,7 +259,6 @@ const deleteImage = async (id) => {
 };
 
 const blogDelete = async (req, res) => {
-
   const { id } = req.params;
 
   try {
@@ -243,5 +292,5 @@ module.exports = {
   blogDelete,
   categoriesGet,
   blogGetByCategory,
-  authorsGet
+  authorsGet,
 };

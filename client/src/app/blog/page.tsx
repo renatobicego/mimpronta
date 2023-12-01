@@ -4,14 +4,10 @@ import BlogCard from "./components/BlogCard"
 import { useState } from "react"
 import Pagination from "./components/Pagination"
 import './blog.css'
-export type PostType = {
-    id: string;
-    title: string;
-    subtitle: string,
-    imgSrc: string
-};
+import { PostServer } from "./admin/[...formMode]/Form/formPostTypes"
+
 const Blog = () => {
-    const [currentPosts, setCurrentPosts] = useState(Array<PostType>);
+    const [currentPosts, setCurrentPosts] = useState(Array<PostServer>);
 
     return (
         <main className="main py-24 gap-10 overflow-hidden">
@@ -32,16 +28,16 @@ const Blog = () => {
                     height={250} />
             </div>
             <section className="grid grid-cols-1 md:grid-cols-2 size-section gap-4 p-2">
-                {currentPosts.map((post, i) => (
+                {currentPosts.map(post => (
                     <BlogCard
-                        key={i}
+                        key={post._id}
                         title={post.title}
                         subtitle={post.subtitle}
-                        imgSrc={post.imgSrc} />
+                        imgSrc={post.imgPost.src} />
                 ))}
             </section>
             <div className="self-start pl-[5%] lg:pl-[8.335%]">
-                <Pagination postsPerPage={8} setCurrentPosts={setCurrentPosts}/>
+                <Pagination postsPerPage={6} setCurrentPosts={setCurrentPosts}/>
             </div>
         </main>
     )

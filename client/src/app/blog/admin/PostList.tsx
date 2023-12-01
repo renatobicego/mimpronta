@@ -1,38 +1,26 @@
-
+"use client";
+import { usePosts } from "@/app/postsContext";
 import PostCardAdmin from "./PostCardAdmin";
 
-const mockedPosts = [
-  {
-    title: "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    subtitle: `Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
-                    Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.`,
-    imgSrc: "image.png",
-    id: "dsf321",
-  },
-  {
-    title: "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    subtitle: `Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
-                    Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.`,
-    imgSrc: "image2.png",
-    id: "dsf321",
-  },
-  {
-    title: "Yorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    subtitle: `Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.
-                    Norem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.`,
-    imgSrc: "image3.png",
-    id: "dsf321",
-  },
-];
-
 const PostList = () => {
+  const { dataPosts, fetchPosts } = usePosts();
 
   return (
-    <main className="size-section my-28 flex flex-col items-start gap-4">
+    <main className="size-section py-28 flex flex-col items-start gap-4 h-screen">
       <h4 className="phrase-size font-semibold">Post publicados</h4>
-      {mockedPosts.map((post, i) => (
-        <PostCardAdmin key={i} imgSrc={post.imgSrc} title={post.title} />
-      ))}
+      {dataPosts?.posts !== undefined && dataPosts?.posts.length > 0 ? (
+        dataPosts.posts.map((post) => (
+          <PostCardAdmin
+            id={post._id}
+            key={post._id}
+            imgSrc={post.imgPost.src}
+            title={post.title}
+            fetchPosts={fetchPosts}
+          />
+        ))
+      ) : (
+        <p>No hay posts publicados</p>
+      )}
     </main>
   );
 };

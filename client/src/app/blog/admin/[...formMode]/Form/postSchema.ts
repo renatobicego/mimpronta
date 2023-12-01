@@ -1,7 +1,7 @@
-import { object, string, number, date, InferType, array, mixed } from "yup";
+import { object, string, date, array, mixed } from "yup";
 export const postSchema = object({
-  title: string().required("Título obligatorio"),
-  subtitle: string().required("Subtítulo obligatorio"),
+  title: string().required("Título obligatorio").min(5, "Agregar más texto al título"),
+  subtitle: string().required("Subtítulo obligatorio").min(10, "Agregar más texto al subtítulo"),
   category: string().required("Categoria obligatoria"),
   date: date().default(() => new Date()),
   author: object({

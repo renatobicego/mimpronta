@@ -58,7 +58,7 @@ router.post(
 );
 
 router.delete(
-  "/:id",
+  "/:id/:password",
   [
     check("password", "No tiene permitido publicar posts").equals(
       process.env.PASSWORDADMIN

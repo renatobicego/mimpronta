@@ -1,19 +1,37 @@
-import { ArrayHelpers, ErrorMessage, Field } from "formik";
+import { ErrorMessage, Field } from "formik";
 import FileUpload from "./FileUpload";
+import Image from "next/image";
+import { deleteFileFirebase } from "@/utils/files/archivosFirebase";
+import ErrorMsg from "../ErrorMsg";
 
 const ParagraphInput = ({
   index,
   setFieldValue,
   removeParagraph,
+  imgSrc,
 }: {
   index: number;
   setFieldValue: Function;
   removeParagraph: Function;
+  imgSrc: string;
 }) => {
-  const checkDeleteParagraph = () => {
+  const checkDeleteParagraph = async () => {
     const validation = confirm("¿Está seguro que desea borrar el párrafo?");
     if (validation) {
       removeParagraph(index);
+      if (imgSrc) {
+        await deleteFileFirebase(imgSrc);
+      }
+    }
+  };
+
+  const handleDeleteImageOfParagraph = async (imgSrc: string) => {
+    const confirmDelete = confirm(
+      "¿Está seguro/a que quiere borrar la imagen?"
+    );
+    if (confirmDelete) {
+      await deleteFileFirebase(imgSrc);
+      setFieldValue(`body[${index}].imgParagraph`, { src: "", epigraph: "" });
     }
   };
 
@@ -25,29 +43,58 @@ const ParagraphInput = ({
         placeholder="Subtítulo del párrafo (opcional)"
         className="input"
       />
-      <p className="italic text-red-500 font-semibold">
-        <ErrorMessage name={`body[${index}].subtitle`} />
-      </p>
+      <ErrorMsg name={`body[${index}].subtitle`} />
       <Field
         name={`body[${index}].text`}
         placeholder="Texto del párrafo"
         className="flex-1 input resize-none min-h-[250px] pr-2"
         as="textarea"
       />
-      <p className="italic text-red-500 font-semibold">
-        <ErrorMessage name={`body[${index}].text`} />
-      </p>
-      <label htmlFor={`body[${index}].imgParagraph.src`}>
-        Imagen del párrafo (opcional)
-      </label>
+      <ErrorMsg name={`body[${index}].text`} />
 
-      <FileUpload
-        setFieldValue={setFieldValue}
-        name={`body[${index}].imgParagraph.src`}
-      />
-      <p className="italic text-red-500 font-semibold">
-        <ErrorMessage name={`body[${index}].imgParagraph.src`} />
-      </p>
+      {imgSrc ? (
+        <>
+          <label className="font-semibold">
+            Imagen del párrafo {index} (para cambiarla, borrar la actual y subir
+            otra; se puede borrar directamente y no cambiar por otra imagen)
+          </label>
+          <div className="relative lg:[&>div]:hover:visible w-52 h-52">
+            <div
+              className={`absolute -left-2 -top-2 w-[105%] h-[110%] invisible paragraph-size font-semibold 
+                            text-negro  flex justify-center items-center lg:hover:backdrop-blur-sm 
+                            z-10 rounded-[20px]`}
+            >
+              <button
+                type="button"
+                onClick={() => handleDeleteImageOfParagraph(imgSrc)}
+                className={`flex items-center gap-2 bg-white py-1 px-3 rounded-2xl`}
+              >
+                Borrar Imagen
+              </button>
+            </div>
+            <Image
+              alt={"imagen de párrafo " + index}
+              width={300}
+              height={300}
+              src={imgSrc}
+              className="w-full h-full object-contain"
+            />
+          </div>
+        </>
+      ) : (
+        <>
+          <label htmlFor={`body[${index}].imgParagraph.src`}>
+            Imagen del párrafo (opcional)
+          </label>
+
+          <FileUpload
+            setFieldValue={setFieldValue}
+            name={`body[${index}].imgParagraph.src`}
+          />
+        </>
+      )}
+      <ErrorMsg name={`body[${index}].imgParagraph.src`} />
+      <label htmlFor={`body[${index}].imgParagraph.epigraph`}>Epígrafe</label>
       <Field
         name={`body[${index}].imgParagraph.epigraph`}
         placeholder="Epígrafe (opcional)"

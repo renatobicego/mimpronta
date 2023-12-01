@@ -1,4 +1,5 @@
 interface ImageBlog {
+  _id?: string;
   src: string | File;
   epigraph: string;
 }
@@ -16,6 +17,7 @@ interface Author {
 }
 
 interface FormPostValues {
+  _id?: string
   title: string;
   subtitle: string;
   password: string | undefined;
@@ -26,4 +28,29 @@ interface FormPostValues {
   body: Array<Paragraph>;
 }
 
-export type {Author, FormPostValues, ImageBlog, Paragraph}
+interface AuthorServer {
+  _id: string;
+  name: string;
+  picture: string;
+}
+
+interface ImageBlogServer extends ImageBlog{
+  src: string;
+}
+
+interface ParagraphServer extends Paragraph {
+  imgParagraph: ImageBlogServer | null
+}
+
+interface PostServer {
+  _id: string
+  title: string;
+  subtitle: string;
+  date: Date;
+  author: AuthorServer;
+  imgPost: ImageBlogServer;
+  category: string;
+  body: Array<ParagraphServer>;
+}
+
+export type {Author, FormPostValues, ImageBlog, Paragraph, PostServer, AuthorServer}

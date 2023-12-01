@@ -4,8 +4,8 @@ const { dbConnection } = require('../db/config')
 const {rateLimit} = require('express-rate-limit')
 
 const limiter = rateLimit({
-	windowMs: 10 * 60 * 1000, // 15 minutes
-	limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
+	windowMs: 10 * 60 * 1000, // 10 minutes
+	limit: 200, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
 	standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
 })
@@ -43,8 +43,6 @@ class Server {
     }
 
     routes(){
-        // this.app.use(this.paths.imagePostPath, require('../routes/imagePost'))
-        // this.app.use(this.paths.paragraphPostPath, require('../routes/paragraph'))
         this.app.use(this.paths.postPath, require('../routes/post'))
     }
 
