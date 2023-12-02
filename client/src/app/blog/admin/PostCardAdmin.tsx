@@ -1,8 +1,9 @@
 "use client";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Swal from "sweetalert2";
 
 const PostCardAdmin = ({
   imgSrc,
@@ -16,11 +17,35 @@ const PostCardAdmin = ({
   fetchPosts: Function
 }) => {
   const handleDelete = async () => {
-    const shouldDelete = confirm("¿Está seguro que desea borrar este post?");
-    if (shouldDelete) {
-      await axios.delete(`${process.env.NEXT_PUBLIC_URL_API}/blog/${id}/${process.env.NEXT_PUBLIC_BLOG_PASSWORD}`);
-      await fetchPosts()
-    }
+    Swal.fire({
+      title: "¿Está seguro/a?",
+      text: "Los datos e imágenes del post serán borrados del servidor",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#ffffff",
+      customClass: {
+        cancelButton: "!text-negro"
+      },
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await axios.delete(`${process.env.NEXT_PUBLIC_URL_API}/blog/${id}/${process.env.NEXT_PUBLIC_BLOG_PASSWORD}`);
+          await fetchPosts()
+          Swal.fire({
+            text: "Post borrado correctamente",
+            icon: "success"
+          });
+        } catch (error: any) {
+          Swal.fire({
+            text: "Error al borrar post: " + error.message,
+            icon: "error"
+          });
+        }
+      }
+    });
   };
   return (
     <div className="w-3/5 flex rounded-2xl border-2 border-gray-300">

@@ -3,6 +3,7 @@ import FileUpload from "./FileUpload";
 import Image from "next/image";
 import { deleteFileFirebase } from "@/utils/files/archivosFirebase";
 import ErrorMsg from "../ErrorMsg";
+import Swal from "sweetalert2";
 
 const ParagraphInput = ({
   index,
@@ -16,23 +17,62 @@ const ParagraphInput = ({
   imgSrc: string;
 }) => {
   const checkDeleteParagraph = async () => {
-    const validation = confirm("¿Está seguro que desea borrar el párrafo?");
-    if (validation) {
-      removeParagraph(index);
-      if (imgSrc) {
-        await deleteFileFirebase(imgSrc);
+    Swal.fire({
+      text: "¿Está seguro/a que desea borrar el párrafo?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#ffffff",
+      customClass: {
+        cancelButton: "!text-negro",
+      },
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          removeParagraph(index);
+          if (imgSrc) {
+            await deleteFileFirebase(imgSrc);
+          }
+        } catch (error: any) {
+          Swal.fire({
+            text: "Error al borrar párrafo: " + error.message,
+            icon: "error",
+          });
+        }
       }
-    }
+    });
   };
 
   const handleDeleteImageOfParagraph = async (imgSrc: string) => {
-    const confirmDelete = confirm(
-      "¿Está seguro/a que quiere borrar la imagen?"
-    );
-    if (confirmDelete) {
-      await deleteFileFirebase(imgSrc);
-      setFieldValue(`body[${index}].imgParagraph`, { src: "", epigraph: "" });
-    }
+    Swal.fire({
+      text: "¿Está seguro/a que desea borrar la imagen?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#ffffff",
+      customClass: {
+        cancelButton: "!text-negro",
+      },
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await deleteFileFirebase(imgSrc);
+          setFieldValue(`body[${index}].imgParagraph`, {
+            src: "",
+            epigraph: "",
+          });
+        } catch (error: any) {
+          Swal.fire({
+            text: "Error al borrar la imagen: " + error.message,
+            icon: "error",
+          });
+        }
+      }
+    });
   };
 
   return (

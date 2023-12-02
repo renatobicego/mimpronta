@@ -7,9 +7,14 @@ import { PostServer } from "../admin/[...formMode]/Form/formPostTypes";
 type PaginationProps = {
   postsPerPage: number;
   setCurrentPosts: React.Dispatch<React.SetStateAction<PostServer[]>>;
+  searchInput: string;
 };
 
-const Pagination = ({ postsPerPage, setCurrentPosts }: PaginationProps) => {
+const Pagination = ({
+  postsPerPage,
+  setCurrentPosts,
+  searchInput,
+}: PaginationProps) => {
   const [pageCount, setPageCount] = useState(0);
   const [postOffset, setPostOffset] = useState(0);
   const { dataPosts } = usePosts();
@@ -17,9 +22,26 @@ const Pagination = ({ postsPerPage, setCurrentPosts }: PaginationProps) => {
   useEffect(() => {
     // Fetch posts from another resources.
     const endOffset = postOffset + postsPerPage;
-    setCurrentPosts(dataPosts.posts.slice(postOffset, endOffset));
-    setPageCount(Math.ceil(dataPosts.total / postsPerPage));
-  }, [postOffset, postsPerPage, dataPosts]);
+    if (!searchInput) {
+      setCurrentPosts(dataPosts.posts.slice(postOffset, endOffset));
+      setPageCount(Math.ceil(dataPosts.total / postsPerPage));
+    } else {
+      const caseInsensitiveSearchInput = new RegExp(searchInput, "i");
+
+      const filteredPosts = dataPosts.posts.filter((post) => {
+        if (
+          caseInsensitiveSearchInput.test(post.title) ||
+          caseInsensitiveSearchInput.test(post.subtitle)
+        ) {
+          return true;
+        }
+        return false;
+      });
+
+      setCurrentPosts(filteredPosts.slice(postOffset, endOffset));
+      setPageCount(Math.ceil(filteredPosts.length / postsPerPage));
+    }
+  }, [postOffset, postsPerPage, dataPosts, searchInput]);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event: { selected: number }) => {

@@ -8,6 +8,7 @@ import {
 } from "react";
 import axios from "axios";
 import { PostServer } from "./blog/admin/[...formMode]/Form/formPostTypes";
+import Swal from "sweetalert2";
 
 interface DataPosts {
   posts: Array<PostServer>;
@@ -31,8 +32,8 @@ export const PostsProvider: React.FC<{ children: ReactNode }> = ({
         `${process.env.NEXT_PUBLIC_URL_API}/blog`
       );
       setPosts(response.data);
-    } catch (error) {
-      throw new Error("Error en el sevidor al traer los posts: " + error);
+    } catch (error: any) {
+      Swal.fire("Error en el sevidor al traer los posts: " + error.message);
     }
   };
 

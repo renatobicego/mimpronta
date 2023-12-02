@@ -9,7 +9,7 @@ import { uploadFileFirebase } from "@/utils/files/archivosFirebase";
 import { FormPostValues, Paragraph } from "./formPostTypes";
 import { useRouter } from "next/navigation";
 import { usePosts } from "@/app/postsContext";
-
+import Swal from 'sweetalert2'
 async function uploadImageAndUpdateProperty(
   image: string | File,
   pathPrefix: string
@@ -102,22 +102,40 @@ const FormPost = () => {
       if(formMode[0] === "editar"){
         await axios.put(`${process.env.NEXT_PUBLIC_URL_API}/blog/${values._id}`, values);
         await fetchPosts()
-        alert("Post editado");
+        Swal.fire({
+          text: "Post editado",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+          customClass: "font-title"
+        });
       }else{
         await axios.post(`${process.env.NEXT_PUBLIC_URL_API}/blog`, values);
         await fetchPosts()
-        alert("Post creado");
+        Swal.fire({
+          text: "Post creado",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1500,
+          customClass: "font-title"
+        });
       }
       actions.resetForm()
       router.replace(`/blog/${values.title}`)
     } catch (error) {
-      if (error instanceof AxiosError) {
+      if (error instanceof AxiosError && error.status === 400) {
         const { errors } = error.response?.data;
         const errorsServer: { [key: string]: string } = {};
         errors.forEach((error: { path: string; msg: string }) => {
           errorsServer[error.path] = error.msg;
         });
         actions.setErrors(errorsServer);
+      }else{
+        Swal.fire({
+          text: "Error en el servidor: " + error,
+          icon: "error",
+          customClass: "font-title"
+        });
       }
     }
     actions.setSubmitting(false);

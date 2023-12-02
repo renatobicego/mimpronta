@@ -2,6 +2,7 @@
 import axios from "axios";
 import { Formik, Form, Field } from "formik";
 import Image from "next/image";
+import Swal from "sweetalert2";
 import { object, string } from "yup";
 
 interface MyFormValues {
@@ -34,11 +35,21 @@ const Contact = () => {
         onSubmit={async(values, actions) => {
           try {
             await axios.post('/api/email', values)
+            Swal.fire({
+              text: "Solicitud de contacto enviada",
+              icon: "success",
+              showConfirmButton: false,
+              timer: 1550,
+              customClass: "font-title"
+            });
             
             actions.resetForm();
           } catch (error) {
-            console.log(error)
-            alert('Error en el envio. Por favor conctactenos a través de nuestro mail: ')
+            Swal.fire({
+              text: "Error en la solicitud. Por favor, contáctenos a través de nuestro email: ",
+              icon: "error",
+              customClass: "font-title"
+            });
           }
           actions.setSubmitting(false);
         }}
@@ -59,7 +70,7 @@ const Contact = () => {
                   type="email"
                   name="email"
                   placeholder="Correo electrónico"
-                  className={`input ${errors.email && "border-red-600"}`}
+                  className={`input ${errors.email && "border-red-600"} `}
                 />
                 <Field
                   id="country"

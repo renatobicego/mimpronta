@@ -5,6 +5,7 @@ import Image from "next/image";
 import FileUpload from "./FileUpload";
 import ErrorMsg from "../ErrorMsg";
 import { Field } from "formik";
+import Swal from "sweetalert2";
 
 const ImgPostInput = ({
   imgPost,
@@ -14,13 +15,30 @@ const ImgPostInput = ({
   setFieldValue: Function;
 }) => {
   const handleDeleteImgPost = async () => {
-    const confirmDelete = confirm(
-      "¿Está seguro/a que quiere borrar la imagen?"
-    );
-    if (confirmDelete && typeof imgPost.src === "string") {
-      await deleteFileFirebase(imgPost.src);
-      setFieldValue("imgPost", {_id: imgPost._id, src: "", epigraph: "" });
-    }
+    Swal.fire({
+      text: "¿Está seguro/a que desea borrar la imagen?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#ffffff",
+      customClass: {
+        cancelButton: "!text-negro",
+      },
+      confirmButtonText: "Borrar",
+      cancelButtonText: "Cancelar",
+    }).then(async (result) => {
+      if (result.isConfirmed && typeof imgPost.src === "string") {
+        try {
+          await deleteFileFirebase(imgPost.src);
+          setFieldValue("imgPost", {_id: imgPost._id, src: "", epigraph: "" });
+        } catch (error: any) {
+          Swal.fire({
+            text: "Error al borrar la imagen: " + error.message,
+            icon: "error",
+          });
+        }
+      }
+    });
   };
   return (
     <div className="flex flex-col gap-2">
