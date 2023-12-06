@@ -1,3 +1,8 @@
+interface IdName {
+  _id: string;
+  name: string;
+}
+
 interface ImageBlog {
   _id?: string;
   src: string | File;
@@ -28,9 +33,7 @@ interface FormPostValues {
   body: Array<Paragraph>;
 }
 
-interface AuthorServer {
-  _id: string;
-  name: string;
+interface AuthorServer extends IdName{
   picture: string;
 }
 
@@ -42,9 +45,11 @@ interface ParagraphServer extends Paragraph {
   imgParagraph: ImageBlogServer | null
 }
 
-interface CategoryServer {
-  _id: string,
-  name: string
+interface CategoryServer extends IdName{}
+
+interface Commentary extends IdName{
+  text: string,
+  postId: string,
 }
 
 interface PostServer {
@@ -56,7 +61,8 @@ interface PostServer {
   imgPost: ImageBlogServer;
   category: CategoryServer;
   body: Array<ParagraphServer>;
+  commentaries: Array<Commentary> | null
 }
 
 
-export type {Author, FormPostValues, ImageBlog, Paragraph, PostServer, AuthorServer}
+export type {Author, FormPostValues, ImageBlog, Paragraph, PostServer, AuthorServer, Commentary}

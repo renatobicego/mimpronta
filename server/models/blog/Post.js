@@ -33,7 +33,11 @@ const PostSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'CategoryBlog',
         required: true
-    }
+    },
+    commentaries: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Commentary'
+    }]
 })
 
 module.exports = model('Post', PostSchema)

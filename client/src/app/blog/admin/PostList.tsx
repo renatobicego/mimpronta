@@ -8,6 +8,11 @@ const PostList = () => {
   return (
     <main className="size-section py-28 flex flex-col items-start gap-4 h-screen">
       <h4 className="phrase-size font-semibold">Post publicados</h4>
+      <a href="/blog/admin/publicar">
+        <button className=" btn-primary-sm">
+          Publicar post
+        </button>
+      </a>
       {dataPosts?.posts !== undefined && dataPosts?.posts.length > 0 ? (
         dataPosts.posts.map((post) => (
           <PostCardAdmin

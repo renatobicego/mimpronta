@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import { PostServer } from "../admin/[...formMode]/Form/formPostTypes";
 import axios from "axios";
 import Loading from "@/app/loading";
+import Commentaries from "./Commentaries";
 
 const months = [
   "Enero",
@@ -123,6 +124,7 @@ const BlogPost = () => {
           }, ${date.getFullYear()}`}
         </h6>
       </div>
+      {post.commentaries && <Commentaries postId={post._id} commentaries={post.commentaries}/>}
       {recommendedPosts.length > 0 && (
         <>
           <h4 className="subtitle-size mt-6 md:mt-8">Posts Recomendados</h4>

@@ -4,7 +4,7 @@ import React from 'react'
 
 const AboutUs = () => {
   return (
-    <section className='mt-[10vh] w-[80dvw] lg:w-[75dvw] flex flex-col items-center gap-4 relative'>
+    <section className='mt-0 sm:mt-[10vh] w-[80dvw] lg:w-[75dvw] flex flex-col items-center gap-4 relative'>
         <p role='definition' className='phrase-size text-center leading-phrase font-semibold md:w-[75%] font-title mb-4' >
             Transformamos habilidades en <span className='font-extrabold'>propósitos</span> e
             intenciones en <span className=' font-extrabold'>acciones</span>, ayudando a generar un 
@@ -18,7 +18,7 @@ const AboutUs = () => {
         </p>
         <Link href={'/sobreMimpronta'}>
           <button role='button' className='btn-primary mt-4 '>
-              Sobre Mimpronta
+              Sobre mimpronta
           </button>
         </Link>
     </section>

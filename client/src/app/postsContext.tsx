@@ -33,7 +33,7 @@ export const PostsProvider: React.FC<{ children: ReactNode }> = ({
       );
       setPosts(response.data);
     } catch (error: any) {
-      Swal.fire("Error en el sevidor al traer los posts: " + error.message);
+      Swal.fire("Error en el servidor al traer los posts: " + error.message);
     }
   };
 

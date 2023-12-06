@@ -5,6 +5,7 @@ const {
   Image,
   Paragraph,
   CategoryBlog,
+  Commentary,
 } = require("../../models");
 
 const createParagraph = async(paragraph) => {
@@ -170,34 +171,6 @@ const blogGetByCategory = async (req, res) => {
   }
 };
 
-// const noticiaGetPorId = async (req, res) => {
-//   // Obtener id
-//   const { id } = req.params;
-
-//   try {
-//     // Query
-//     const noticia = await Noticia.findById(id)
-//       .populate("imgPortada", ["url", "epigrafe"])
-//       .populate("categoria", "nombre")
-//       .populate("autor", "nombre_apellido")
-//       .populate({
-//         path: "cuerpo",
-//         select: ["titulo", "texto"],
-//         populate: {
-//           path: "imagenes",
-//           select: ["url", "epigrafe"],
-//         },
-//       })
-//       .lean();
-
-//     return res.json({
-//       noticia,
-//     });
-//   } catch (error) {
-//     return res.status(500).json({ msg: error.message });
-//   }
-// };
-
 const blogGetByTitle = async (req, res) => {
   const title = decodeURIComponent(req.params.title);
   try {
@@ -206,6 +179,7 @@ const blogGetByTitle = async (req, res) => {
       .populate("imgPost", ["src", "epigraph"])
       .populate("category", "name")
       .populate("author", ["name", "picture"])
+      .populate("commentaries", ["name", "text"])
       .populate({
         path: "body",
         select: ["subtitle", "text"],
@@ -283,6 +257,48 @@ const blogDelete = async (req, res) => {
   }
 };
 
+const postCommentary = async (req, res) => {
+  // Obtener datos
+  const {name, text, postId} = req.body;
+
+  try {
+    // Crear comentario
+    const commentary = new Commentary({ name, text, post: postId });
+    const commentaryDb = await commentary.save();
+
+    // Actualizar comentario en el post sin cargar todo el post desde la base de datos
+    await Post.updateOne(
+      { _id: postId },
+      { $push: { commentaries: commentaryDb } }
+    );
+
+    return res.json(commentary);
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
+
+const deleteCommentary = async (req, res) => {
+  const { commentaryId } = req.params; // Assuming the commentary ID is in the URL parameters
+
+  try {
+    // Find the commentary by ID and remove it
+    const deletedCommentary = await Commentary.findByIdAndRemove(commentaryId);
+
+    if (!deletedCommentary) {
+      return res.status(404).json({ msg: 'Comentario no encontrado' });
+    }
+
+    // Remove the commentary reference from the associated post
+    const postId = deletedCommentary.post; // Assuming there is a 'post' field in the Commentary model
+    await Post.findByIdAndUpdate(postId, { $pull: { commentaries: commentaryId } });
+
+    return res.json({ msg: 'Comentario borrado' });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
+
 module.exports = {
   blogPost,
   blogPut,
@@ -293,4 +309,6 @@ module.exports = {
   categoriesGet,
   blogGetByCategory,
   authorsGet,
+  postCommentary,
+  deleteCommentary
 };

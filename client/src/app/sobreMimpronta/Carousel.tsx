@@ -98,7 +98,7 @@ const Carousel = () => {
               <span className="font-semibold">
                 {" "}
                 Nuestro propósito es transformar intenciones en verdadero
-                impacto social.{" "}
+                impacto social,{" "}
               </span>
               a través del desarrollo de negocios con propósito y de la
               integración de valores y compromisos de responsabilidad social

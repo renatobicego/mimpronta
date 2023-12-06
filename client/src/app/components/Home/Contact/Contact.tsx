@@ -32,6 +32,8 @@ const Contact = () => {
       <h5 className="title-size leading-10">¿Cómo podemos ayudarte?</h5>
       <Formik
         initialValues={initialValues}
+        validateOnBlur={false}
+        validateOnChange={false}
         onSubmit={async(values, actions) => {
           try {
             await axios.post('/api/email', values)

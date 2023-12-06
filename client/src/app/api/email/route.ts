@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
   const { email, name, country, message } = await request.json();
   
   const msg = {
-    to: email,
+    to: "micaelagerbeno@gmail.com",
     from: "mimprontadesarrollo@gmail.com",
     subject: "Solicitud de contacto: " + name,
     dynamicTemplateData: {

@@ -15,7 +15,7 @@ const services = [
     marginTop: '16'
   },
   {
-    title: 'Co creamos',
+    title: 'Co-creamos',
     description: ['Generación de programas de impacto y laboratorios de innovación social.', 
                   'Creación de contenido formativo a medida para la implementación de estrategias de RSC y Sostenibilidad.'],
     marginTop: '7'

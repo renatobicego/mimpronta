@@ -18,7 +18,7 @@ const links = [
   },
   {
     href: "/sobreMimpronta",
-    text: "Sobre Mimpronta",
+    text: "Sobre mimpronta",
   },
 ];
 

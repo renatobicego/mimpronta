@@ -3,14 +3,14 @@ const { initializeApp } = require('firebase/app')
 const {getAnalytics} = require('firebase/analytics')
 const firebaseConfig = require("./firebase.config")
 const {Server} = require('./models/index')
-const functions = require('firebase-functions')
+const {onRequest} = require("firebase-functions/v2/https");
+const logger = require("firebase-functions/logger");
 
-const firebaseApp = initializeApp(firebaseConfig)
+initializeApp(firebaseConfig)
 const server = new Server()
 
-server.listen()
-
-exports.app = functions.https.onRequest(server.getApp())
+// server.listen()
+exports.app = onRequest(server.getApp())
 
 
 
