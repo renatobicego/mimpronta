@@ -7,6 +7,7 @@ const PhraseCollage = () => {
         <Image 
             src={'/papeles/papelMarron1.png'} 
             alt='papel marron 1'
+            quality={75}
             width={250}
             height={700} 
             className='absolute -left-2 top-[10%] lg:left-0 
