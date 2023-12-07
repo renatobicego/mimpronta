@@ -12,7 +12,7 @@ export default function Home() {
         src={"/papeles/papelMarron4.png"}
         alt="papel marron 2"
         width={847}
-        quality={75}
+        quality={50}
         height={1700}
         className="absolute left-[83vw] sm:left-[85vw] top-10 lg:left-[90vw] 3xl:left-[90vw]
                   rotate-[185deg] -scale-x-100 h-[90vh] xsm:h-[100vh] w-auto lg:h-[180vh] z-30"
@@ -34,15 +34,14 @@ export default function Home() {
             src={"/papeles/flechaAzul.png"}
             alt="Flecha azul"
             width={200}
-            quality={75}
+            quality={30}
             height={400}
             className="h-auto w-[20%] lg:w-auto absolute left-0 bottom-1/3 md:bottom-1/2 lg:bottom-1/2"
           />
           <Image
             src={"/papeles/papelMarron3.png"}
             alt="Papel roto quienes somos"
-            priority
-            quality={75}
+            quality={50}
             width={200}
             height={400}
             className="h-auto w-[30%] sm:w-[25%] absolute left-[80vw] sm:left-[84vw] lg:hidden
@@ -51,8 +50,7 @@ export default function Home() {
           <Image
             src={"/papeles/papelAzulRoto.png"}
             alt="Papel roto azul"
-            priority
-            quality={80}
+            quality={30}
             width={2000}
             height={500}
             className="w-full h-auto mt-[10vh] relative "
@@ -62,7 +60,7 @@ export default function Home() {
       <Image
         src={"/papeles/papelMarron3.png"}
         alt="Papel roto quienes somos"
-        priority
+        quality={50}
         width={200}
         height={400}
         className="hidden lg:inline absolute lg:left-[90vw] 2xl:left-[92vw] rotate-[195deg] top-[180vh] 3xl:top-[160vh] -scale-x-100 z-[49]"

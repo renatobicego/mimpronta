@@ -21,6 +21,7 @@ const Carousel = () => {
           alt="fondo"
           priority
           width={3000}
+          quality={50}
           height={3000}
           className="absolute left-0 top-0 w-full object-cover -z-10 h-[90vh] md:h-[95vh] lg:h-screen"
           src={"/papeles/fondoSobreNosotros.png"}
@@ -28,6 +29,7 @@ const Carousel = () => {
         <Image
           alt="papel blanco decorativo"
           priority
+          quality={30}
           width={1000}
           height={1000}
           className="absolute left-0 -top-[5vh] sm:-top-[6vh] md:-top-[4vh] lg:-top-[15vh] xl:-top-[18vh] 2xl:-top-[20vh] w-full z-10"
@@ -36,6 +38,7 @@ const Carousel = () => {
         <Image
           alt="regadera decorativa"
           priority
+          quality={50}
           width={200}
           height={200}
           className="absolute left-0 top-0 z-10 w-1/3 sm:w-auto 3xl:w-1/5"
@@ -43,7 +46,6 @@ const Carousel = () => {
         />
         <Image
           alt="garabato decorativo"
-          priority
           width={1000}
           height={1000}
           className="absolute rotate-45 md:rotate-[30deg] -left-[25vw] md:-left-[10vw] lg:rotate-0 lg:left-8 top-[30vh] md:top-[25vh] lg:-top-12 
@@ -52,7 +54,6 @@ const Carousel = () => {
         />
         <Image
           alt="lineas decorativas"
-          priority
           width={200}
           height={200}
           className="absolute left-[65%] top-4 md:left-[80%] md:top-16 -rotate-[25deg] lg:rotate-0 w-1/3 sm:w-auto 3xl:w-1/5"
@@ -119,12 +120,13 @@ const Carousel = () => {
           alt="collages personas"
           width={1000}
           height={1000}
+          quality={30}
+          priority
           className="z-10 w-full lg:w-3/4 2xl:w-3/5  absolute top-[70dvh] lg:top-[50%] right-0"
           src={"/collages/personas.png"}
         />
         <Image
           alt="papel blanco 2 decorativo"
-          priority
           width={1000}
           height={1000}
           className="absolute left-0 bottom-0 w-full z-10"
