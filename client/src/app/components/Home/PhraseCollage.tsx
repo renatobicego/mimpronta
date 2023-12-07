@@ -31,6 +31,7 @@ const PhraseCollage = () => {
       <Image
         id="collageMundo"
         role="img"
+        quality={30}
         src={"/collages/mundo.png"}
         alt="Collage mundo"
         priority
