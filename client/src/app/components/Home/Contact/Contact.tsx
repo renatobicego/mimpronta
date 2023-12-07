@@ -27,30 +27,39 @@ const Contact = () => {
     message: "",
   };
   return (
-    <section className="w-full flex flex-col space-section pt-20 pb-40 gap-12 bg-paper-texture relative overflow-hidden">
+    <section className="w-full flex flex-col space-section pt-20 pb-40 gap-12 relative overflow-hidden">
+      <Image
+        alt="fondo contacto"
+        priority={true}
+        quality={10}
+        width={4500}
+        height={3000}
+        className="absolute left-0 top-0 w-full object-cover h-[120vh] sm:h-[200vh] opacity-50 z-0"
+        src={"/papel.webp"}
+      />
       <div id="contacto" className="invisible absolute -top-20"></div>
-      <h5 className="title-size leading-10">¿Cómo podemos ayudarte?</h5>
+      <h5 className="title-size leading-10 z-10">¿Cómo podemos ayudarte?</h5>
       <Formik
         initialValues={initialValues}
         validateOnBlur={false}
         validateOnChange={false}
-        onSubmit={async(values, actions) => {
+        onSubmit={async (values, actions) => {
           try {
-            await axios.post('/api/email', values)
+            await axios.post("/api/email", values);
             Swal.fire({
               text: "Solicitud de contacto enviada",
               icon: "success",
               showConfirmButton: false,
               timer: 1550,
-              customClass: "font-title"
+              customClass: "font-title",
             });
-            
+
             actions.resetForm();
           } catch (error) {
             Swal.fire({
               text: "Error en la solicitud. Por favor, contáctenos a través de nuestro email: ",
               icon: "error",
-              customClass: "font-title"
+              customClass: "font-title",
             });
           }
           actions.setSubmitting(false);
@@ -58,7 +67,7 @@ const Contact = () => {
         validationSchema={contactSchema}
       >
         {({ errors, isSubmitting }) => (
-          <Form className="flex flex-col  gap-4 items-start sm:w-full lg:w-5/6">
+          <Form className="flex flex-col  gap-4 items-start sm:w-full lg:w-5/6 z-10">
             <div className="w-full flex gap-4 flex-wrap">
               <div className="flex flex-col w-full sm:w-1/2 lg:w-2/5 gap-4">
                 <Field
