@@ -95,9 +95,12 @@ const BlogPost = () => {
           {paragraph.subtitle && (
             <h5 className="subtitle-size">{paragraph.subtitle}</h5>
           )}
-          <p className="text-sm md:text-base xl:text-lg leading-7 md:leading-8 xl:leading-9">
-            {paragraph.text}
-          </p>
+          <div
+            className="text-sm md:text-base xl:text-lg leading-7 md:leading-8 xl:leading-9 
+              [&>ul]:list-disc [&>ul]:list-inside [&>ol]:list-decimal [&>ol]:list-inside
+              [&>a]:text-amarillo"
+            dangerouslySetInnerHTML={{ __html: paragraph.text }}
+          />
           {paragraph.imgParagraph && (
             <div>
               <Image

@@ -59,6 +59,7 @@ const Inputs = ({
                     <ParagraphInput
                       setFieldValue={setFieldValue}
                       index={index}
+                      text={values.body[index].text}
                       imgSrc={
                         typeof paragraph.imgParagraph?.src === "string"
                           ? paragraph.imgParagraph?.src

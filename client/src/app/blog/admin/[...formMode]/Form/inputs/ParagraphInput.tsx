@@ -4,17 +4,32 @@ import Image from "next/image";
 import { deleteFileFirebase } from "@/utils/files/archivosFirebase";
 import ErrorMsg from "../ErrorMsg";
 import Swal from "sweetalert2";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+
+// const TextInput = (props: any) => {
+//   return (
+//     <ReactQuill
+//       theme="snow"
+//       {...props}
+//       // onChange={(value) => setFieldValue(`body[${index}].text`, value)}
+//       onChange={(value) => console.log(value)}
+//     />
+//   );
+// };
 
 const ParagraphInput = ({
   index,
   setFieldValue,
   removeParagraph,
   imgSrc,
+  text,
 }: {
   index: number;
   setFieldValue: Function;
   removeParagraph: Function;
   imgSrc: string;
+  text: string;
 }) => {
   const checkDeleteParagraph = async () => {
     Swal.fire({
@@ -84,12 +99,13 @@ const ParagraphInput = ({
         className="input"
       />
       <ErrorMsg name={`body[${index}].subtitle`} />
-      <Field
-        name={`body[${index}].text`}
-        placeholder="Texto del párrafo"
-        className="flex-1 input resize-none min-h-[250px] pr-2"
-        as="textarea"
-      />
+      {document !== undefined && (
+        <ReactQuill
+          theme="snow"
+          value={text}
+          onChange={(value) => setFieldValue(`body[${index}].text`, value)}
+        />
+      )}
       <ErrorMsg name={`body[${index}].text`} />
 
       {imgSrc ? (
