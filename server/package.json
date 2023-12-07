@@ -1,7 +1,7 @@
 {
-  "name": "backend-ama",
+  "name": "mimpronta",
   "version": "1.0.0",
-  "description": "rest server Asociacion Mendocina de Atletismo",
+  "description": "rest server mimpronta",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

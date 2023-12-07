@@ -177,3 +177,14 @@ input[type="search"]::-webkit-search-results-decoration {
 .list-type-hyphen {
   list-style-type: "-  ";
 }
+
+@media (max-height:500px) and (orientation:landscape)
+{
+   #collageMundo
+   {
+      max-width: 300px;
+   }
+   #phraseCollageMundo{
+    margin-top: 25vh;
+   }
+}
