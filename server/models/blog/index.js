@@ -3,7 +3,7 @@ const Image = require('./Image')
 const Post = require('./Post')
 const Paragraph = require('./Paragraph')
 const Author = require('./Author')
-const Commentary = require('./Commentary')
+const Comment = require('./Comment')
 
 module.exports = {
     CategoryBlog,
@@ -11,5 +11,5 @@ module.exports = {
     Post,
     Paragraph,
     Author,
-    Commentary
+    Comment
 }

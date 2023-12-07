@@ -11,21 +11,21 @@ export default function Home() {
       <Image
         src={"/papeles/papelMarron4.png"}
         alt="papel marron 2"
-        width={500}
+        width={847}
         quality={75}
-        height={1200}
-        className="absolute left-[83vw] sm:left-[85vw] top-10 lg:left-[88vw] 3xl:left-[90vw]
-                  rotate-[185deg] -scale-x-100 h-[90vh] xsm:h-[100vh] w-auto lg:h-auto z-30"
+        height={1700}
+        className="absolute left-[83vw] sm:left-[85vw] top-10 lg:left-[90vw] 3xl:left-[90vw]
+                  rotate-[185deg] -scale-x-100 h-[90vh] xsm:h-[100vh] w-auto lg:h-[180vh] z-30"
       />
       <section className="flex w-full h-full overflow-hidden flex-col items-center relative -mt-32">
         <Image
           alt="fondo"
           priority={true}
           quality={50}
-          width={1500}
-          height={1500}
+          width={4500}
+          height={3000}
           className="absolute left-0 top-0 w-full object-cover h-[200vh] sm:h-[300vh] md:h-[200vh] lg:h-[320vh] opacity-50"
-          src={"/papel.jpg"}
+          src={"/papel.webp"}
         />
         <PhraseCollage />
         <AboutUs />

@@ -84,7 +84,7 @@ const Footer = () => {
           height={150}
         />
       </section>
-      <hr className="mt-4" />
+      <hr className="mt-8" />
       <div>
         <p className="text-sm mt-4">
           Diseño por{" "}

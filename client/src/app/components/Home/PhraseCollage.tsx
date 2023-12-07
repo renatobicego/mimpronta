@@ -26,10 +26,10 @@ const PhraseCollage = () => {
             src={'/collages/mundo.png'}
             alt='Collage mundo'
             priority
-            width={1000}
-            height={800}
-            className='scale-[1.35] top-[55vh] md:mt-[15vh] lg:mt-6 w-auto overflow-auto md:scale-[1.15] lg:scale-100
-                        absolute md:top-0 md:relative z-40 3xl:w-[60%]'
+            width={1655}
+            height={1055}
+            className='scale-[1.35] top-[55vh] md:mt-[15vh] lg:mt-6 w-auto overflow-auto md:scale-[1.15] lg:scale-100 lg:w-[65%]
+                        absolute md:top-0 md:relative z-40'
             />
     </div>
   )

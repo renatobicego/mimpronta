@@ -7,7 +7,8 @@ import { useParams } from "next/navigation";
 import { PostServer } from "../admin/[...formMode]/Form/formPostTypes";
 import axios from "axios";
 import Loading from "@/app/loading";
-import Commentaries from "./Commentaries";
+import Comments from "./Comments";
+import Swal from "sweetalert2";
 
 const months = [
   "Enero",
@@ -29,6 +30,7 @@ const BlogPost = () => {
   const [recommendedPosts, setRecommendedPosts] = useState<
     Array<PostServer> | undefined
   >();
+  const [commentsOpen, setCommentsOpen] = useState(false);
   const { title } = useParams();
   useEffect(() => {
     const fetchPostData = async () => {
@@ -36,6 +38,7 @@ const BlogPost = () => {
         const { data: postData } = await axios.get(
           `${process.env.NEXT_PUBLIC_URL_API}/blog/title/${title}`
         );
+
         const { data: recommendedPostData } = await axios.get(
           `${process.env.NEXT_PUBLIC_URL_API}/blog/recommended/${postData.category._id}`
         );
@@ -43,8 +46,8 @@ const BlogPost = () => {
         setRecommendedPosts(
           recommendedPostData.filter((p: PostServer) => p._id !== postData._id)
         );
-      } catch (error) {
-        throw new Error("Error al traer los datos del post: " + error);
+      } catch (error: any) {
+        Swal.fire("Error en el servidor al traer el post: " + error.message);
       }
     };
     if (!post || !recommendedPosts) {
@@ -56,11 +59,14 @@ const BlogPost = () => {
     return <Loading />;
   }
 
+  const toggleCommentsSection = () => {
+    setCommentsOpen(!commentsOpen);
+  };
   const date = new Date(post.date);
   return (
     <article
       className="size-section md:w-3/4 lg:w-3/5 3xl:w-1/2 py-[13vh] lg:pt-[17vh] xl:py-[20vh] font-text
-                            flex flex-col items-start gap-5 lg:gap-6"
+                              flex flex-col items-start gap-5 lg:gap-6"
     >
       <VolverBtn />
       <h3 className="text-lg xsm:text-2xl md:text-3xl lg:text-4xl 3xl:text-5xl font-bold text-negro">
@@ -124,7 +130,20 @@ const BlogPost = () => {
           }, ${date.getFullYear()}`}
         </h6>
       </div>
-      {post.commentaries && <Commentaries postId={post._id} commentaries={post.commentaries}/>}
+      {
+        post.comments && <Comments postId={post._id} comments={post.comments} />
+        // ) : (
+        //   <button onClick={toggleCommentsSection} className="flex items-center gap-1">
+        //     <Image
+        //       alt="comments"
+        //       src={'/icons/comment.png'}
+        //       width={25}
+        //       height={25}
+        //     />
+        //     {(post.comments && post.comments?.length > 0) && post.comments.length}
+        //   </button>
+        // )
+      }
       {recommendedPosts.length > 0 && (
         <>
           <h4 className="subtitle-size mt-6 md:mt-8">Posts Recomendados</h4>

@@ -32,7 +32,7 @@ const ServiceCard = ({
 
     return (
         <div className={`flex flex-col items-start pt-7 pl-9 pr-7 pb-7 lg:pr-10 lg:pb-32 2xl:pb-36 3xl:pb-44 gap-1
-                    bg-celeste bg-opacity-50 text-white rounded-[20px] relative
+                    bg-celeste bg-opacity-50 text-white rounded-[20px] relative shadow-lg
                     ${marginClass} lg:hover:-translate-y-5 transition-all duration-300
                     ${colSpan} lg:[&>a]:hover:visible` }>
             

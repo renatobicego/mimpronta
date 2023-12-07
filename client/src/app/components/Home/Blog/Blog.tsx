@@ -43,7 +43,7 @@ const Blog = () => {
               clickable: true,
             }}
             autoHeight
-            spaceBetween={15}
+            spaceBetween={20}
             modules={[Pagination]}
             className="w-[110%] sm:w-full mySwiper !ml-0 !z-0 !overflow-hidden"
             slidesPerView={"auto"}
@@ -51,10 +51,10 @@ const Blog = () => {
             {dataPosts.posts.map(post => (
               <SwiperSlide
                 key={post._id}
-                className="!w-5/6 !h-full sm:!w-3/4 lg:!w-[45%]"
+                className="!w-full !h-full sm:!w-3/4 lg:!w-[45%]"
               >
                 <div className="w-full flex flex-col items-start gap-2 sm:gap-4 sm:p-2 rounded-3xl">
-                  <h6 className="font-text text-base lg:text-xl 2xl:text-2xl text-justify">
+                  <h6 className="font-text text-base lg:text-xl 2xl:text-2xl text-left">
                     {post.title}
                   </h6>
                   <p className="line-clamp-3 text-sm lg:text-base 2xl:text-lg text-justify">

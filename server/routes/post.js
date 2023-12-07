@@ -11,8 +11,8 @@ const {
   categoriesGet,
   blogGetByCategory,
   authorsGet,
-  postCommentary,
-  deleteCommentary
+  postComment,
+  deleteComment
 } = require("../controllers");
 const { postExists } = require("../helpers");
 
@@ -60,23 +60,23 @@ router.post(
 );
 
 router.post(
-  "/commentary",
+  "/comment",
   [
     check("text", "Debe agregar más texto al comentario").isLength({ min: 1 }),
     check("name", "Autor del comentario no enviado").isLength({ min: 1 }),
     check("postId", "Post no existente").isMongoId(),
     validarCampos,
   ],
-  postCommentary
+  postComment
 );
 
 router.delete(
-  "/commentary/:id",
+  "/comment/:id",
   [
     check("id", "Comentario no encontrado").isMongoId(),
     validarCampos,
   ],
-  deleteCommentary
+  deleteComment
 );
 
 router.delete(

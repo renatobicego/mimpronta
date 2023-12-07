@@ -34,9 +34,9 @@ const PostSchema = Schema({
         ref: 'CategoryBlog',
         required: true
     },
-    commentaries: [{
+    comments: [{
         type: Schema.Types.ObjectId,
-        ref: 'Commentary'
+        ref: 'Comment'
     }]
 })
 

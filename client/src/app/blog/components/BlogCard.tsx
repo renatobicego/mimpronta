@@ -15,13 +15,13 @@ const BlogCard = ({
 
     if(recommended){
         return (
-            <div className="w-full flex rounded-2xl border-2 border-gray-300">
+            <div className="w-full flex rounded-2xl border-2 border-gray-300 shadow-sm">
                 <Image 
                     src={imgSrc}
                     width={300}
                     height={300}
                     alt={"Foto post recomendado con título: "}
-                    className="w-2/5 sm:w-[35%] xl:w-2/5 rounded-l-2xl max-h-[250px] object-cover"
+                    className="w-2/5 sm:w-[35%] xl:w-2/5 rounded-l-2xl object-cover"
                 />
                 <div className="flex flex-col items-start gap-1 md:gap-3 px-4 py-3 md:py-6 self-center">
                     <h5 className="text-xs xsm:text-sm md:text-base lg:text-lg 2xl:text-xl  mb-2 font-medium">
@@ -38,7 +38,7 @@ const BlogCard = ({
     }
     return (
         <div className="blog-post-card flex flex-col items-start justify-end 
-                        font-text relative rounded-2xl text-white 
+                        font-text relative rounded-2xl text-white shadow-lg
                         px-4 md:px-6 lg:px-8 pt-[20%] pb-8 lg:pb-10 hover:[&>button]:border-amarillo">
             <div className="w-full h-full bg-gradient-to-t from-negro absolute bottom-0 left-0 z-[1] rounded-2xl"></div>
             <div className="post-line-hover absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 w-[95%] z-10 h-[90%]"></div>

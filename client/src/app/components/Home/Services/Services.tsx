@@ -53,9 +53,9 @@ const Services = () => {
       </Link>
       <Image 
         src={'/collages/arboless.png'}
-        width={1500}
+        width={3936}
         priority
-        height={1500}
+        height={1661}
         alt="collage árboles"
         className="absolute z-[11] top-[92%] md:top-[87%] lg:top-[54%] 2xl:top-[56%] 3xl:top-[48%] scale-150 
                   translate-x-1/4 md:scale-100 md:translate-x-0  left-0 w-full"

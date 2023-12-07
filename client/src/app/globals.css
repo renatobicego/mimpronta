@@ -82,6 +82,10 @@ html {
             placeholder:italic placeholder:text-gray-500 outline-none;
   }
 
+  .input-comment {
+    @apply input text-xs md:text-sm rounded-[16px]
+  }
+
   .main {
     @apply flex w-full min-h-screen flex-col items-center relative pt-28;
   }

@@ -47,7 +47,7 @@ interface ParagraphServer extends Paragraph {
 
 interface CategoryServer extends IdName{}
 
-interface Commentary extends IdName{
+interface Comment extends IdName{
   text: string,
   postId: string,
 }
@@ -61,8 +61,8 @@ interface PostServer {
   imgPost: ImageBlogServer;
   category: CategoryServer;
   body: Array<ParagraphServer>;
-  commentaries: Array<Commentary> | null
+  comments: Array<Comment> | null
 }
 
 
-export type {Author, FormPostValues, ImageBlog, Paragraph, PostServer, AuthorServer, Commentary}
+export type {Author, FormPostValues, ImageBlog, Paragraph, PostServer, AuthorServer, Comment}

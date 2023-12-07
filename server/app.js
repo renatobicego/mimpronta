@@ -9,7 +9,7 @@ const logger = require("firebase-functions/logger");
 initializeApp(firebaseConfig)
 const server = new Server()
 
-// server.listen()
+server.listen()
 exports.app = onRequest(server.getApp())
 
 

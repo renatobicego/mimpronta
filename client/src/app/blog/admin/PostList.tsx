@@ -9,7 +9,7 @@ const PostList = () => {
     <main className="size-section py-28 flex flex-col items-start gap-4 h-screen">
       <h4 className="phrase-size font-semibold">Post publicados</h4>
       <a href="/blog/admin/publicar">
-        <button className=" btn-primary-sm">
+        <button className="btn-primary text-xs md:text-sm py-1 px-3 md:py-1.5 md:px-4">
           Publicar post
         </button>
       </a>

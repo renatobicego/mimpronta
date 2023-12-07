@@ -54,7 +54,7 @@ const PostCardAdmin = ({
         width={300}
         height={300}
         alt={"Foto post recomendado con título: "}
-        className="w-2/5 sm:w-[35%] xl:w-2/5 rounded-l-2xl max-h-[250px] object-cover"
+        className="w-2/5 sm:w-[35%] xl:w-2/5 rounded-l-2xl  object-cover"
       />
       <div className="flex flex-col items-start gap-1 md:gap-3 px-4 py-3 md:py-6 self-center">
         <h5 className="text-xs xsm:text-sm md:text-base lg:text-lg 2xl:text-xl  mb-2 font-medium">

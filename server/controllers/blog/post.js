@@ -5,7 +5,7 @@ const {
   Image,
   Paragraph,
   CategoryBlog,
-  Commentary,
+  Comment,
 } = require("../../models");
 
 const createParagraph = async(paragraph) => {
@@ -175,11 +175,13 @@ const blogGetByTitle = async (req, res) => {
   const title = decodeURIComponent(req.params.title);
   try {
     // Query
-    const post = await Post.findOne({ title })
+    const post = await Post.findOne({
+      title: { $regex: title }, 
+    })
       .populate("imgPost", ["src", "epigraph"])
       .populate("category", "name")
       .populate("author", ["name", "picture"])
-      .populate("commentaries", ["name", "text"])
+      .populate("comments", ["name", "text"])
       .populate({
         path: "body",
         select: ["subtitle", "text"],
@@ -257,41 +259,41 @@ const blogDelete = async (req, res) => {
   }
 };
 
-const postCommentary = async (req, res) => {
+const postComment = async (req, res) => {
   // Obtener datos
   const {name, text, postId} = req.body;
 
   try {
     // Crear comentario
-    const commentary = new Commentary({ name, text, post: postId });
-    const commentaryDb = await commentary.save();
+    const comment = new Comment({ name, text, post: postId });
+    const CommentDb = await comment.save();
 
     // Actualizar comentario en el post sin cargar todo el post desde la base de datos
     await Post.updateOne(
       { _id: postId },
-      { $push: { commentaries: commentaryDb } }
+      { $push: { comments: CommentDb } }
     );
 
-    return res.json(commentary);
+    return res.json(comment);
   } catch (error) {
     return res.status(500).json({ msg: error.message });
   }
 };
 
-const deleteCommentary = async (req, res) => {
-  const { commentaryId } = req.params; // Assuming the commentary ID is in the URL parameters
+const deleteComment = async (req, res) => {
+  const { id } = req.params; // Assuming the Comment ID is in the URL parameters
 
   try {
-    // Find the commentary by ID and remove it
-    const deletedCommentary = await Commentary.findByIdAndRemove(commentaryId);
+    // Find the Comment by ID and remove it
+    const deletedComment = await Comment.findByIdAndRemove(id);
 
-    if (!deletedCommentary) {
+    if (!deletedComment) {
       return res.status(404).json({ msg: 'Comentario no encontrado' });
     }
 
-    // Remove the commentary reference from the associated post
-    const postId = deletedCommentary.post; // Assuming there is a 'post' field in the Commentary model
-    await Post.findByIdAndUpdate(postId, { $pull: { commentaries: commentaryId } });
+    // Remove the Comment reference from the associated post
+    const postId = deletedComment.post; // Assuming there is a 'post' field in the Comment model
+    await Post.findByIdAndUpdate(postId, { $pull: { comments: id } });
 
     return res.json({ msg: 'Comentario borrado' });
   } catch (error) {
@@ -309,6 +311,6 @@ module.exports = {
   categoriesGet,
   blogGetByCategory,
   authorsGet,
-  postCommentary,
-  deleteCommentary
+  postComment,
+  deleteComment
 };
