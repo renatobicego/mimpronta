@@ -21,7 +21,7 @@ export default function Home() {
         <Image
           alt="fondo"
           priority={true}
-          quality={50}
+          quality={10}
           width={4500}
           height={3000}
           className="absolute left-0 top-0 w-full object-cover h-[200vh] sm:h-[300vh] md:h-[200vh] lg:h-[320vh] opacity-50"
