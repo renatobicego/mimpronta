@@ -60,7 +60,7 @@ const Footer = () => {
               target="_blank"
             >
               <Image
-                src={"/icons/in.png"}
+                src={"/icons/linkedin.png"}
                 alt="link profile linkedin"
                 width={40}
                 height={40}
