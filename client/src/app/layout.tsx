@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Mimpronta - Consultora de Impacto",
     description: 'Transformamos habilidades en propósitos e intenciones en acciones, ayudando a generar un impacto social positivo.',
     images: [{
-      url: '/logo-02.png'
+      url: 'https://firebasestorage.googleapis.com/v0/b/mimpronta-6fa99.appspot.com/o/logo-02.png?alt=media&token=89a9a9ad-e1c2-46d9-bf13-880202e66a63'
     }]
   }
 }
