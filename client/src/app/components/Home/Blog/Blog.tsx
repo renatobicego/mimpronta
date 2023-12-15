@@ -53,7 +53,7 @@ const Blog = () => {
                 key={post._id}
                 className="!w-full !h-full sm:!w-3/4 lg:!w-[45%]"
               >
-                <div className="w-full flex flex-col items-start gap-2 sm:gap-4 p-6 
+                <div className="w-full flex flex-col items-start gap-2 sm:gap-4 p-4 md:p-6 
                                 rounded-2xl shadow border hover:border-amarillo transition-all">
                   <h6 className="font-text text-base lg:text-xl 2xl:text-2xl text-left">
                     {post.title}
