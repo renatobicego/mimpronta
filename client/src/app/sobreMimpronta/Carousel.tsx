@@ -41,7 +41,7 @@ const Carousel = () => {
           quality={50}
           width={200}
           height={200}
-          className="absolute left-0 top-0 z-10 w-1/3 sm:w-auto 3xl:w-1/5"
+          className="absolute left-0 top-0 z-10 w-1/3 sm:w-auto 3xl:w-1/5 landscape:w-1/5"
           src={"/collages/regadera.png"}
         />
         <Image
@@ -122,7 +122,8 @@ const Carousel = () => {
           height={1000}
           quality={30}
           priority
-          className="z-10 w-full lg:w-3/4 2xl:w-3/5  absolute top-[70dvh] lg:top-[50%] right-0"
+          className="z-10 w-full lg:w-3/4 2xl:w-3/5  absolute top-[70dvh] lg:top-[50%] right-0 
+          landscape:w-1/2 md:landscape:w-4/5 landscape:top-[60dvh] md:landscape:top-[50dvh]"
           src={"/collages/personas.png"}
         />
         <Image
