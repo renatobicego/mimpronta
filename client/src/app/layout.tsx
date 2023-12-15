@@ -25,7 +25,14 @@ const montserratAlt = Montserrat_Alternates({
 
 export const metadata: Metadata = {
   title: 'Mimpronta',
-  description: '',
+  description: 'Transformamos habilidades en propósitos e intenciones en acciones, ayudando a generar un impacto social positivo.',
+  openGraph: {
+    title: "Mimpronta - Consultora de Impacto",
+    description: 'Transformamos habilidades en propósitos e intenciones en acciones, ayudando a generar un impacto social positivo.',
+    images: [{
+      url: '/logo-02.png'
+    }]
+  }
 }
 
 export default function RootLayout({
