@@ -5,7 +5,7 @@ import React from "react";
 const links = [
   {
     href: "/sobreMimpronta",
-    text: "Sobre Mimpronta",
+    text: "Sobre mimpronta",
   },
   {
     href: "/blog",
