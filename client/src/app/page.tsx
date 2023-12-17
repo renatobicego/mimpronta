@@ -16,7 +16,7 @@ export default function Home() {
         height={1700}
         className="absolute left-[83vw] sm:left-[85vw] top-10 lg:left-[90vw] 3xl:left-[90vw]
                   rotate-[185deg] -scale-x-100 h-[90vh] xsm:h-[100vh] w-auto lg:h-[180vh] z-30
-                  landscape:left-[93vw] sm:landscape:left-[87vw]"
+                  landscape:left-[96vw] md:landscape:left-[87vw]"
       />
       <section className="flex w-full h-full overflow-hidden flex-col items-center relative -mt-32">
         <Image
