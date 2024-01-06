@@ -6,7 +6,7 @@ import { Suspense } from 'react'
 import Loading from './loading'
 import Footer from './components/Footer/Footer'
 import { Providers } from './providers'
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 const montserrat = Montserrat({
   weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
