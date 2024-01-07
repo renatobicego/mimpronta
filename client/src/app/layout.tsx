@@ -24,11 +24,11 @@ const montserratAlt = Montserrat_Alternates({
 })
 
 export const metadata: Metadata = {
-  title: 'MIMPRONTA - Formación y Consultoría de impacto',
-  description: 'Ayudamos a combinar habilidades con las necesidades del mundo.',
+  title: 'MIMPRONTA - Consultoría de impacto',
+  description: 'Acompañamos a personas y empresas que buscan combinar sus habilidades con las necesidades del mundo.',
   openGraph: {
-    title: "MIMPRONTA - Formación y Consultoría de impacto",
-    description: 'Ayudamos a combinar habilidades con las necesidades del mundo.',
+    title: "MIMPRONTA - Consultoría de impacto",
+    description: 'Acompañamos a personas y empresas que buscan combinar sus habilidades con las necesidades del mundo.',
     images: [{
       url: 'https://firebasestorage.googleapis.com/v0/b/mimpronta-6fa99.appspot.com/o/weeeb.jpg?alt=media&token=150c556a-b34b-453c-ba21-3c9fef9d7291'
     }]
