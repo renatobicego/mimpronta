@@ -32,7 +32,7 @@ const Header = () => {
         <Image
           src={"/logo-02.png"}
           alt="logo"
-          className="w-full max-h-[2.4vw]"
+          className="w-full lg:max-h-[3vw] 2xl:max-h-[2.5vw]"
           width={200}
           height={200}
         />
