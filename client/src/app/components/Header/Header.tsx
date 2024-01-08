@@ -25,18 +25,18 @@ const Header = () => {
         w-screen px-[5%] lg:px-[8.335%] h-14 py-[5vh] lg:py-[6.5vh]  font-text
         bg-white`}
     >
-      <a
+      <Link
         href={"/#inicio"}
         className="w-1/3 sm:w-1/4 md:w-1/5 lg:w-1/6 2xl:w-[14%]"
       >
         <Image
           src={"/logo-02.png"}
           alt="logo"
-          className="w-full"
+          className="w-full max-h-[2.4vw]"
           width={200}
           height={200}
         />
-      </a>
+      </Link>
       <MenuBtn />
     </header>
   );
