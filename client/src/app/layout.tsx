@@ -36,6 +36,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "MIMPRONTA - Formación y Consultoría de impacto",
+    url: "https://mimpronta.com/",
+    type: "website",
     description:
       "Ayudamos a combinar habilidades con las necesidades del mundo.",
     images:
