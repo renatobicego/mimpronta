@@ -1,5 +1,5 @@
 User-agent: Googlebot-Image
-Disallow: /papeles/*.png
-Disallow: /collages/*.png
-Disallow: /collages/*.webp
+Disallow: /papeles/*.png$
+Disallow: /collages/*.png$
+Disallow: /collages/*.webp$
 Disallow: /papel.webp
