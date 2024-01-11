@@ -1,0 +1,4 @@
+User-agent: Googlebot-Image
+Disallow: /papeles
+Disallow: /collages
+Disallow: /papel.webp
