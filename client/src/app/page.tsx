@@ -11,6 +11,7 @@ export default function Home() {
       <Image
         src={"/papeles/papelMarron4.png"}
         alt="papel marron 2"
+        
         width={847}
         quality={50}
         height={1700}
@@ -37,7 +38,7 @@ export default function Home() {
             width={200}
             quality={30}
             height={400}
-            className="h-auto w-[20%] lg:w-auto absolute left-0 bottom-1/3 md:bottom-1/2 lg:bottom-1/2 landscape:w-[15%]"
+            className="h-auto w-[20%] lg:w-auto absolute left-0 bottom-1/3 md:bottom-1/2 lg:bottom-1/2 max-lg:landscape:w-[15%]"
           />
           <Image
             src={"/papeles/papelMarron3.png"}
