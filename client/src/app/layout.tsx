@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     description:
       "Ayudamos a combinar habilidades con las necesidades del mundo.",
     images:
-      "https://firebasestorage.googleapis.com/v0/b/mimpronta-6fa99.appspot.com/o/weeeb.jpg?alt=media&token=150c556a-b34b-453c-ba21-3c9fef9d7291",
+      "/thumbnail.jpg",
   },
   twitter: {
     card: "summary_large_image",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     description:
       "Ayudamos a combinar habilidades con las necesidades del mundo.",
     images: [
-      "https://firebasestorage.googleapis.com/v0/b/mimpronta-6fa99.appspot.com/o/weeeb.jpg?alt=media&token=150c556a-b34b-453c-ba21-3c9fef9d7291",
+      "/thumbnail.jpg",
     ], // Must be an absolute URL
   },
   robots: {
@@ -68,7 +68,7 @@ export default function RootLayout({
     "@type": "NGO",
     name: "Mimpronta",
     image:
-      "https://firebasestorage.googleapis.com/v0/b/mimpronta-6fa99.appspot.com/o/weeeb.jpg?alt=media&token=150c556a-b34b-453c-ba21-3c9fef9d7291",
+      "/thumbnail.jpg",
     description:
       "Ayudamos a combinar habilidades con las necesidades del mundo.",
   };
