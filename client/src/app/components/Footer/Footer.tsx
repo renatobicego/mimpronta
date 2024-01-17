@@ -37,8 +37,6 @@ const Footer = () => {
                   <li>{link.text}</li>
                 </a>
               ))}
-            </ul>
-            <ul className="flex flex-col gap-3">
               <PrivacyPolicy />
             </ul>
           </nav>
