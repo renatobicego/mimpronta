@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import PrivacyPolicy from "./PrivacyPolicy";
 
 const links = [
   {
@@ -21,17 +22,6 @@ const links = [
   },
 ];
 
-const legalLinks = [
-  {
-    href: "",
-    text: "Términos y condiciones",
-  },
-  {
-    href: "",
-    text: "Política de privacidad",
-  },
-];
-
 const Footer = () => {
   return (
     <footer className="w-full bg-negro text-white py-16 space-section flex flex-col font-text">
@@ -49,9 +39,7 @@ const Footer = () => {
               ))}
             </ul>
             <ul className="flex flex-col gap-3">
-              {legalLinks.map((link, i) => (
-                <li key={i}>{link.text}</li>
-              ))}
+              <PrivacyPolicy />
             </ul>
           </nav>
           <div className="flex items-center gap-3">
@@ -86,7 +74,7 @@ const Footer = () => {
       </section>
       <hr className="mt-8" />
       <div>
-        <p className="text-sm mt-4">
+        <p className="text-xs mt-4">
           Diseño por{" "}
           <a className="text-[#D2DA54]" target="_blank" href="https://lolabahamondemosso.myportfolio.com/">
             Lola Bahamonde

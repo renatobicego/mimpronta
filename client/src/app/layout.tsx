@@ -34,9 +34,14 @@ export const metadata: Metadata = {
     "consciencia",
     "empresa",
   ],
+  icons: {
+    icon: "/favicon.ico"
+  },
   openGraph: {
     title: "MIMPRONTA - Formación y Consultoría de impacto",
     url: "https://mimpronta.com/",
+    siteName: "Mimpronta",
+    locale: "es_ES",
     type: "website",
     description:
       "Ayudamos a combinar habilidades con las necesidades del mundo.",
@@ -55,6 +60,8 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    "max-image-preview": "large",
+    "max-snippet": -1
   },
 };
 
@@ -65,7 +72,8 @@ export default function RootLayout({
 }) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "NGO",
+    "@type": "WebPage",
+    "@id": "https://mimpronta.com/",
     name: "Mimpronta",
     image:
       "/thumbnail.jpg",
