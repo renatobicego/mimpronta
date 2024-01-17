@@ -83,7 +83,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="!overflow-x-hidden scroll-smooth">
       <body
-        className={`${montserrat.variable} ${montserratAlt.variable} bg-white`}
+        className={`${montserrat.variable} ${montserratAlt.variable} !bg-white`}
       >
         <script
           type="application/ld+json"
