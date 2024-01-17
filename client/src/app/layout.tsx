@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     description:
       "Ayudamos a combinar habilidades con las necesidades del mundo.",
     images:
-      "/thumbnail.jpg",
+      "thumbnail.jpg",
   },
   twitter: {
     card: "summary_large_image",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     description:
       "Ayudamos a combinar habilidades con las necesidades del mundo.",
     images: [
-      "/thumbnail.jpg",
+      "https://mimpronta.com/thumbnail.jpg",
     ], // Must be an absolute URL
   },
   robots: {
@@ -76,7 +76,7 @@ export default function RootLayout({
     "@id": "https://mimpronta.com/",
     name: "Mimpronta",
     image:
-      "/thumbnail.jpg",
+      "https://mimpronta.com/thumbnail.jpg",
     description:
       "Ayudamos a combinar habilidades con las necesidades del mundo.",
   };
