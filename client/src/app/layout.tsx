@@ -45,17 +45,12 @@ export const metadata: Metadata = {
     type: "website",
     description:
       "Ayudamos a combinar habilidades con las necesidades del mundo.",
-    images:
-      "https://mimpronta.com/thumbnail.jpg",
   },
   twitter: {
     card: "summary_large_image",
     title: "MIMPRONTA - Formación y Consultoría de impacto",
     description:
       "Ayudamos a combinar habilidades con las necesidades del mundo.",
-    images: [
-      "https://mimpronta.com/thumbnail.jpg",
-    ], // Must be an absolute URL
   },
   robots: {
     index: true,
