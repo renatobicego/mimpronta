@@ -13,7 +13,7 @@ const PhraseCollage = () => {
         className="absolute -left-2 top-[10%] lg:left-0 
                         rotate-180 -scale-x-100 h-[35%] xsm:h-[40%] w-auto lg:h-auto"
       />
-      <h3
+      <h1
         role="heading"
         id="phraseCollageMundo"
         className="phrase-size leading-phrase text-center font-semibold 
@@ -27,7 +27,7 @@ const PhraseCollage = () => {
           {" "}
           agente de cambio
         </span>
-      </h3>
+      </h1>
       <Image
         id="collageMundo"
         role="img"
