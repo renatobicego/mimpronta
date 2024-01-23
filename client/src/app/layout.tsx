@@ -25,7 +25,7 @@ const montserratAlt = Montserrat_Alternates({
 
 export const metadata: Metadata = {
   title: "Mimpronta",
-  description: "Ayudamos a combinar habilidades con las necesidades del mundo.",
+  description: "Acompañamos a personas y empresas que buscan combinar sus habilidades con las necesidades del mundo.",
   keywords: [
     "Next.js",
     "Mimpronta",
@@ -38,21 +38,21 @@ export const metadata: Metadata = {
     icon: "/favicon.ico"
   },
   openGraph: {
-    title: "MIMPRONTA - Formación y Consultoría de impacto",
+    title: "MIMPRONTA - Consultoría de impacto",
     url: "https://mimpronta.com/",
     siteName: "Mimpronta",
     locale: "es_ES",
     type: "website",
     description:
-      "Ayudamos a combinar habilidades con las necesidades del mundo.",
+      "Acompañamos a personas y empresas que buscan combinar sus habilidades con las necesidades del mundo.",
     images:
       "https://mimpronta.com/thumbnail.jpg",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MIMPRONTA - Formación y Consultoría de impacto",
+    title: "MIMPRONTA - Consultoría de impacto",
     description:
-      "Ayudamos a combinar habilidades con las necesidades del mundo.",
+      "Acompañamos a personas y empresas que buscan combinar sus habilidades con las necesidades del mundo.",
     images: [
       "https://mimpronta.com/thumbnail.jpg",
     ], // Must be an absolute URL
@@ -78,7 +78,7 @@ export default function RootLayout({
     image:
       "https://mimpronta.com/thumbnail.jpg",
     description:
-      "Ayudamos a combinar habilidades con las necesidades del mundo.",
+      "Acompañamos a personas y empresas que buscan combinar sus habilidades con las necesidades del mundo.",
   };
   return (
     <html lang="en" className="!overflow-x-hidden scroll-smooth">
