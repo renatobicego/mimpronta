@@ -26,7 +26,6 @@ const montserratAlt = Montserrat_Alternates({
 export const metadata: Metadata = {
   title: "Mimpronta",
   description: "Ayudamos a combinar habilidades con las necesidades del mundo.",
-  metadataBase: new URL("https://mimpronta.com"),
   keywords: [
     "Next.js",
     "Mimpronta",
@@ -40,7 +39,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "MIMPRONTA - Formación y Consultoría de impacto",
-    url: "https://mimpronta.com",
+    url: "https://mimpronta.com/",
     siteName: "Mimpronta",
     locale: "es_ES",
     type: "website",
