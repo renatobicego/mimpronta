@@ -74,6 +74,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": "https://mimpronta.com/",
+    url: "https://mimpronta.com/",
     name: "Mimpronta",
     logo: "https://mimpronta.com/logo-02.png",
     image:
