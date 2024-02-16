@@ -76,7 +76,6 @@ export default function RootLayout({
     "@id": "https://mimpronta.com/",
     url: "https://mimpronta.com/",
     name: "Mimpronta",
-    logo: "https://mimpronta.com/logo-02.png",
     image:
       ["https://mimpronta.com/thumbnail.jpg", "https://mimpronta.com/thumbnailBg.jpg"],
     description:
