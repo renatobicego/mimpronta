@@ -75,8 +75,9 @@ export default function RootLayout({
     "@type": "WebPage",
     "@id": "https://mimpronta.com/",
     name: "Mimpronta",
+    logo: "https://mimpronta.com/logo-02.png",
     image:
-      "https://mimpronta.com/thumbnail.jpg",
+      ["https://mimpronta.com/thumbnail.jpg", "https://mimpronta.com/thumbnailBg.jpg"],
     description:
       "Acompañamos a personas y empresas que buscan combinar sus habilidades con las necesidades del mundo.",
   };
