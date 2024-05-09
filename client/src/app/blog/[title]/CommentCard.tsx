@@ -8,7 +8,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 
 const CommentCard = ({ comment, router }: { comment: Comment; router: AppRouterInstance }) => {
   const { isAdmin } = useAdmin();
-  console.log(isAdmin)
+
   const handleDeleteComment = async () => {
     Swal.fire({
       text: "¿Está seguro/a que desea borrar el comentario?",
