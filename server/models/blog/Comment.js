@@ -13,7 +13,11 @@ const CommentSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: "Post",
         required: true
-    }
+    },
+    replies: [{
+        type: Schema.Types.ObjectId,
+        ref: "CommentReply"
+    }]
 })
 
 module.exports = model('Comment', CommentSchema)

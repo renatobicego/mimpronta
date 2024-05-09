@@ -6,9 +6,10 @@ const {
   Paragraph,
   CategoryBlog,
   Comment,
+  CommentReply,
 } = require("../../models");
 
-const createParagraph = async(paragraph) => {
+const createParagraph = async (paragraph) => {
   // Si el párrafo tiene imagen, crear la relación
   if (paragraph.imgParagraph?.src.length > 2) {
     const newImage = new Image(paragraph.imgParagraph);
@@ -16,7 +17,7 @@ const createParagraph = async(paragraph) => {
   }
   const savedParagraph = new Paragraph(paragraph);
   return await savedParagraph.save();
-}
+};
 
 const blogPost = async (req, res) => {
   // Obtener datos
@@ -35,7 +36,7 @@ const blogPost = async (req, res) => {
     //Crear los párrafos
     const bodyPromises = data.body.map(async (paragraph) => {
       // Si el párrafo tiene imagen, crear la relación
-      return await createParagraph(paragraph)
+      return await createParagraph(paragraph);
     });
 
     // Guardar los párrafos en la data
@@ -87,10 +88,9 @@ const blogPut = async (req, res) => {
           await Image.findByIdAndDelete(updatedParagraph.imgParagraph._id);
         }
         return updatedParagraph;
-
-        
-      } else {//Creando el párrafo
-        return await createParagraph(paragraph)
+      } else {
+        //Creando el párrafo
+        return await createParagraph(paragraph);
       }
     });
 
@@ -128,7 +128,6 @@ const blogPut = async (req, res) => {
 };
 
 const blogGet = async (req, res) => {
-
   try {
     // Query
     const [total, posts] = await Promise.all([
@@ -176,12 +175,19 @@ const blogGetByTitle = async (req, res) => {
   try {
     // Query
     const post = await Post.findOne({
-      title: { $regex: title }, 
+      title: { $regex: title },
     })
       .populate("imgPost", ["src", "epigraph"])
       .populate("category", "name")
       .populate("author", ["name", "picture"])
-      .populate("comments", ["name", "text"])
+      .populate({
+        path: "comments",
+        select: ["name", "text"],
+        populate: {
+          path: "replies",
+          select: ["name", "text"],
+        },
+      })
       .populate({
         path: "body",
         select: ["subtitle", "text"],
@@ -261,7 +267,7 @@ const blogDelete = async (req, res) => {
 
 const postComment = async (req, res) => {
   // Obtener datos
-  const {name, text, postId} = req.body;
+  const { name, text, postId } = req.body;
 
   try {
     // Crear comentario
@@ -269,12 +275,33 @@ const postComment = async (req, res) => {
     const CommentDb = await comment.save();
 
     // Actualizar comentario en el post sin cargar todo el post desde la base de datos
-    await Post.updateOne(
-      { _id: postId },
-      { $push: { comments: CommentDb } }
-    );
+    await Post.updateOne({ _id: postId }, { $push: { comments: CommentDb } });
 
     return res.json(comment);
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
+
+const postCommentReply = async (req, res) => {
+  // Obtener datos
+  const { name, text } = req.body;
+  const { id } = req.params;
+  const commentDb = await Comment.findById(id);
+  if (!commentDb) {
+    return res.status(400).json({ msg: "Comentario no encontrado" });
+  }
+
+  try {
+    // Crear comentario
+    const commentReply = new CommentReply({ name, text });
+    await commentReply.save()
+
+    // Actualizar comentario en el post sin cargar todo el post desde la base de datos
+    commentDb.replies = [...commentDb.replies, commentReply];
+    await commentDb.save();
+
+    return res.json(commentDb);
   } catch (error) {
     return res.status(500).json({ msg: error.message });
   }
@@ -288,14 +315,33 @@ const deleteComment = async (req, res) => {
     const deletedComment = await Comment.findByIdAndRemove(id);
 
     if (!deletedComment) {
-      return res.status(404).json({ msg: 'Comentario no encontrado' });
+      return res.status(404).json({ msg: "Comentario no encontrado" });
     }
 
     // Remove the Comment reference from the associated post
     const postId = deletedComment.post; // Assuming there is a 'post' field in the Comment model
     await Post.findByIdAndUpdate(postId, { $pull: { comments: id } });
 
-    return res.json({ msg: 'Comentario borrado' });
+    return res.json({ msg: "Comentario borrado" });
+  } catch (error) {
+    return res.status(500).json({ msg: error.message });
+  }
+};
+
+const deleteCommentReply = async (req, res) => {
+  const { id, commentId } = req.params;
+  try {
+    // Find the Comment by ID and remove it
+    
+    const deletedComment = await CommentReply.findByIdAndRemove(id);
+
+    if (!deletedComment) {
+      return res.status(404).json({ msg: "Respuesta a comentario no encontrado" });
+    }
+
+    await Comment.findByIdAndUpdate(commentId, { $pull: { comments: id } });
+
+    return res.json({ msg: "Respuesta a comentario borrado" });
   } catch (error) {
     return res.status(500).json({ msg: error.message });
   }
@@ -312,5 +358,7 @@ module.exports = {
   blogGetByCategory,
   authorsGet,
   postComment,
-  deleteComment
+  postCommentReply,
+  deleteComment,
+  deleteCommentReply,
 };

@@ -12,7 +12,9 @@ const {
   blogGetByCategory,
   authorsGet,
   postComment,
-  deleteComment
+  postCommentReply,
+  deleteComment,
+  deleteCommentReply
 } = require("../controllers");
 const { postExists } = require("../helpers");
 
@@ -70,6 +72,17 @@ router.post(
   postComment
 );
 
+router.post(
+  "/commentReply/:id",
+  [
+    check("id", "Comentario no encontrado").isMongoId(),
+    check("text", "Debe agregar más texto al comentario").isLength({ min: 1 }),
+    check("name", "Autor del comentario no enviado").isLength({ min: 1 }),
+    validarCampos,
+  ],
+  postCommentReply
+);
+
 router.delete(
   "/comment/:id",
   [
@@ -77,6 +90,16 @@ router.delete(
     validarCampos,
   ],
   deleteComment
+);
+
+router.delete(
+  "/commentReply/:id/:commentId",
+  [
+    check("id", "Comentario no encontrado").isMongoId(),
+    check("commentId", "Comentario no encontrado").isMongoId(),
+    validarCampos,
+  ],
+  deleteCommentReply
 );
 
 router.delete(

@@ -4,6 +4,7 @@ const Post = require('./Post')
 const Paragraph = require('./Paragraph')
 const Author = require('./Author')
 const Comment = require('./Comment')
+const CommentReply = require('./CommentReply')
 
 module.exports = {
     CategoryBlog,
@@ -11,5 +12,6 @@ module.exports = {
     Post,
     Paragraph,
     Author,
-    Comment
+    Comment,
+    CommentReply,
 }
