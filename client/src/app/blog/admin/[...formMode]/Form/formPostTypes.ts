@@ -47,9 +47,16 @@ interface ParagraphServer extends Paragraph {
 
 interface CategoryServer extends IdName{}
 
+interface CommentReply {
+  _id: string;
+  name: string;
+  text: string;
+}
+
 interface Comment extends IdName{
   text: string,
   postId: string,
+  replies?: CommentReply[]
 }
 
 interface PostServer {
@@ -65,4 +72,4 @@ interface PostServer {
 }
 
 
-export type {Author, FormPostValues, ImageBlog, Paragraph, PostServer, AuthorServer, Comment}
+export type {Author, FormPostValues, ImageBlog, Paragraph, PostServer, AuthorServer, Comment, CommentReply}

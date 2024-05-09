@@ -8,7 +8,7 @@ import CommentCard from "./CommentCard";
 import { AdminProvider } from "../adminContext";
 import { useRouter } from "next/navigation";
 
-const conmmentSchema = object({
+export const commentSchema = object({
   name: string().required().min(3),
   text: string().required().min(1),
 });
@@ -33,6 +33,7 @@ const Comments = ({
         `${process.env.NEXT_PUBLIC_URL_API}/blog/comment`,
         values
       );
+    
       Swal.fire({
         text: "Comentario publicado",
         icon: "success",
@@ -40,7 +41,8 @@ const Comments = ({
         timer: 1550,
         customClass: "font-title",
       });
-      router.refresh();
+
+      window.location.reload()
     } catch (error: any) {
       Swal.fire({
         text: "Error al publicar el comentario " + error.message,
@@ -57,7 +59,7 @@ const Comments = ({
           className="w-full"
           initialValues={initialValues}
           onSubmit={handlePostComment}
-          validationSchema={conmmentSchema}
+          validationSchema={commentSchema}
           validateOnBlur
           validateOnChange
         >
