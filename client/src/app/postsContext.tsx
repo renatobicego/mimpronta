@@ -17,6 +17,7 @@ interface DataPosts {
 type PostsContextProps = {
   dataPosts: DataPosts;
   fetchPosts: () => Promise<void>;
+  loading: boolean;
 };
 
 const PostsContext = createContext<PostsContextProps | undefined>(undefined);
@@ -25,6 +26,7 @@ export const PostsProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [posts, setPosts] = useState<DataPosts>({ posts: [], total: 0 });
+  const [loading, setLoading] = useState(true);
 
   const fetchPosts = async () => {
     try {
@@ -35,6 +37,7 @@ export const PostsProvider: React.FC<{ children: ReactNode }> = ({
     } catch (error: any) {
       Swal.fire("Error en el servidor al traer los posts: " + error.message);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -42,7 +45,7 @@ export const PostsProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   return (
-    <PostsContext.Provider value={{ dataPosts: posts, fetchPosts }}>
+    <PostsContext.Provider value={{ dataPosts: posts, fetchPosts, loading }}>
       {children}
     </PostsContext.Provider>
   );

@@ -5,8 +5,8 @@ import { useState } from "react";
 import Pagination from "./components/Pagination";
 import { PostServer } from "./admin/[...formMode]/Form/formPostTypes";
 const Posts = () => {
-    const [currentPosts, setCurrentPosts] = useState(Array<PostServer>);
-    const [searchInput, setSearchInput] = useState("");
+  const [currentPosts, setCurrentPosts] = useState(Array<PostServer>);
+  const [searchInput, setSearchInput] = useState("");
   return (
     <>
       <div className="w-full py-[6vh] bg-rosa space-section relative">

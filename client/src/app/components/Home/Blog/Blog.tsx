@@ -8,9 +8,10 @@ import "./pagination.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Link from "next/link";
 import { usePosts } from "@/app/postsContext";
+import { Loader } from "@/app/loading";
 
 const Blog = () => {
-  const { dataPosts } = usePosts();
+  const { dataPosts, loading } = usePosts();
   useEffect(() => {}, [dataPosts.posts]);
   return (
     <section className="w-full xsm:mt-16 s:mt-[25vw] sm:mt-24 lg:mt-[8vh] flex bg-white pb-0 xsm:min-h-[65vh] lg:min-h-screen h-full">
@@ -33,11 +34,12 @@ const Blog = () => {
         className="flex flex-col gap-4 md:gap-8 xl:gap-10 xsm:self-end sm:self-stretch sm:items-start justify-center w-2/3
                           mt-36 mb-20 xsm:mt-36 s:mt-[35vw] sm:mt-44  md:mt-[18vw] 2xl:mt-[23vw] ml-6 sm:ml-0"
       >
+        <h5 className="title-size">
+          <span className="font-text">N</span>uestro blog
+        </h5>
+        {loading && <p className="paragraph-size"><Loader /></p>}
         {dataPosts.posts.length > 0 && (
           <>
-            <h5 className="title-size">
-              <span className="font-text">N</span>uestro blog
-            </h5>
             <Swiper
               pagination={{
                 clickable: true,
