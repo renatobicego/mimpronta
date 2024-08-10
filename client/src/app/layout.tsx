@@ -82,7 +82,7 @@ export default function RootLayout({
       "Acompañamos a personas y empresas que buscan combinar sus habilidades con las necesidades del mundo.",
   };
   return (
-    <html lang="en" className="!overflow-x-hidden scroll-smooth">
+    <html lang="es" className="!overflow-x-hidden scroll-smooth">
       <body
         className={`${montserrat.variable} ${montserratAlt.variable} !bg-white`}
       >
