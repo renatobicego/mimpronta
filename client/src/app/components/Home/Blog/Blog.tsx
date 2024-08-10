@@ -56,7 +56,7 @@ const Blog = () => {
                   className="!w-full !h-full sm:!w-3/4 lg:!w-[45%]"
                 >
                   <div
-                    className="w-full flex flex-col items-start gap-2 sm:gap-4 p-4 md:p-6 
+                    className="w-full flex flex-col items-start gap-2 sm:gap-4 p-4 md:p-6 h-full
                                 rounded-2xl shadow border hover:border-amarillo transition-all"
                   >
                     <h6 className="font-text text-base lg:text-xl 2xl:text-2xl text-left">
@@ -65,7 +65,7 @@ const Blog = () => {
                     <p className="line-clamp-3 text-sm lg:text-base 2xl:text-lg text-left">
                       {post.subtitle}
                     </p>
-                    <Link href={"/blog/" + post.title} className="mt-4">
+                    <Link href={"/blog/" + post.title} className="mt-auto">
                       <button
                         className="border border-negro px-4 sm:px-5 lg:px-6 pb-0.5 font-medium 
                     rounded-[10px] text-sm lg:text-base 2xl:text-lg hover:border-amarillo transition-all"
@@ -77,10 +77,10 @@ const Blog = () => {
                 </SwiperSlide>
               ))}
             </Swiper>
-            <Link href={"/blog"}>
+            <Link href={"/blog"} className="-mt-10">
               <button
                 className="font-semibold text-negro flex items-center hover:scale-105 transition-all
-                              gap-2 py-3 px-2 rounded-3xl w-max text-sm md:text-base -mt-4"
+                              gap-2 py-3 px-2 rounded-3xl w-max text-sm md:text-base"
               >
                 Ver más posts
                 <Image
