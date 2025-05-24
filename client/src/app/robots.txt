@@ -4,3 +4,8 @@ Disallow: /papeles/papelMarron4.png
 Disallow: /collages/*.png$
 Disallow: /collages/*.webp$
 Disallow: /papel.webp
+Disallow: /_next/collages/*.png$
+Disallow: /_next/papeles/*.png$
+Disallow: /_next/papeles/papelMarron4.png
+Disallow: /_next/collages/*.png$
+Disallow: /_next/papel.webp
