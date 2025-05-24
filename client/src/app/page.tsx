@@ -11,7 +11,6 @@ export default function Home() {
       <Image
         src={"/papeles/papelMarron4.png"}
         alt="papel marron 2"
-        
         width={847}
         quality={50}
         height={1700}

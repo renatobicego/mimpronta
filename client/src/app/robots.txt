@@ -9,3 +9,8 @@ Disallow: /_next/papeles/*.png$
 Disallow: /_next/papeles/papelMarron4.png
 Disallow: /_next/collages/*.png$
 Disallow: /_next/papel.webp
+Disallow: /_next/image/collages/*.png$
+Disallow: /_next/image/papeles/*.png$
+Disallow: /_next/image/papeles/papelMarron4.png
+Disallow: /_next/image/collages/*.png$
+Disallow: /_next/image/papel.webp
