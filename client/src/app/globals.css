@@ -6,7 +6,6 @@ body,
 html {
   padding: 0 !important;
   margin: 0;
-  user-select: none;
 }
 
 /* width */
@@ -84,7 +83,7 @@ html {
   }
 
   .input-comment {
-    @apply input text-xs md:text-sm rounded-[16px]
+    @apply input text-xs md:text-sm rounded-[16px];
   }
 
   .main {
@@ -179,13 +178,11 @@ input[type="search"]::-webkit-search-results-decoration {
   list-style-type: "-  ";
 }
 
-@media (max-height:500px) and (orientation:landscape)
-{
-   #collageMundo
-   {
-      max-width: 300px;
-   }
-   #phraseCollageMundo{
+@media (max-height: 500px) and (orientation: landscape) {
+  #collageMundo {
+    max-width: 300px;
+  }
+  #phraseCollageMundo {
     margin-top: 25vh;
-   }
+  }
 }
