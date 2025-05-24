@@ -8,5 +8,6 @@ module.exports = {
         hostname: "firebasestorage.googleapis.com",
       },
     ],
+    unoptimized: true,
   },
 };
