@@ -16,10 +16,10 @@ const links = [
     href: "/blog",
     text: "Blog",
   },
-  {
-    href: "/sobreMimpronta",
-    text: "Sobre mimpronta",
-  },
+  // {
+  //   href: "/sobreMimpronta",
+  //   text: "Sobre mimpronta",
+  // },
 ];
 
 const MenuBtn = () => {
@@ -134,7 +134,11 @@ const MenuBtn = () => {
             gap-2 lg:gap-4 font-semibold text-sm xsm:text-base`}
       onClick={handleOpen}
     >
-      <span className={`pb-0.5 lg:pb-0 opacity-0 transition-opacity animate-opacity`}>Menú</span>
+      <span
+        className={`pb-0.5 lg:pb-0 opacity-0 transition-opacity animate-opacity`}
+      >
+        Menú
+      </span>
       <Image
         src={"/icons/hgMenu.png"}
         alt="icono menú"

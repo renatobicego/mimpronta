@@ -4,10 +4,10 @@ import React from "react";
 import PrivacyPolicy from "./PrivacyPolicy";
 
 const links = [
-  {
-    href: "/sobreMimpronta",
-    text: "Sobre mimpronta",
-  },
+  // {
+  //   href: "/sobreMimpronta",
+  //   text: "Sobre mimpronta",
+  // },
   {
     href: "/blog",
     text: "Blog",
@@ -74,11 +74,19 @@ const Footer = () => {
       <div>
         <p className="text-xs mt-4">
           Diseño por{" "}
-          <a className="text-[#D2DA54]" target="_blank" href="https://lolabahamondemosso.myportfolio.com/">
+          <a
+            className="text-[#D2DA54]"
+            target="_blank"
+            href="https://lolabahamondemosso.myportfolio.com/"
+          >
             Lola Bahamonde
           </a>{" "}
           - Desarrollo por{" "}
-          <a className="text-[#D2DA54]" target="_blank" href="https://renatobicego.vercel.app/">
+          <a
+            className="text-[#D2DA54]"
+            target="_blank"
+            href="https://renatobicego.vercel.app/"
+          >
             Renato Bicego
           </a>
         </p>

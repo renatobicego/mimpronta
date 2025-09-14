@@ -38,7 +38,7 @@ const Contact = () => {
         src={"/papel.webp"}
       />
       <div id="contacto" className="invisible absolute -top-20"></div>
-      <h5 className="title-size leading-10 z-10">¿Cómo podemos ayudarte?</h5>
+      <h5 className="title-size leading-10 z-10">¿Hablamos?</h5>
       <Formik
         initialValues={initialValues}
         validateOnBlur={false}

@@ -16,16 +16,15 @@ const PhraseCollage = () => {
       <h1
         role="heading"
         id="phraseCollageMundo"
-        className="phrase-size leading-phrase text-center font-semibold 
+        className="leading-phrase text-center font-semibold 
             size-section sm:w-[80%] lg:w-[65%] 2xl:w-[60%] relative z-10
             mt-48 md:mt-[30vh] lg:mt-[22vh] lg:mb-4 3xl:mt-56"
       >
-        El mundo atraviesa momentos desafiantes, y con tu
-        <span className="font-extrabold"> impronta </span> puedes transformarte
-        en{" "}
+        Donde los
+        <span className="font-extrabold text-rosaOscuro"> talentos </span> se
+        unen con las <br />
         <span className="font-extrabold text-rosaOscuro">
-          {" "}
-          agente de cambio
+          necesidades del mundo
         </span>
       </h1>
       <Image
