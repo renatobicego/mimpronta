@@ -6,16 +6,14 @@ const services = [
   {
     title: "Con estrategia",
     description: [
-      "Ayudándote a integrar la sostenibilidad en la estrategia de tu negocio o proyecto.",
-      "Definiendo un plan para implementar acciones sostenibles que generen un impactopositivo en la sociedad y el medioambiente.",
+      "Ayudándote a integrar la sostenibilidad en la estrategia de tu negocio o proyecto. Definiendo un plan para implementar acciones sostenibles que generen un impactopositivo en la sociedad y el medioambiente.",
     ],
     marginTop: "5",
   },
   {
     title: "Con mentorías",
     description: [
-      "Guiándote paso a paso en la construcción de tu negocio o proyecto con propósito,",
-      "Brindándote apoyo personalizado, con herramientas prácticas de innovación social, marketing responsable y sostenibilidad.",
+      "Guiándote paso a paso en la construcción de tu negocio o proyecto con propósito, brindándote apoyo personalizado, con herramientas prácticas de innovación social, marketing responsable y sostenibilidad.",
     ],
     marginTop: "16",
   },
