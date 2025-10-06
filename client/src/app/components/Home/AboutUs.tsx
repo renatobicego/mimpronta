@@ -45,7 +45,7 @@ const AboutUs = () => {
         <span className="font-extrabold text-azul">
           futuro más justo y sostenible
         </span>{" "}
-        para todos
+        para todos.
       </p>
       {/* <Link href={"/sobreMimpronta"}>
         <button role="button" className="btn-primary mt-4 ">

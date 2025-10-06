@@ -6,7 +6,7 @@ const services = [
   {
     title: "Con estrategia",
     description: [
-      "Ayudándote a integrar la sostenibilidad en la estrategia de tu negocio o proyecto. Definiendo un plan para implementar acciones sostenibles que generen un impactopositivo en la sociedad y el medioambiente.",
+      "Ayudándote a integrar la sostenibilidad en la estrategia de tu negocio o proyecto. Definiendo un plan para implementar acciones sostenibles que generen un impacto positivo en la sociedad y el medioambiente.",
     ],
     marginTop: "5",
   },
