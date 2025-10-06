@@ -56,7 +56,7 @@ const ServiceCard = ({
       <h6 className="font-title font-semibold text-lg lg:text-xl 2xl:text-2xl">
         {title}
       </h6>
-      <ul className="flex flex-col items-start gap-2 ml-3 mt-2">
+      <ul className="flex flex-col items-start gap-2 mt-2">
         {description.map((item, i) => (
           <li
             key={i}
