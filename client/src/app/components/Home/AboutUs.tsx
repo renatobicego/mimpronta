@@ -7,7 +7,7 @@ const AboutUs = () => {
     <section className="mt-0 sm:mt-[10vh] w-[80dvw] lg:w-[75dvw] flex flex-col items-center gap-8 relative">
       <h2
         role="definition"
-        className="phrase-size text-center leading-phrase font-semibold md:w-[75%] font-title mb-4"
+        className="phrase-size text-center leading-phrase font-semibold  lg:w-[75%] font-title mb-4 relative z-10"
       >
         mi<span className="font-extrabold text-rosaOscuro">m</span>pronta
         simboli<span className="font-text">z</span>a la{" "}
@@ -19,9 +19,17 @@ const AboutUs = () => {
         </span>{" "}
         y la forma en que todo se une para influir y contribuir a la sociedad.
       </h2>
+      <Image
+        src={"/papeles/papelMarron4.png"}
+        alt="papel marron 2"
+        quality={75}
+        width={250}
+        height={700}
+        className="absolute -left-[53vw] md:-left-[38%] top-20 lg:hidden -scale-x-80 h-[45%] xsm:h-[70%] "
+      />
       <p
         role="definition"
-        className="paragraph-size leading-8 lg:leading-10 text-center font-semibold md:w-3/4 list-none"
+        className="paragraph-size leading-8 lg:leading-10 text-center font-semibold lg:w-[75%] list-none relative z-10"
       >
         Todos tenemos el{" "}
         <span className="font-extrabold text-azul">

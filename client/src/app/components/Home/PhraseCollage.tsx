@@ -13,14 +13,6 @@ const PhraseCollage = () => {
         className="absolute -left-2 top-[10%] lg:left-0 
                         rotate-180 -scale-x-100 h-[35%] xsm:h-[40%] w-auto lg:h-auto"
       />
-      <Image
-        src={"/papeles/papelMarron4.png"}
-        alt="papel marron 2"
-        quality={75}
-        width={250}
-        height={700}
-        className="absolute -left-[43%] md:-left-[20%] bottom-0 lg:hidden -scale-x-80 h-[45%] xsm:h-[50%] "
-      />
       <h1
         role="heading"
         id="phraseCollageMundo"

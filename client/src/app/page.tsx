@@ -37,7 +37,7 @@ export default function Home() {
             width={200}
             quality={30}
             height={400}
-            className="h-auto w-[20%] lg:w-auto absolute left-0 bottom-1/5 md:bottom-1/2 max-lg:landscape:w-[15%]"
+            className="h-auto w-[20%] lg:w-auto absolute left-0 bottom-1/5 md:-left-14 md:bottom-1/3 max-lg:landscape:w-[15%]"
           />
           <Image
             src={"/papeles/papelMarron3.png"}
