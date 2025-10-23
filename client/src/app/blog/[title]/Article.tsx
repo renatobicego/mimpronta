@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { Fragment, useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
@@ -10,20 +10,20 @@ import Comments from "./Comments";
 import axios from "axios";
 import Swal from "sweetalert2";
 const months = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "Abril",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Agosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Diciembre",
-  ];
-  
+  "Enero",
+  "Febrero",
+  "Marzo",
+  "Abril",
+  "Mayo",
+  "Junio",
+  "Julio",
+  "Agosto",
+  "Septiembre",
+  "Octubre",
+  "Noviembre",
+  "Diciembre",
+];
+
 const Article = () => {
   const [post, setPost] = useState<PostServer | undefined>();
   const [recommendedPosts, setRecommendedPosts] = useState<
@@ -79,7 +79,7 @@ const Article = () => {
         <Image
           src={post.imgPost.src}
           alt={"Imagen de post:" + post.title}
-          className="w-full h-auto"
+          className="w-full h-auto max-w-lg mx-auto"
           width={800}
           height={800}
         />
@@ -101,15 +101,16 @@ const Article = () => {
             dangerouslySetInnerHTML={{ __html: paragraph.text }}
           />
           {paragraph.imgParagraph && (
-            <div>
+            <div className="w-fit mx-auto">
               <Image
-                src={paragraph.imgParagraph.src}
+                src={paragraph.imgParagraph.src || "/placeholder.svg"}
                 alt={"Imagen párrafo de post:" + post.title}
                 width={900}
+                className="w-auto h-full max-h-[550px] object-contain"
                 height={900}
               />
               {paragraph.imgParagraph.epigraph && (
-                <p className="italic ml-1 mt-2 text-xs xsm:text-sm 3xl:text-base">
+                <p className="italic ml-1 mt-2 text-xs xsm:text-sm 3xl:text-base mx-auto">
                   {paragraph.imgParagraph.epigraph}
                 </p>
               )}
