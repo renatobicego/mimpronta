@@ -28,15 +28,8 @@ const ImgPostInput = ({
       cancelButtonText: "Cancelar",
     }).then(async (result) => {
       if (result.isConfirmed && typeof imgPost.src === "string") {
-        try {
-          await deleteFileFirebase(imgPost.src);
-          setFieldValue("imgPost", {_id: imgPost._id, src: "", epigraph: "" });
-        } catch (error: any) {
-          Swal.fire({
-            text: "Error al borrar la imagen: " + error.message,
-            icon: "error",
-          });
-        }
+        await deleteFileFirebase(imgPost.src);
+        setFieldValue("imgPost", { _id: imgPost._id, src: "", epigraph: "" });
       }
     });
   };

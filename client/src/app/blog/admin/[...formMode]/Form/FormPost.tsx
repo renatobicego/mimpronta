@@ -9,7 +9,7 @@ import { uploadFileFirebase } from "@/utils/files/archivosFirebase";
 import { FormPostValues, Paragraph } from "./formPostTypes";
 import { useRouter } from "next/navigation";
 import { usePosts } from "@/app/postsContext";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 async function uploadImageAndUpdateProperty(
   image: string | File,
   pathPrefix: string
@@ -40,17 +40,17 @@ const FormPost = () => {
     body: [{ subtitle: "", text: "", imgParagraph: { epigraph: "", src: "" } }],
   });
   const { formMode } = useParams();
-  const router = useRouter()
-  const {fetchPosts} = usePosts()
+  const router = useRouter();
+  const { fetchPosts } = usePosts();
 
   useEffect(() => {
     const getPreviousData = async () => {
-      const title = decodeURIComponent(formMode[1])
+      const title = decodeURIComponent(formMode[1]);
       const { data } = await axios.get(
         `${process.env.NEXT_PUBLIC_URL_API}/blog/title/${title}`
       );
-      if(!data){
-        return router.replace('/blog/admin/publicar')
+      if (!data) {
+        return router.replace("/blog/admin/publicar");
       }
       setInitialValues((previousValues) => ({
         ...previousValues,
@@ -63,7 +63,7 @@ const FormPost = () => {
               epigraph: "",
             };
           }
-          return p
+          return p;
         }),
       }));
     };
@@ -76,7 +76,7 @@ const FormPost = () => {
     try {
       values.imgPost.src = await uploadImageAndUpdateProperty(
         values.imgPost.src,
-        `blog/${values.title}/`
+        `blog/`
       );
 
       await Promise.all(
@@ -86,7 +86,7 @@ const FormPost = () => {
           } else if (p.imgParagraph?.src) {
             p.imgParagraph.src = await uploadImageAndUpdateProperty(
               p.imgParagraph.src,
-              `blog/${values.title}/`
+              `blog/`
             );
           }
         })
@@ -99,29 +99,32 @@ const FormPost = () => {
         );
       }
 
-      if(formMode[0] === "editar"){
-        await axios.put(`${process.env.NEXT_PUBLIC_URL_API}/blog/${values._id}`, values);
-        await fetchPosts()
+      if (formMode[0] === "editar") {
+        await axios.put(
+          `${process.env.NEXT_PUBLIC_URL_API}/blog/${values._id}`,
+          values
+        );
+        await fetchPosts();
         Swal.fire({
           text: "Post editado",
           icon: "success",
           showConfirmButton: false,
           timer: 1500,
-          customClass: "font-title"
+          customClass: "font-title",
         });
-      }else{
+      } else {
         await axios.post(`${process.env.NEXT_PUBLIC_URL_API}/blog`, values);
-        await fetchPosts()
+        await fetchPosts();
         Swal.fire({
           text: "Post creado",
           icon: "success",
           showConfirmButton: false,
           timer: 1500,
-          customClass: "font-title"
+          customClass: "font-title",
         });
       }
-      actions.resetForm()
-      router.replace(`/blog/${values.title}`)
+      actions.resetForm();
+      router.replace(`/blog/${values.title}`);
     } catch (error) {
       if (error instanceof AxiosError && error.status === 400) {
         const { errors } = error.response?.data;
@@ -130,11 +133,11 @@ const FormPost = () => {
           errorsServer[error.path] = error.msg;
         });
         actions.setErrors(errorsServer);
-      }else{
+      } else {
         Swal.fire({
           text: "Error en el servidor: " + error,
           icon: "error",
-          customClass: "font-title"
+          customClass: "font-title",
         });
       }
     }
@@ -164,7 +167,7 @@ const FormPost = () => {
     <main className="size-section py-28 ">
       <VolverBtn />
       <h4 className="phrase-size font-semibold font-text mb-4">
-        {formMode[0] === "editar" ? 'Editar post' : 'Escribir post' }
+        {formMode[0] === "editar" ? "Editar post" : "Escribir post"}
       </h4>
       <Formik
         initialValues={initialValues}
