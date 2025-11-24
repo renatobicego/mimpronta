@@ -24,7 +24,7 @@ const links = [
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-negro text-white py-16 space-section flex flex-col font-text">
+    <footer className="w-full bg-negro text-white py-16 space-section flex flex-col font-text relative z-10">
       <section className="w-full flex justify-between flex-wrap-reverse gap-6 items-start md:flex-nowrap md:items-end">
         <div className="flex flex-col items-start gap-6 w-full sm:w-3/4 md:w-3/5">
           <nav

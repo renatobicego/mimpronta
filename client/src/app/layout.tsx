@@ -7,6 +7,8 @@ import Loading from "./loading";
 import Footer from "./components/Footer/Footer";
 import { Providers } from "./providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+
+import localFont from "next/font/local";
 const montserrat = Montserrat({
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
@@ -23,9 +25,15 @@ const montserratAlt = Montserrat_Alternates({
   variable: "--font-montAlter",
 });
 
+const myFont = localFont({
+  src: "./SmileCity.otf",
+  variable: "--font-smileCity",
+});
+
 export const metadata: Metadata = {
   title: "Mimpronta",
-  description: "Acompañamos a personas y empresas que buscan combinar sus habilidades con las necesidades del mundo.",
+  description:
+    "Acompañamos a personas y empresas que buscan combinar sus habilidades con las necesidades del mundo.",
   keywords: [
     "Next.js",
     "Mimpronta",
@@ -35,7 +43,7 @@ export const metadata: Metadata = {
     "empresa",
   ],
   icons: {
-    icon: "/favicon.ico"
+    icon: "/favicon.ico",
   },
   openGraph: {
     title: "MIMPRONTA - Consultoría de impacto",
@@ -45,23 +53,20 @@ export const metadata: Metadata = {
     type: "website",
     description:
       "Acompañamos a personas y empresas que buscan combinar sus habilidades con las necesidades del mundo.",
-    images:
-      "https://mimpronta.com/thumbnail.jpg",
+    images: "https://mimpronta.com/thumbnail.jpg",
   },
   twitter: {
     card: "summary_large_image",
     title: "MIMPRONTA - Consultoría de impacto",
     description:
       "Acompañamos a personas y empresas que buscan combinar sus habilidades con las necesidades del mundo.",
-    images: [
-      "https://mimpronta.com/thumbnail.jpg",
-    ], // Must be an absolute URL
+    images: ["https://mimpronta.com/thumbnail.jpg"], // Must be an absolute URL
   },
   robots: {
     index: true,
     follow: true,
     "max-image-preview": "large",
-    "max-snippet": -1
+    "max-snippet": -1,
   },
 };
 
@@ -76,15 +81,17 @@ export default function RootLayout({
     "@id": "https://mimpronta.com/",
     url: "https://mimpronta.com/",
     name: "Mimpronta",
-    image:
-      ["https://mimpronta.com/thumbnail.jpg", "https://mimpronta.com/thumbnailBg.jpg"],
+    image: [
+      "https://mimpronta.com/thumbnail.jpg",
+      "https://mimpronta.com/thumbnailBg.jpg",
+    ],
     description:
       "Acompañamos a personas y empresas que buscan combinar sus habilidades con las necesidades del mundo.",
   };
   return (
     <html lang="es" className="!overflow-x-hidden scroll-smooth">
       <body
-        className={`${montserrat.variable} ${montserratAlt.variable} !bg-white`}
+        className={`${montserrat.variable} ${montserratAlt.variable} ${myFont.className}  !bg-white`}
       >
         <script
           type="application/ld+json"

@@ -93,6 +93,23 @@ html {
   h1 {
     @apply text-base xsm:text-xl sm:text-2xl md:text-3xl xl:text-4xl 3xl:text-5xl font-title text-negro;
   }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-title;
+  }
+  p,
+  button,
+  input,
+  textarea,
+  img,
+  label,
+  select {
+    @apply font-text;
+  }
 }
 
 input[type="search"]::-webkit-search-cancel-button,

@@ -75,11 +75,11 @@ const Article = () => {
         {post.category.name}
       </p>
       <h4 className="subtitle-size my-2 font-medium">{post.subtitle}</h4>
-      <div className="w-full">
+      <div className="w-full flex flex-col items-center">
         <Image
           src={post.imgPost.src}
           alt={"Imagen de post:" + post.title}
-          className="w-full h-auto max-w-lg mx-auto"
+          className="w-full h-auto max-w-lg max-h-[550px] mx-auto object-contain"
           width={800}
           height={800}
         />
@@ -101,7 +101,7 @@ const Article = () => {
             dangerouslySetInnerHTML={{ __html: paragraph.text }}
           />
           {paragraph.imgParagraph && (
-            <div className="w-fit mx-auto">
+            <div className="w-fit mx-auto flex flex-col items-center">
               <Image
                 src={paragraph.imgParagraph.src || "/placeholder.svg"}
                 alt={"Imagen párrafo de post:" + post.title}
