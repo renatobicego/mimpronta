@@ -269,7 +269,7 @@ export default function AboutMe() {
         </h4>
         <div className="w-full flex items-start justify-center overflow-x-auto px-[5%] relative z-20">
           {testimonials.map((testimonial, i) => (
-            <Card className="lg:w-2/3 xl:w-1/2 3xl:w-1/3 py-4 px-4">
+            <Card className="md:w-3/4 lg:w-2/3 xl:w-1/2 3xl:w-1/3 py-4 px-4">
               <CardHeader>
                 <h5 className="font-semibold font-title text-center">
                   {testimonial.title}
