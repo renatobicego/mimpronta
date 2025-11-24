@@ -210,7 +210,7 @@ export default function AboutMe() {
       </section>
 
       <section className="w-full flex flex-col items-start relative z-20 max-lg:pt-10 ">
-        <div className="lg:absolute lg:left-[8.5%] lg:top-[10%] lg:max-w-[40%] max-lg:px-[5%]">
+        <div className="lg:absolute lg:left-[8.5%] lg:top-[8%] xl:top-[10%] lg:max-w-[40%] max-lg:px-[5%]">
           <h3 className="text-3xl xsm:text-4xl sm:text-5xl xl:text-6xl 3xl:text-7xl font-smileCity text-rosaOscuro">
             Trabajo en red
           </h3>
