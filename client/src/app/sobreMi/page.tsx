@@ -57,12 +57,11 @@ export default function AboutMe() {
         alt="fondo"
         priority={true}
         quality={10}
-        width={4500}
-        height={3000}
-        className="absolute left-0 top-0 w-full object-cover h-[300vh] md:h-[200vh] lg:h-[330vh] opacity-50"
+        fill
+        className="object-cover opacity-50"
         src={"/papel.webp"}
       />
-      <Image
+      {/* <Image
         alt="fondo"
         priority={true}
         quality={10}
@@ -70,7 +69,7 @@ export default function AboutMe() {
         height={3000}
         className="absolute left-0 top-[300vh] md:top-[200vh] lg:top-[330vh] w-full object-cover h-[320vh] md:h-[200vh] lg:h-[320vh] opacity-50"
         src={"/papel.webp"}
-      />
+      /> */}
       <section className="flex w-full h-full flex-col items-center relative -mt-[5vh]">
         <div className="max-lg:min-h-screen lg:h-[85svh] w-full max-lg:flex-col flex  lg:items-start items-center justify-center relative text-center gap-8 px-[5%] lg:px-[8.335%] pt-[20vh] md:pt-[15vh]">
           <Image
@@ -148,6 +147,7 @@ export default function AboutMe() {
           alt="megafono"
           className="absolute left-0 top-0 md:-top-16 xl:top-1/3 max-w-[25%] md:max-w-[20%] lg:max-w-[15%] 2xl:max-w-fit"
           width={200}
+          loading="lazy"
           height={200}
         />
 
@@ -165,6 +165,7 @@ export default function AboutMe() {
                   src="/sobreMi/garabato3.png"
                   alt="garabato"
                   className="absolute -right-12 -top-12 -z-10 max-lg:hidden"
+                  loading="lazy"
                   width={100}
                   height={100}
                 />
@@ -172,6 +173,7 @@ export default function AboutMe() {
               {i === 1 && (
                 <Image
                   src="/sobreMi/garabato3.png"
+                  loading="lazy"
                   alt="garabato"
                   className="absolute -right-12 -top-12 -z-10 max-sm:hidden lg:hidden"
                   width={100}
@@ -181,6 +183,7 @@ export default function AboutMe() {
               {i === 0 && (
                 <Image
                   src="/sobreMi/garabato3.png"
+                  loading="lazy"
                   alt="garabato"
                   className="absolute -right-12 -top-12 -z-10 sm:hidden"
                   width={100}
@@ -190,6 +193,7 @@ export default function AboutMe() {
               {i === 4 && (
                 <Image
                   src="/sobreMi/garabato2.png"
+                  loading="lazy"
                   alt="garabato"
                   className="absolute -right-10 -bottom-12 sm:-right-28 sm:-bottom-24 w-[15vw] lg:w-[10vw] xl:-right-36 xl:-bottom-28 xl:w-auto"
                   width={150}
@@ -198,6 +202,7 @@ export default function AboutMe() {
               )}
               <Image
                 src={"/icons/" + value.image}
+                loading="lazy"
                 className={``}
                 width={value.imageSize}
                 height={value.imageSize}
@@ -224,6 +229,7 @@ export default function AboutMe() {
           src="/sobreMi/galeriaFotos.png"
           alt="galeria fotos"
           className="max-lg:hidden w-full"
+          loading="lazy"
           width={1000}
           height={800}
         />
@@ -232,6 +238,7 @@ export default function AboutMe() {
             src="/sobreMi/collageFotos1.png"
             alt="collage de fotos"
             className="lg:hidden md:w-1/2 py-8 "
+            loading="lazy"
             width={1000}
             height={800}
           />
@@ -242,6 +249,7 @@ export default function AboutMe() {
             <Image
               src="/sobreMi/formoParte.png"
               alt="empresas y organizaciones de las que formo parte"
+              loading="lazy"
               className="ml-10"
               width={200}
               height={200}
@@ -251,6 +259,7 @@ export default function AboutMe() {
             src="/sobreMi/collageFotos2.png"
             alt="collage de fotos"
             className="lg:hidden md:w-1/2 pt-8"
+            loading="lazy"
             width={1000}
             height={800}
           />
@@ -259,6 +268,7 @@ export default function AboutMe() {
           src="/sobreMi/collageFotos3.png"
           alt="collage de fotos"
           className="lg:hidden md:w-2/3 ml-auto py-8"
+          loading="lazy"
           width={1000}
           height={800}
         />
@@ -285,6 +295,7 @@ export default function AboutMe() {
         </div>
         <Image
           src="/sobreMi/regadera.png"
+          loading="lazy"
           alt="regadera"
           className="max-md:hidden absolute left-0 bottom-0"
           width={400}
@@ -292,6 +303,7 @@ export default function AboutMe() {
         />
         <Image
           src="/sobreMi/solPasto.png"
+          loading="lazy"
           alt="regadera"
           className="absolute right-0 bottom-0"
           width={400}
