@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Carousel from "./Carousel";
 import Values from "./Values";
-import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Sobre Mimpronta",
@@ -9,7 +8,6 @@ export const metadata: Metadata = {
     "Mimpronta nace de un genuino deseo por ayudar y acompañar a personas y empresas que quieran emprender el camino de combinar sus habilidades con las necesidades del mundo.",
 };
 const AboutUsPage = () => {
-  redirect("/");
 
   return (
     <main className="main pt-0">
