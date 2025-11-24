@@ -72,7 +72,7 @@ export default function AboutMe() {
         src={"/papel.webp"}
       />
       <section className="flex w-full h-full flex-col items-center relative -mt-[5vh]">
-        <div className="h-screen lg:h-[85svh] w-full max-lg:flex-col flex  lg:items-start items-center justify-center relative text-center gap-8 px-[5%] lg:px-[8.335%] pt-[20vh] md:pt-[15vh]">
+        <div className="max-lg:min-h-screen lg:h-[85svh] w-full max-lg:flex-col flex  lg:items-start items-center justify-center relative text-center gap-8 px-[5%] lg:px-[8.335%] pt-[20vh] md:pt-[15vh]">
           <Image
             src="/sobreMi/foco.png"
             alt="foco"
@@ -139,14 +139,14 @@ export default function AboutMe() {
         </div>
       </section>
 
-      <section className="w-full flex flex-col items-center relative z-20 pb-20 max-lg:mt-16">
+      <section className="w-full flex flex-col items-center relative z-20 pb-20 max-lg:mt-10">
         <h2 className="text-3xl xsm:text-4xl sm:text-5xl xl:text-6xl 3xl:text-7xl font-smileCity text-azul">
           Creo en
         </h2>
         <Image
           src="/sobreMi/megafono.png"
           alt="megafono"
-          className="absolute left-0 top-0 md:-top-10 xl:top-1/3 max-w-[25%] md:max-w-[20%] lg:max-w-[12%] 2xl:max-w-fit"
+          className="absolute left-0 top-0 md:-top-16 xl:top-1/3 max-w-[25%] md:max-w-[20%] lg:max-w-[15%] 2xl:max-w-fit"
           width={200}
           height={200}
         />
