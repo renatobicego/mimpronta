@@ -1,4 +1,4 @@
-import { Card, CardBody, CardHeader } from "@nextui-org/react";
+import { Card, CardBody, CardHeader, ScrollShadow } from "@nextui-org/react";
 import Image from "next/image";
 
 export default function AboutMe() {
@@ -49,6 +49,13 @@ export default function AboutMe() {
       Además, siempre está dispuesta a repensar y mejorar cualquier propuesta de manera creativa e innovadora.
       Espero que podamos seguir trabajando juntas mucho
       tiempo!"`,
+    },
+    {
+      text: `“Colaborar con Mica en nuestro equipo de facilitación siempre es una experiencia excelente. 
+      No solo capta las ideas al instante, sino que las eleva con un análisis crítico y constructivo. 
+      Su compromiso, responsabilidad e inteligencia la convierten en una de esas personas que siempre 
+      quieres tener cerca en cualquier proyecto.”`,
+      title: "Daniel Llamas - AIDI",
     },
   ];
   return (
@@ -273,25 +280,30 @@ export default function AboutMe() {
           height={800}
         />
       </section>
-      <section className="w-full flex flex-col items-center relative gap-6 pb-32 md:pb-40 lg:pb-10">
+      <section className="w-full flex flex-col items-center relative gap-6 pb-32 md:pb-40 lg:pb-10 px-[5%] lg:px-[8.335%]">
         <h4 className="text-3xl xsm:text-4xl sm:text-5xl xl:text-6xl 3xl:text-7xl font-smileCity text-azul">
           Testimonios
         </h4>
-        <div className="w-full flex items-start justify-center overflow-x-auto px-[5%] relative z-20">
-          {testimonials.map((testimonial, i) => (
-            <Card className="md:w-3/4 lg:w-2/3 xl:w-1/2 3xl:w-1/3 py-4 px-4">
-              <CardHeader>
-                <h5 className="font-semibold font-title text-center">
-                  {testimonial.title}
-                </h5>
-              </CardHeader>
-              <CardBody>
-                <blockquote className="italic font-text text-justify">
-                  {testimonial.text}
-                </blockquote>
-              </CardBody>
-            </Card>
-          ))}
+        <div className="flex justify-center items-center w-full">
+          <div className="flex w-fit max-w-full overflow-x-auto relative z-20 gap-4 p-4 ">
+            {testimonials.map((testimonial, i) => (
+              <Card
+                key={i}
+                className="w-[300px] md:w-[400px] lg:w-[500px] xl:w-[600px] py-4 px-4 flex-shrink-0"
+              >
+                <CardHeader>
+                  <h5 className="font-semibold font-title text-center">
+                    {testimonial.title}
+                  </h5>
+                </CardHeader>
+                <CardBody>
+                  <blockquote className="italic font-text text-justify">
+                    {testimonial.text}
+                  </blockquote>
+                </CardBody>
+              </Card>
+            ))}
+          </div>
         </div>
         <Image
           src="/sobreMi/regadera.png"
