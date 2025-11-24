@@ -72,7 +72,7 @@ export default function AboutMe() {
         src={"/papel.webp"}
       />
       <section className="flex w-full h-full flex-col items-center relative -mt-[5vh]">
-        <div className="h-[85svh] w-full max-lg:flex-col flex  lg:items-start items-center justify-center relative text-center gap-8 px-[5%] lg:px-[8.335%] pt-[15vh]">
+        <div className="h-screen lg:h-[85svh] w-full max-lg:flex-col flex  lg:items-start items-center justify-center relative text-center gap-8 px-[5%] lg:px-[8.335%] pt-[15vh]">
           <Image
             src="/sobreMi/foco.png"
             alt="foco"
