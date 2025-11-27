@@ -78,7 +78,7 @@ export default function AboutMe() {
         src={"/papel.webp"}
       /> */}
       <section className="flex w-full h-full flex-col items-center relative -mt-[5vh]">
-        <div className="max-lg:min-h-screen lg:h-[85svh] w-full max-lg:flex-col flex  lg:items-start items-center justify-center relative text-center gap-8 px-[5%] lg:px-[8.335%] pt-[20vh] md:pt-[15vh]">
+        <div className="min-h-[105vh] w-full max-lg:flex-col flex  lg:items-start items-center justify-center relative text-center gap-8 px-[5%] lg:px-[8.335%] pt-[20vh]">
           <Image
             src="/sobreMi/foco.png"
             alt="foco"
@@ -100,7 +100,7 @@ export default function AboutMe() {
             width={200}
             height={200}
           />
-          <div className="relative flex items-start gap-4">
+          <div className="relative flex items-center gap-4">
             <Image
               src="/sobreMi/imagenMica.png"
               alt="imagen micaela"
@@ -113,7 +113,7 @@ export default function AboutMe() {
               alt="flecha"
               width={200}
               height={200}
-              className="lg:pb-20 absolute z-20 max-lg:right-[10%] -bottom-8 max-lg:rotate-[140deg] lg:relative max-w-[15vw] sm:max-w-[10vw] md:max-w-[9vw] lg:mt-10"
+              className="pb-20 z-20 max-lg:hidden relative max-w-[9vw] self-start mt-16"
             />
           </div>
           <div className="flex flex-col items-center lg:items-start gap-4 relative md:w-3/4 lg:w-1/2 lg:mt-10">
@@ -121,7 +121,7 @@ export default function AboutMe() {
               <span>¡Hola!</span>{" "}
               <span className="self-end">Soy Micaela Gerbeno</span>
             </h1>
-            <p className="text-justify lg:text-left text-sm md:text-base xl:text-lg 3xl:text-xl leading-6  md:leading-8 xl:leading-[30px] 3xl:leading-[40px]">
+            <p className=" lg:text-left text-sm md:text-base xl:text-lg 3xl:text-xl leading-6  md:leading-8 xl:leading-[30px] 3xl:leading-[40px]">
               Soy consultora y formadora de{" "}
               <strong>Innovación Social y Sostenibilidad.</strong> <br />
               Me especializo en el{" "}
@@ -152,7 +152,7 @@ export default function AboutMe() {
         <Image
           src="/sobreMi/megafono.png"
           alt="megafono"
-          className="absolute left-0 top-0 md:-top-16 xl:top-1/3 max-w-[25%] md:max-w-[20%] lg:max-w-[15%] 2xl:max-w-fit"
+          className="absolute left-0 top-0 md:-top-16  max-w-[25%] md:max-w-[20%] lg:max-w-[15%] 2xl:max-w-fit"
           width={200}
           loading="lazy"
           height={200}
@@ -167,7 +167,7 @@ export default function AboutMe() {
                                               lg:justify-start hover:scale-[1.02] transition text-center`}
               style={{}}
             >
-              {i === 2 && (
+              {/* {i === 2 && (
                 <Image
                   src="/sobreMi/garabato3.png"
                   alt="garabato"
@@ -196,7 +196,7 @@ export default function AboutMe() {
                   width={100}
                   height={100}
                 />
-              )}
+              )} */}
               {i === 4 && (
                 <Image
                   src="/sobreMi/garabato2.png"
@@ -226,10 +226,10 @@ export default function AboutMe() {
           <h3 className="text-3xl xsm:text-4xl sm:text-5xl xl:text-6xl 3xl:text-7xl font-smileCity text-rosaOscuro">
             Trabajo en red
           </h3>
-          <p className="text-justify lg:text-left text-sm md:text-base xl:text-lg 3xl:text-xl leading-6  md:leading-8 xl:leading-[30px] 3xl:leading-[40px]">
+          <p className=" lg:text-left text-sm md:text-base xl:text-lg 3xl:text-xl leading-6  md:leading-8 xl:leading-[30px] 3xl:leading-[40px]">
             En esta búsqueda no estoy sola. El trabajo{" "}
-            <strong>colaborativo</strong> y los resyltados se potencian si
-            unimos talentos diversions hacia un propósito común.
+            <strong>colaborativo</strong> y los resultados se potencian si
+            unimos talentos diversos hacia un propósito común.
           </p>
         </div>
         <Image
@@ -240,7 +240,7 @@ export default function AboutMe() {
           width={1000}
           height={800}
         />
-        <div className="w-full flex relative max-md:flex-col items-start max-lg:px-[5%] md:max-lg:-mb-20 lg:absolute lg:left-[30%] lg:bottom-[35%] lg:max-w-[40%]">
+        <div className="w-full flex relative max-lg:flex-wrap max-md:flex-col items-start max-lg:px-[5%] lg:absolute lg:left-[30%] lg:bottom-[28%] lg:max-w-[40%]">
           <Image
             src="/sobreMi/collageFotos1.png"
             alt="collage de fotos"
@@ -249,7 +249,31 @@ export default function AboutMe() {
             width={1000}
             height={800}
           />
-          <div className="md:absolute md:max-lg:-bottom-20  flex flex-col items-start gap-2 max-md:px-[5%]">
+          <Image
+            src="/sobreMi/collageFotos2.png"
+            alt="collage de fotos"
+            className="lg:hidden md:w-1/2 pt-8"
+            loading="lazy"
+            width={1000}
+            height={800}
+          />
+          <Image
+            src="/sobreMi/collageFotos3.png"
+            alt="collage de fotos"
+            className="md:hidden md:w-2/3 ml-auto py-8"
+            loading="lazy"
+            width={1000}
+            height={800}
+          />
+          <Image
+            src="/sobreMi/collageFotos4.png"
+            alt="collage de fotos"
+            className="max-md:hidden lg:hidden mx-auto -mt-8"
+            loading="lazy"
+            width={1000}
+            height={800}
+          />
+          <div className="lg:absolute  flex flex-col items-start gap-2 ">
             <h4 className="subtitle-size font-normal font-text ">
               Formo parte de
             </h4>
@@ -262,42 +286,26 @@ export default function AboutMe() {
               height={200}
             />
           </div>
-          <Image
-            src="/sobreMi/collageFotos2.png"
-            alt="collage de fotos"
-            className="lg:hidden md:w-1/2 pt-8"
-            loading="lazy"
-            width={1000}
-            height={800}
-          />
         </div>
-        <Image
-          src="/sobreMi/collageFotos3.png"
-          alt="collage de fotos"
-          className="lg:hidden md:w-2/3 ml-auto py-8"
-          loading="lazy"
-          width={1000}
-          height={800}
-        />
       </section>
-      <section className="w-full flex flex-col items-center relative gap-6 pb-32 md:pb-40 lg:pb-10 px-[5%] lg:px-[8.335%]">
+      <section className="w-full flex flex-col items-center relative gap-6 pb-40 px-[5%] lg:px-[8.335%] lg:-mt-[10vh] max-lg:pt-8">
         <h4 className="text-3xl xsm:text-4xl sm:text-5xl xl:text-6xl 3xl:text-7xl font-smileCity text-azul">
           Testimonios
         </h4>
         <div className="flex justify-center items-center w-full">
-          <div className="flex w-fit max-w-full overflow-x-auto relative z-20 gap-4 p-4 ">
+          <div className="flex w-fit max-w-full overflow-x-auto relative z-20 gap-4 py-4 ">
             {testimonials.map((testimonial, i) => (
               <Card
                 key={i}
-                className="w-[300px] md:w-[400px] lg:w-[500px] xl:w-[600px] py-4 px-4 flex-shrink-0"
+                className="w-[90vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] py-4 px-4 flex-shrink-0"
               >
                 <CardHeader>
-                  <h5 className="font-semibold font-title text-center">
+                  <h5 className="font-semibold font-title text-center subtitle-size">
                     {testimonial.title}
                   </h5>
                 </CardHeader>
                 <CardBody>
-                  <blockquote className="italic font-text text-justify">
+                  <blockquote className="italic font-text text-xs sm:text-sm md:text-base 2xl:text-lg">
                     {testimonial.text}
                   </blockquote>
                 </CardBody>

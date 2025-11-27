@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect } from "react";
-import { Pagination } from "swiper/modules";
+import { Mousewheel, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./pagination.css";
@@ -34,10 +34,12 @@ const Blog = () => {
         className="flex flex-col gap-4 md:gap-8 xl:gap-10 xsm:self-end sm:self-stretch sm:items-start justify-center w-2/3
                           mt-36 mb-20 xsm:mt-36 s:mt-[35vw] sm:mt-44  md:mt-[18vw] 2xl:mt-[23vw] ml-6 sm:ml-0"
       >
-        <h5 className="title-size">
-          <span className="font-text">N</span>uestro blog
-        </h5>
-        {loading && <p className="paragraph-size"><Loader /></p>}
+        <h5 className="title-size">Blog</h5>
+        {loading && (
+          <p className="paragraph-size">
+            <Loader />
+          </p>
+        )}
         {dataPosts.posts.length > 0 && (
           <>
             <Swiper
@@ -46,7 +48,8 @@ const Blog = () => {
               }}
               autoHeight
               spaceBetween={20}
-              modules={[Pagination]}
+              mousewheel={{ forceToAxis: true }}
+              modules={[Pagination, Mousewheel]}
               className="w-[110%] sm:w-full mySwiper !ml-0 !z-0 !overflow-hidden"
               slidesPerView={"auto"}
             >

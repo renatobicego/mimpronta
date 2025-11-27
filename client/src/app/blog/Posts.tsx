@@ -26,7 +26,7 @@ const Posts = () => {
         <Image
           src={"/collages/megafono.png"}
           alt="Megafono"
-          className="w-1/3 -scale-x-100 md:w-auto absolute right-0 top-0 -rotate-[23deg]"
+          className="w-1/3 -scale-x-100 md:w-auto absolute right-0 top-0 -rotate-[23deg] lg:w-1/5"
           width={250}
           height={250}
         />
