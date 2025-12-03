@@ -1,5 +1,6 @@
 import { Card, CardBody, CardHeader, ScrollShadow } from "@nextui-org/react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AboutMe() {
   const values = [
@@ -287,22 +288,34 @@ export default function AboutMe() {
             </h4>
             <div className="flex items-start gap-1">
               <div className="flex flex-col">
-                <Image
-                  src="/sobreMi/madrid-emprende-logo.jpg"
-                  alt="madrid emprende logo"
-                  loading="lazy"
-                  className="invert"
-                  width={150}
-                  height={150}
-                />
+                <Link
+                  href={
+                    "https://www.madridemprende.es/conoce-a-nuestra-red-de-mentores//"
+                  }
+                  target="_blank"
+                >
+                  <Image
+                    src="/sobreMi/madrid-emprende-logo.jpg"
+                    alt="madrid emprende logo"
+                    loading="lazy"
+                    className="invert"
+                    width={150}
+                    height={150}
+                  />
+                </Link>
               </div>
-              <Image
-                src="/sobreMi/open-innovation-logo.png"
-                alt="open innovation logo"
-                loading="lazy"
-                width={100}
-                height={100}
-              />
+              <Link
+                href={"https://oicteam.com/index.php/en/home/"}
+                target="_blank"
+              >
+                <Image
+                  src="/sobreMi/open-innovation-logo.png"
+                  alt="open innovation logo"
+                  loading="lazy"
+                  width={100}
+                  height={100}
+                />
+              </Link>
             </div>
           </div>
         </div>
