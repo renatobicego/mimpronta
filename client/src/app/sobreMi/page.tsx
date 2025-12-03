@@ -49,13 +49,24 @@ export default function AboutMe() {
       Además, siempre está dispuesta a repensar y mejorar cualquier propuesta de manera creativa e innovadora.
       Espero que podamos seguir trabajando juntas mucho
       tiempo!"`,
+      image: "/sobreMi/qnarik.jpeg",
     },
     {
       text: `“Colaborar con Mica en nuestro equipo de facilitación siempre es una experiencia excelente. 
       No solo capta las ideas al instante, sino que las eleva con un análisis crítico y constructivo. 
       Su compromiso, responsabilidad e inteligencia la convierten en una de esas personas que siempre 
       quieres tener cerca en cualquier proyecto.”`,
-      title: "Daniel Llamas - AIDI",
+      title: "Daniel Llamas - Open Innovation Company",
+      image: "/sobreMi/daniel-llamas.jpeg",
+    },
+    {
+      title: "Testimonio de Valeria Serra - AIDI Asociación",
+      text: `"Hemos colaborado con Micaela en varios proyectos y ha sido muy inspirador para mí 
+      coincidir en esos espacios. Tiene un enfoque claro, una sensibilidad especial hacia la 
+      sostenibilidad y mucha capacidad para aportar soluciones innovadoras. Es una profesional 
+      cercana y muy comprometida. Recomiendo el trabajo de Mica para todos los proyectos que 
+      busquen impacto real y una mirada experta, responsable y consciente en innovación social."`,
+      image: "/sobreMi/valeria-serra.jpeg",
     },
   ];
   return (
@@ -105,7 +116,7 @@ export default function AboutMe() {
               src="/sobreMi/imagenMica.png"
               alt="imagen micaela"
               width={800}
-              className="h-[40vh] lg:h-[50vh] xl:h-[60vh] w-auto relative z-10"
+              className="h-[40vh] lg:h-[50vh] xl:h-[60vh] w-auto relative z-10 lg:mt-8"
               height={1200}
             />
             <Image
@@ -126,20 +137,17 @@ export default function AboutMe() {
               <strong>Innovación Social y Sostenibilidad.</strong> <br />
               Me especializo en el{" "}
               <strong>
-                desarrollo de negocios sostenibles y con impacto social,
-              </strong>{" "}
-              acompañando a personas y organizaciones a conectar con su{" "}
-              <strong>verdadero valor y potencial</strong> para visualizar su
-              posible contribución a lo que el <strong>mundo necesita.</strong>{" "}
-              <br />
+                desarrollo de negocios sostenibles y con impacto social
+              </strong>
+              , acompañando a personas y organizaciones a conectar con su{" "}
+              verdadero valor y potencial para visualizar su posible
+              contribución a lo que el mundo necesita. <br />
               Nací en San Juan, Argentina y a lo largo de los años, he vivido en
               varias ciudades como Mendoza, Wellington, Melbourne y actualmente
-              en Madrid. <br />{" "}
+              en Madrid. <br /> El movimiento es mi inspiración, y mi propósito:{" "}
               <strong>
-                El movimiento es mi inspiración, y mi propósito:
-              </strong>{" "}
-              la búsqueda de{" "}
-              <strong>oportunidades para contribuir a un mundo mejor.</strong>
+                la búsqueda de oportunidades para contribuir a un mundo mejor.
+              </strong>
             </p>
           </div>
         </div>
@@ -152,7 +160,7 @@ export default function AboutMe() {
         <Image
           src="/sobreMi/megafono.png"
           alt="megafono"
-          className="absolute left-0 top-0 md:-top-16  max-w-[25%] md:max-w-[20%] lg:max-w-[15%] 2xl:max-w-fit"
+          className="absolute left-0 top-0 md:-top-16 lg:top-0  max-w-[25%] md:max-w-[20%] lg:max-w-[15%] 2xl:max-w-fit"
           width={200}
           loading="lazy"
           height={200}
@@ -227,9 +235,9 @@ export default function AboutMe() {
             Trabajo en red
           </h3>
           <p className=" lg:text-left text-sm md:text-base xl:text-lg 3xl:text-xl leading-6  md:leading-8 xl:leading-[30px] 3xl:leading-[40px]">
-            En esta búsqueda no estoy sola. El trabajo{" "}
-            <strong>colaborativo</strong> y los resultados se potencian si
-            unimos talentos diversos hacia un propósito común.
+            En esta búsqueda no estoy sola. El{" "}
+            <strong>trabajo colaborativo</strong> y los resultados se potencian
+            si unimos talentos diversos hacia un propósito común.
           </p>
         </div>
         <Image
@@ -277,14 +285,25 @@ export default function AboutMe() {
             <h4 className="subtitle-size font-normal font-text ">
               Formo parte de
             </h4>
-            <Image
-              src="/sobreMi/formoParte.png"
-              alt="empresas y organizaciones de las que formo parte"
-              loading="lazy"
-              className="ml-10"
-              width={200}
-              height={200}
-            />
+            <div className="flex items-start gap-1">
+              <div className="flex flex-col">
+                <Image
+                  src="/sobreMi/madrid-emprende-logo.jpg"
+                  alt="madrid emprende logo"
+                  loading="lazy"
+                  className="invert"
+                  width={150}
+                  height={150}
+                />
+              </div>
+              <Image
+                src="/sobreMi/open-innovation-logo.png"
+                alt="open innovation logo"
+                loading="lazy"
+                width={100}
+                height={100}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -300,7 +319,15 @@ export default function AboutMe() {
                 className="w-[90vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] py-4 px-4 flex-shrink-0"
               >
                 <CardHeader>
-                  <h5 className="font-semibold font-title text-center subtitle-size">
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.title}
+                    width={50}
+                    height={50}
+                    className="rounded-full mr-4"
+                    loading="lazy"
+                  />
+                  <h5 className="font-semibold font-title subtitle-size">
                     {testimonial.title}
                   </h5>
                 </CardHeader>
