@@ -55,11 +55,11 @@ const AboutUs = () => {
         </span>{" "}
         para todos.
       </p>
-      {/* <Link href={"/sobreMimpronta"}>
+      <Link href={"/sobreMi"}>
         <button role="button" className="btn-primary mt-4 ">
-          Sobre mimpronta
+          Descubre quien soy
         </button>
-      </Link> */}
+      </Link>
     </section>
   );
 };

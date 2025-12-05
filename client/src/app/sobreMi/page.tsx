@@ -61,7 +61,7 @@ export default function AboutMe() {
       image: "/sobreMi/daniel-llamas.jpeg",
     },
     {
-      title: "Testimonio de Valeria Serra - AIDI Asociación",
+      title: "Valeria Serra - AIDI Asociación",
       text: `"Hemos colaborado con Micaela en varios proyectos y ha sido muy inspirador para mí 
       coincidir en esos espacios. Tiene un enfoque claro, una sensibilidad especial hacia la 
       sostenibilidad y mucha capacidad para aportar soluciones innovadoras. Es una profesional 
@@ -286,8 +286,8 @@ export default function AboutMe() {
             <h4 className="subtitle-size font-normal font-text ">
               Formo parte de
             </h4>
-            <div className="flex items-start gap-1">
-              <div className="flex flex-col">
+            <div className="flex items-start gap-4">
+              <div className="flex flex-col items-center">
                 <Link
                   href={
                     "https://www.madridemprende.es/conoce-a-nuestra-red-de-mentores//"
@@ -295,12 +295,26 @@ export default function AboutMe() {
                   target="_blank"
                 >
                   <Image
-                    src="/sobreMi/madrid-emprende-logo.jpg"
+                    src="/sobreMi/madrid-emprende-logo.png"
                     alt="madrid emprende logo"
                     loading="lazy"
-                    className="invert"
                     width={150}
                     height={150}
+                  />
+                </Link>
+                <hr className="bg-black w-full h-0.5 mb-2" />
+                <Link
+                  href={
+                    "https://www.madridemprende.es/conoce-a-nuestra-red-de-mentores//"
+                  }
+                  target="_blank"
+                >
+                  <Image
+                    src="/sobreMi/logo-madrid.png"
+                    alt="logo madrid"
+                    loading="lazy"
+                    width={125}
+                    height={125}
                   />
                 </Link>
               </div>
@@ -320,7 +334,7 @@ export default function AboutMe() {
           </div>
         </div>
       </section>
-      <section className="w-full flex flex-col items-center relative gap-6 pb-40 px-[5%] lg:px-[8.335%] lg:-mt-[10vh] max-lg:pt-8">
+      <section className="w-full flex flex-col items-center relative gap-6 pb-40 px-[5%] lg:px-[8.335%] lg:-mt-[10vh] max-lg:pt-14">
         <h4 className="text-3xl xsm:text-4xl sm:text-5xl xl:text-6xl 3xl:text-7xl font-smileCity text-azul">
           Testimonios
         </h4>
