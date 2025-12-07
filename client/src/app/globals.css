@@ -108,7 +108,9 @@ html {
   textarea,
   img,
   label,
-  select {
+  select,
+  li,
+  .swal2-html-container {
     @apply font-text;
   }
 }
