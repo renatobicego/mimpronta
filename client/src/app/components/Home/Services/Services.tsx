@@ -33,7 +33,7 @@ const Services = () => {
         id="servicios"
         className="invisible absolute -top-32 3xl:-top-44"
       ></div>
-      <h4 className="title-size text-white">¿Cómo lo encuentro?</h4>
+      <h3 className="title-size text-white">¿Cómo lo encuentro?</h3>
       <div className="w-[98%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-min">
         {services.map((service, i) => (
           <ServiceCard
