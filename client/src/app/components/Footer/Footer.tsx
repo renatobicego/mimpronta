@@ -5,7 +5,7 @@ import PrivacyPolicy from "./PrivacyPolicy";
 
 const links = [
   {
-    href: "/sobreMi",
+    href: "/sobremi",
     text: "Sobre Mi",
   },
   {

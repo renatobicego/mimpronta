@@ -55,7 +55,7 @@ const AboutUs = () => {
         </span>{" "}
         para todos.
       </p>
-      <Link href={"/sobreMi"}>
+      <Link href={"/sobremi"}>
         <button role="button" className="btn-primary mt-4 ">
           Descubre quien soy
         </button>

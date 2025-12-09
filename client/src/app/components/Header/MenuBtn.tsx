@@ -17,7 +17,7 @@ const links = [
     text: "Blog",
   },
   {
-    href: "/sobreMi",
+    href: "/sobremi",
     text: "Sobre Mi",
   },
 ];
