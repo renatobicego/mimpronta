@@ -4,10 +4,10 @@ import React from "react";
 import PrivacyPolicy from "./PrivacyPolicy";
 
 const links = [
-  // {
-  //   href: "/sobreMimpronta",
-  //   text: "Sobre mimpronta",
-  // },
+  {
+    href: "/sobreMi",
+    text: "Sobre Mi",
+  },
   {
     href: "/blog",
     text: "Blog",

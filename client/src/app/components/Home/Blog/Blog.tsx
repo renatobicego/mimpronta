@@ -14,7 +14,7 @@ const Blog = () => {
   const { dataPosts, loading } = usePosts();
   useEffect(() => {}, [dataPosts.posts]);
   return (
-    <section className="w-full xsm:mt-16 s:mt-[25vw] sm:mt-24 lg:mt-[8vh] flex bg-white pb-0 xsm:min-h-[65vh] lg:min-h-screen h-full">
+    <section className="w-full xsm:mt-16 s:mt-[25vw] sm:mt-24 lg:mt-[8vh] flex bg-white relative pb-0 xsm:min-h-[65vh] lg:min-h-screen h-full">
       <div
         className="w-[15%] sm:w-1/3 pb-8 pt-14 xsm:pt-10 md:pt-20 lg:pb-0 bg-rosa 
                           sm:bg-gradient-to-r from-rosa via-rosa  via-60% to-60% to-white 
@@ -32,7 +32,7 @@ const Blog = () => {
       </div>
       <div
         className="flex flex-col gap-4 md:gap-8 xl:gap-10 xsm:self-end sm:self-stretch sm:items-start justify-center w-2/3
-                          mt-36 mb-20 xsm:mt-36 s:mt-[35vw] sm:mt-44  md:mt-[18vw] 2xl:mt-[23vw] ml-6 sm:ml-0"
+                          mt-36 mb-20 xsm:mt-36 s:mt-[35vw] sm:mt-44  md:mt-[18vw] 2xl:mt-[23vw] ml-6 sm:ml-0 "
       >
         <h5 className="title-size">Blog</h5>
         {loading && (

@@ -18,16 +18,15 @@ export default function Home() {
                   rotate-[185deg] -scale-x-100 h-[90vh] xsm:h-[100vh] w-auto lg:h-[180vh] z-30
                   landscape:left-[96vw] md:landscape:left-[87vw]"
       />
+      <Image
+        alt="fondo"
+        priority={true}
+        quality={10}
+        fill
+        className="object-cover opacity-50"
+        src={"/papel.webp"}
+      />
       <section className="flex w-full h-full overflow-hidden flex-col items-center relative -mt-32">
-        <Image
-          alt="fondo"
-          priority={true}
-          quality={10}
-          width={4500}
-          height={3000}
-          className="absolute left-0 top-0 w-full object-cover h-[200vh] sm:h-[300vh] md:h-[200vh] lg:h-[320vh] opacity-50"
-          src={"/papel.webp"}
-        />
         <PhraseCollage />
         <AboutUs />
         <div className="relative w-full">

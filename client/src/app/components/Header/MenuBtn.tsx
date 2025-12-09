@@ -16,10 +16,10 @@ const links = [
     href: "/blog",
     text: "Blog",
   },
-  // {
-  //   href: "/sobreMimpronta",
-  //   text: "Sobre mimpronta",
-  // },
+  {
+    href: "/sobreMi",
+    text: "Sobre Mi",
+  },
 ];
 
 const MenuBtn = () => {
