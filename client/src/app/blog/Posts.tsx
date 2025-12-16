@@ -12,7 +12,7 @@ const Posts = () => {
       <div className="w-full py-[6vh] bg-rosa space-section relative">
         <div>
           <h3 className="title-size text-white mb-4">
-            <span className="font-text">N</span>uestro Blog
+            Blog
           </h3>
           <input
             placeholder="Buscar publicaciones"
