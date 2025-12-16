@@ -1,7 +1,11 @@
 import { object, string, date, array, mixed } from "yup";
 export const postSchema = object({
-  title: string().required("Título obligatorio").min(5, "Agregar más texto al título"),
-  subtitle: string().required("Subtítulo obligatorio").min(10, "Agregar más texto al subtítulo"),
+  title: string()
+    .required("Título obligatorio")
+    .min(5, "Agregar más texto al título"),
+  subtitle: string()
+    .required("Subtítulo obligatorio")
+    .min(10, "Agregar más texto al subtítulo"),
   category: string().required("Categoria obligatoria"),
   date: date().default(() => new Date()),
   author: object({
@@ -18,7 +22,7 @@ export const postSchema = object({
   body: array(
     object({
       subtitle: string().optional().default(""),
-      text: string().required("Texto del párrafo obligatorio"),
+      text: string().optional().default(""),
       imgParagraph: object({
         epigraph: string().optional().default(""),
         src: mixed().optional().default(""), // Allow either string or File

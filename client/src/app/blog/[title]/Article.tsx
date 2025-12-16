@@ -75,7 +75,7 @@ const Article = () => {
         {post.category.name}
       </p>
       <h4 className="subtitle-size my-2 font-medium">{post.subtitle}</h4>
-      <div className="w-full flex flex-col items-center">
+      {/* <div className="w-full flex flex-col items-center">
         <Image
           src={post.imgPost.src}
           alt={"Imagen de post:" + post.title}
@@ -88,18 +88,20 @@ const Article = () => {
             {post.imgPost.epigraph}
           </p>
         )}
-      </div>
+      </div> */}
       {post.body.map((paragraph, i) => (
         <Fragment key={i}>
           {paragraph.subtitle && (
             <h5 className="subtitle-size">{paragraph.subtitle}</h5>
           )}
-          <div
-            className="text-sm md:text-base xl:text-lg leading-7 md:leading-8 xl:leading-9 
+          {paragraph.text && (
+            <div
+              className="text-sm md:text-base xl:text-lg leading-7 md:leading-8 xl:leading-9 
                 [&>ul]:list-disc [&>ul]:list-inside [&>ol]:list-decimal [&>ol]:list-inside
                 [&>a]:text-amarillo"
-            dangerouslySetInnerHTML={{ __html: paragraph.text }}
-          />
+              dangerouslySetInnerHTML={{ __html: paragraph.text }}
+            />
+          )}
           {paragraph.imgParagraph && (
             <div className="w-fit mx-auto flex flex-col items-center">
               <Image
