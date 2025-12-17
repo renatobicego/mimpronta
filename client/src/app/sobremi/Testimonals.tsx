@@ -1,0 +1,89 @@
+import { Card, CardHeader, CardBody } from "@nextui-org/react";
+import Image from "next/image";
+import React from "react";
+
+const Testimonals = () => {
+  const testimonials = [
+    {
+      title: "Qnarik Grigoryan Ghimoyan - Fundación Taller de Solidaridad",
+      text: `"Trabajar con Mica es un gusto! Tiene una enorme capacidad de adaptarse a las necesidades de cada encuentro,
+       consigue mantener el interés y la atención de las personas en todo momento y siempre lo hace muy participativo, 
+       de manera que hay más implicación por parte de quienes asisten a las sesiones.
+      Además, siempre está dispuesta a repensar y mejorar cualquier propuesta de manera creativa e innovadora.
+      Espero que podamos seguir trabajando juntas mucho
+      tiempo!"`,
+      image: "/sobreMi/qnarik.jpeg",
+    },
+    {
+      text: `“Colaborar con Mica en nuestro equipo de facilitación siempre es una experiencia excelente. 
+      No solo capta las ideas al instante, sino que las eleva con un análisis crítico y constructivo. 
+      Su compromiso, responsabilidad e inteligencia la convierten en una de esas personas que siempre 
+      quieres tener cerca en cualquier proyecto.”`,
+      title: "Daniel Llamas - Open Innovation Company",
+      image: "/sobreMi/daniel-llamas.jpeg",
+    },
+    {
+      title: "Valeria Serra - AIDI Asociación",
+      text: `"Hemos colaborado con Micaela en varios proyectos y ha sido muy inspirador para mí 
+      coincidir en esos espacios. Tiene un enfoque claro, una sensibilidad especial hacia la 
+      sostenibilidad y mucha capacidad para aportar soluciones innovadoras. Es una profesional 
+      cercana y muy comprometida. Recomiendo el trabajo de Mica para todos los proyectos que 
+      busquen impacto real y una mirada experta, responsable y consciente en innovación social."`,
+      image: "/sobreMi/valeria-serra.jpeg",
+    },
+  ];
+  return (
+    <section className="w-full flex flex-col items-center relative gap-6 pb-40 px-[5%] lg:px-[8.335%] lg:-mt-[10vh] max-lg:pt-14">
+      <h4 className="text-3xl xsm:text-4xl sm:text-5xl xl:text-6xl 3xl:text-7xl font-smileCity text-azul">
+        Testimonios
+      </h4>
+      <div className="flex justify-center items-center w-full">
+        <div className="flex w-fit max-w-full overflow-x-auto relative z-20 gap-4 py-4 ">
+          {testimonials.map((testimonial, i) => (
+            <Card
+              key={i}
+              className="w-[90vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] py-4 px-4 flex-shrink-0"
+            >
+              <CardHeader>
+                <Image
+                  src={testimonial.image}
+                  alt={testimonial.title}
+                  width={50}
+                  height={50}
+                  className="rounded-full mr-4"
+                  loading="lazy"
+                />
+                <h5 className="font-semibold font-title subtitle-size">
+                  {testimonial.title}
+                </h5>
+              </CardHeader>
+              <CardBody>
+                <blockquote className="italic font-text text-xs sm:text-sm md:text-base 2xl:text-lg">
+                  {testimonial.text}
+                </blockquote>
+              </CardBody>
+            </Card>
+          ))}
+        </div>
+      </div>
+      <Image
+        src="/sobreMi/regadera.png"
+        loading="lazy"
+        alt="regadera"
+        className="max-md:hidden absolute left-0 bottom-0"
+        width={400}
+        height={400}
+      />
+      <Image
+        src="/sobreMi/solPasto.png"
+        loading="lazy"
+        alt="regadera"
+        className="absolute right-0 bottom-0"
+        width={400}
+        height={400}
+      />
+    </section>
+  );
+};
+
+export default Testimonals;
