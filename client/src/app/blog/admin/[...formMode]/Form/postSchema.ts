@@ -6,7 +6,6 @@ export const postSchema = object({
   subtitle: string()
     .required("Subtítulo obligatorio")
     .min(10, "Agregar más texto al subtítulo"),
-  category: string().required("Categoria obligatoria"),
   date: date().default(() => new Date()),
   author: object({
     _id: string().optional().min(2),

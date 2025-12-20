@@ -39,7 +39,7 @@ const Article = () => {
         );
 
         const { data: recommendedPostData } = await axios.get(
-          `${process.env.NEXT_PUBLIC_URL_API}/blog/recommended/${postData.category._id}`
+          `${process.env.NEXT_PUBLIC_URL_API}/blog/recommended/${postData._id}`
         );
         setPost(postData);
         setRecommendedPosts(
@@ -71,9 +71,9 @@ const Article = () => {
       <h3 className="text-lg xsm:text-2xl md:text-3xl lg:text-4xl 3xl:text-5xl font-bold text-negro">
         {post.title}
       </h3>
-      <p className="py-2 px-4 rounded-3xl border border-gray-300 text-xs xsm:text-sm 3xl:text-base">
+      {/* <p className="py-2 px-4 rounded-3xl border border-gray-300 text-xs xsm:text-sm 3xl:text-base">
         {post.category.name}
-      </p>
+      </p> */}
       <h4 className="subtitle-size my-2 font-medium">{post.subtitle}</h4>
       {/* <div className="w-full flex flex-col items-center">
         <Image
@@ -126,7 +126,7 @@ const Article = () => {
           alt={"Foto de perfil autor/a: " + post.author.name}
           width={40}
           height={40}
-          className="rounded-full"
+          className="rounded-full h-auto w-10 object-cover aspect-square object-top"
         />
         <h6 className="text-xs xsm:text-sm 3xl:text-base">
           {post.author.name} -{" "}

@@ -9,12 +9,12 @@ const {
   blogGetByTitle,
   blogDelete,
   categoriesGet,
-  blogGetByCategory,
+  blogGetRecommended,
   authorsGet,
   postComment,
   postCommentReply,
   deleteComment,
-  deleteCommentReply
+  deleteCommentReply,
 } = require("../controllers");
 const { postExists } = require("../helpers");
 
@@ -33,8 +33,8 @@ router.get("/search", blogGetBySearch);
 
 router.get(
   "/recommended/:id",
-  [check("id", "Categoría no registrada").isMongoId(), validarCampos],
-  blogGetByCategory
+  [check("id", "Post no registrado").isMongoId(), validarCampos],
+  blogGetRecommended
 );
 
 router.post(
@@ -55,7 +55,7 @@ router.post(
     }),
     check("date", "Fecha no enviada o en formato erróneo").exists(),
     check("author", "Autor no enviado").exists(),
-    check("category", "No existe la categoría seleccionada").isMongoId(),
+    // check("category", "No existe la categoría seleccionada").isMongoId(),
     validarCampos,
   ],
   blogPost
@@ -85,10 +85,7 @@ router.post(
 
 router.delete(
   "/comment/:id",
-  [
-    check("id", "Comentario no encontrado").isMongoId(),
-    validarCampos,
-  ],
+  [check("id", "Comentario no encontrado").isMongoId(), validarCampos],
   deleteComment
 );
 
@@ -133,9 +130,9 @@ router.put(
     check("imgPost.src", "Error en la imagen. Url no enviada")
       .optional()
       .isLength({ min: 2 }),
-    check("category", "No existe la categoría seleccionada")
-      .optional()
-      .isMongoId(),
+    // check("category", "No existe la categoría seleccionada")
+    //   .optional()
+    //   .isMongoId(),
     validarCampos,
   ],
   blogPut

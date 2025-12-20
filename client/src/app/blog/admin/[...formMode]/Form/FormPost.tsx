@@ -36,7 +36,7 @@ const FormPost = () => {
       epigraph: "",
       src: "",
     },
-    category: "",
+    category: undefined,
     body: [{ subtitle: "", text: "", imgParagraph: { epigraph: "", src: "" } }],
   });
   const { formMode } = useParams();
@@ -55,7 +55,7 @@ const FormPost = () => {
       setInitialValues((previousValues) => ({
         ...previousValues,
         ...data,
-        category: data.category._id,
+        category: undefined,
         body: data.body.map((p: Paragraph) => {
           if (!p.imgParagraph) {
             p.imgParagraph = {
@@ -98,6 +98,8 @@ const FormPost = () => {
           `blog/authors/`
         );
       }
+
+      values = { ...values, category: undefined };
 
       if (formMode[0] === "editar") {
         await axios.put(

@@ -22,30 +22,30 @@ interface Author {
 }
 
 interface FormPostValues {
-  _id?: string
+  _id?: string;
   title: string;
   subtitle: string;
   password: string | undefined;
   date: Date;
   author: Author;
   imgPost: ImageBlog;
-  category: string;
+  category?: string;
   body: Array<Paragraph>;
 }
 
-interface AuthorServer extends IdName{
+interface AuthorServer extends IdName {
   picture: string;
 }
 
-interface ImageBlogServer extends ImageBlog{
+interface ImageBlogServer extends ImageBlog {
   src: string;
 }
 
 interface ParagraphServer extends Paragraph {
-  imgParagraph: ImageBlogServer | null
+  imgParagraph: ImageBlogServer | null;
 }
 
-interface CategoryServer extends IdName{}
+interface CategoryServer extends IdName {}
 
 interface CommentReply {
   _id: string;
@@ -53,14 +53,14 @@ interface CommentReply {
   text: string;
 }
 
-interface Comment extends IdName{
-  text: string,
-  postId: string,
-  replies?: CommentReply[]
+interface Comment extends IdName {
+  text: string;
+  postId: string;
+  replies?: CommentReply[];
 }
 
 interface PostServer {
-  _id: string
+  _id: string;
   title: string;
   subtitle: string;
   date: Date;
@@ -68,8 +68,16 @@ interface PostServer {
   imgPost: ImageBlogServer;
   category: CategoryServer;
   body: Array<ParagraphServer>;
-  comments: Array<Comment> | null
+  comments: Array<Comment> | null;
 }
 
-
-export type {Author, FormPostValues, ImageBlog, Paragraph, PostServer, AuthorServer, Comment, CommentReply}
+export type {
+  Author,
+  FormPostValues,
+  ImageBlog,
+  Paragraph,
+  PostServer,
+  AuthorServer,
+  Comment,
+  CommentReply,
+};

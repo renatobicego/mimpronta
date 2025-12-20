@@ -8,6 +8,7 @@ const {
   Comment,
   CommentReply,
 } = require("../../models");
+const mongoose = require("mongoose");
 
 const createParagraph = async (paragraph) => {
   // Si el párrafo tiene imagen, crear la relación
@@ -134,7 +135,7 @@ const blogGet = async (req, res) => {
       Post.countDocuments(),
       Post.find()
         .populate("imgPost", "src")
-        .populate("category", "name")
+        // .populate("category", "name")
         .sort({ fecha: "desc" })
         .lean(),
     ]);
@@ -148,21 +149,29 @@ const blogGet = async (req, res) => {
   }
 };
 
-const blogGetByCategory = async (req, res) => {
-  // Obtener id categoria
+const blogGetRecommended = async (req, res) => {
   const { id } = req.params;
-
-  // Limitar respuesta
-  const { limit = 3, from = 0 } = req.query;
+  const { limit = 3 } = req.query;
 
   try {
-    // Query
-    const posts = await Post.find({ category: id })
-      .skip(Number(from))
-      .limit(Number(limit))
-      .populate("imgPost", "src")
-      .populate("category", "name")
-      .lean();
+    const posts = await Post.aggregate([
+      {
+        $match: {
+          _id: { $ne: new mongoose.Types.ObjectId(id) },
+        },
+      },
+      { $sample: { size: Number(limit) } },
+      {
+        $lookup: {
+          from: "images",
+          localField: "imgPost",
+          foreignField: "_id",
+          as: "imgPost",
+        },
+      },
+      { $unwind: "$imgPost" },
+      { $unwind: "$category" },
+    ]);
 
     return res.json(posts);
   } catch (error) {
@@ -295,7 +304,7 @@ const postCommentReply = async (req, res) => {
   try {
     // Crear comentario
     const commentReply = new CommentReply({ name, text });
-    await commentReply.save()
+    await commentReply.save();
 
     // Actualizar comentario en el post sin cargar todo el post desde la base de datos
     commentDb.replies = [...commentDb.replies, commentReply];
@@ -332,11 +341,13 @@ const deleteCommentReply = async (req, res) => {
   const { id, commentId } = req.params;
   try {
     // Find the Comment by ID and remove it
-    
+
     const deletedComment = await CommentReply.findByIdAndRemove(id);
 
     if (!deletedComment) {
-      return res.status(404).json({ msg: "Respuesta a comentario no encontrado" });
+      return res
+        .status(404)
+        .json({ msg: "Respuesta a comentario no encontrado" });
     }
 
     await Comment.findByIdAndUpdate(commentId, { $pull: { comments: id } });
@@ -355,7 +366,7 @@ module.exports = {
   blogGetByTitle,
   blogDelete,
   categoriesGet,
-  blogGetByCategory,
+  blogGetRecommended,
   authorsGet,
   postComment,
   postCommentReply,

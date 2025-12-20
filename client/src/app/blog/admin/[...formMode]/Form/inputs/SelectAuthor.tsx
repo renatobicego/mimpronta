@@ -5,7 +5,6 @@ import FileUpload from "./FileUpload";
 import ErrorMsg from "../ErrorMsg";
 import { AuthorServer, FormPostValues } from "../formPostTypes";
 
-
 interface SelectAuthorProps {
   authors: Array<AuthorServer>;
   value: string;
