@@ -27,7 +27,7 @@ const HeroSection = () => {
         />
         <div className="relative flex items-center gap-4">
           <Image
-            src="/sobreMi/imagenMica.png"
+            src="/sobreMi/micaela-aseoramiento-innovacion-social.png"
             alt="imagen micaela"
             width={800}
             className="h-[40vh] lg:h-[50vh] xl:h-[60vh] w-auto relative z-10 lg:mt-8"
