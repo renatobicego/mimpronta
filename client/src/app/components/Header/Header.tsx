@@ -13,7 +13,9 @@ const Header = () => {
 
   const headerStyle = {
     backgroundColor: `rgba(255, 255, 255, ${
-      pathname === "/" || pathname === "/sobremi" ? opacity : 100
+      pathname === "/" || pathname === "/sobremi" || pathname === "/inicio"
+        ? opacity
+        : 100
     }%)`,
     // backgroundColor: `rgba(255, 255, 255, ${opacity}%)`,
   };

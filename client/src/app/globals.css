@@ -39,28 +39,34 @@ html {
     @apply px-[5%] lg:px-[8.335%];
   }
   .flex-center {
-    @apply flex items-center justify-center;
+    @apply flex justify-center items-center;
   }
   .flex-between {
-    @apply flex items-center justify-between;
+    @apply flex justify-between items-center;
   }
   .phrase-size {
-    @apply text-sm xsm:text-lg sm:text-xl md:text-2xl xl:text-3xl 3xl:text-4xl font-title text-negro;
+    @apply font-title text-negro text-sm xsm:text-lg sm:text-xl md:text-2xl xl:text-3xl 3xl:text-4xl;
   }
   .title-size {
-    @apply text-2xl xsm:text-3xl md:text-4xl xl:text-5xl 3xl:text-6xl font-title font-bold text-negro;
+    @apply font-title font-bold text-negro text-2xl xsm:text-3xl md:text-4xl xl:text-5xl 3xl:text-6xl;
   }
   .subtitle-size-2 {
-    @apply text-lg xsm:text-xl lg:text-2xl 3xl:text-3xl font-semibold text-negro leading-7 md:leading-8 xl:leading-9;
+    @apply font-semibold text-negro text-lg xsm:text-xl lg:text-2xl 3xl:text-3xl leading-7 md:leading-8 xl:leading-9;
   }
   .subtitle-size {
-    @apply text-base xsm:text-lg lg:text-xl 3xl:text-2xl font-semibold text-negro leading-7 md:leading-8 xl:leading-9;
+    @apply font-semibold text-negro text-base xsm:text-lg lg:text-xl 3xl:text-2xl leading-7 md:leading-8 xl:leading-9;
   }
   .paragraph-size {
-    @apply text-sm sm:text-base md:text-lg 2xl:text-xl font-text text-negro;
+    @apply font-text text-negro text-sm sm:text-base md:text-lg 2xl:text-xl;
+  }
+  #inicio-page .paragraph-size {
+    @apply font-text text-base md:text-lg 2xl:text-xl;
+  }
+  #inicio-page p {
+    @apply max-md:text-sm;
   }
   .leading-phrase {
-    @apply leading-6 xsm:leading-8 md:leading-10 xl:leading-[50px] 3xl:leading-[60px];
+    @apply leading-6 xsm:leading-8 md:leading-10 3xl:leading-[60px] xl:leading-[50px];
   }
   .btn-primary-variant {
     @apply bg-opacity-0;
@@ -70,7 +76,7 @@ html {
     transition duration-200 hover:btn-primary-variant active:btn-primary-variant border-[3px] border-amarillo select-none;
   }
   .btn-primary-sm {
-    @apply btn-primary py-1.5 md:py-2 2xl:py-2.5;
+    @apply py-1.5 md:py-2 2xl:py-2.5 btn-primary;
   }
 
   .btn-secondary-variant {
@@ -87,15 +93,15 @@ html {
   }
 
   .input-comment {
-    @apply input text-xs md:text-sm rounded-[16px];
+    @apply rounded-[16px] text-xs md:text-sm input;
   }
 
   .main {
-    @apply flex w-full min-h-screen flex-col items-center relative pt-28;
+    @apply relative flex flex-col items-center pt-28 w-full min-h-screen;
   }
 
   h1 {
-    @apply text-base xsm:text-xl sm:text-2xl md:text-3xl xl:text-4xl 3xl:text-5xl font-title text-negro;
+    @apply font-title text-negro text-base xsm:text-xl sm:text-2xl md:text-3xl xl:text-4xl 3xl:text-5xl;
   }
 
   h2,

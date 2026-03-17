@@ -48,9 +48,9 @@ const TestimonialsCards = () => {
                 className="rounded-full mr-4"
                 loading="lazy"
               />
-              <h5 className="font-semibold font-title subtitle-size">
+              <p className="font-semibold font-title subtitle-size">
                 {testimonial.title}
-              </h5>
+              </p>
             </CardHeader>
             <CardBody>
               <blockquote className="italic font-text text-xs sm:text-sm md:text-base 2xl:text-lg">
