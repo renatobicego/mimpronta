@@ -28,13 +28,13 @@ const ContactInicio = () => {
   };
 
   return (
-    <section className="relative flex flex-col gap-12 pt-20 w-full overflow-hidden space-section">
+    <section className="relative flex flex-col gap-12 py-20 w-full overflow-hidden space-section">
       <div id="contacto" className="invisible -top-20 absolute"></div>
       <div className="z-10 flex flex-col gap-3">
         <h2 className="subtitle-size-2">
           ¿Necesitas asesoramiento en sostenibilidad empresarial en Madrid?
         </h2>
-        <p>
+        <p className="lg:w-3/4 3xl:w-2/3">
           Si tu empresa busca integrar la sostenibilidad de forma estratégica y
           alineada con sus objetivos de negocio, la consultoría especializada es
           el primer paso para avanzar con rigor y visión a largo plazo.

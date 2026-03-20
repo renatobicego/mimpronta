@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function ConsultoriaSostenibilidadPage() {
   return (
-    <main id="inicio-page" className="gap-8 py-36 overflow-hidden main">
+    <main id="inicio-page" className="gap-8 overflow-hidden main">
       <NextImage
         alt=""
         aria-hidden="true"
@@ -49,7 +49,7 @@ export default function ConsultoriaSostenibilidadPage() {
       <Ventajas />
       <ProcesoConsultoria />
 
-      <section className="relative flex flex-col items-start gap-3 max-lg:my-16 w-full h-full overflow-hidden space-section">
+      <section className="relative flex flex-col items-start gap-3 md:max-lg:my-16 max-md:mb-8 w-full h-full overflow-hidden space-section">
         <AboutMe />
       </section>
 

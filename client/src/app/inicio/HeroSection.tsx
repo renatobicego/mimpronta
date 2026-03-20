@@ -1,21 +1,13 @@
+import Image from "next/image";
 import NextImage from "next/image";
 
 const HeroSection = () => {
   return (
-    <section className="relative flex xl:flex-row flex-col items-center gap-8 pb-20 w-full h-full overflow-hidden space-section">
-      <NextImage
-        src="/papeles/papelMarron1.png"
-        alt=""
-        aria-hidden="true"
-        quality={75}
-        width={180}
-        height={500}
-        className="top-[5%] -left-4 lg:left-0 absolute w-auto h-[30%] lg:h-auto rotate-180 -scale-x-100 pointer-events-none"
-      />
-
-      <div className="z-10 relative flex flex-col gap-3 order-1 md:w-3/4 xl:w-1/2 text-center max-xl:">
+    <section className="relative flex xl:flex-row flex-col items-center xl:items-start gap-8 max-lg:px-[5%] md:pt-16 lg:pt-24 xl:pt-32 xl:pr-[8.335%] xl:pl-0 w-full h-full min-h-screen lg:min-h-[110vh]">
+      <div className="z-10 relative flex flex-col gap-3 order-1 2xl:mt-16 xl:mt-8 md:w-3/4 xl:w-1/2 xl:text-left text-center">
         <h1 className="font-semibold">
-          Consultoría de sostenibilidad para empresas en Madrid
+          Consultoría de <span className="text-rosaOscuro">sostenibilidad</span>{" "}
+          para empresas en Madrid
         </h1>
         <p>
           La sostenibilidad se ha convertido en un pilar estratégico para las
@@ -35,7 +27,7 @@ const HeroSection = () => {
         </p>
       </div>
 
-      <div className="z-10 relative flex justify-center max-xl:order-2 xl:order-0 w-full xl:w-1/2">
+      <div className="z-10 relative flex justify-center max-xl:order-2 xl:order-0 w-full xl:w-2/3">
         <NextImage
           src="/collages/consultoria_sostenibilidad_empresas_madrid.png"
           alt="Datos que analiza una consultoría ESG para empresas en madrid"
@@ -45,18 +37,16 @@ const HeroSection = () => {
           quality={30}
           width={700}
           height={446}
-          className="w-full max-w-[420px] md:max-w-[600px] xl:max-w-full h-auto"
+          className="w-full max-w-screen md:max-w-[600px] lg:max-w-[800px] xl:max-w-full h-auto"
         />
       </div>
-
-      <NextImage
-        src="/papeles/papelMarron2.png"
-        alt=""
-        aria-hidden="true"
-        quality={75}
-        width={180}
+      <Image
+        src={"/papeles/papelAzulRoto.png"}
+        alt="Papel roto azul"
+        quality={30}
+        width={2000}
         height={500}
-        className="top-[5%] -right-4 absolute w-auto h-[30%] lg:h-auto pointer-events-none"
+        className="-bottom-12 left-0 z-10 absolute w-full h-auto"
       />
     </section>
   );

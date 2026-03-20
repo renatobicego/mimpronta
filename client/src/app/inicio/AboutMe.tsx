@@ -3,7 +3,7 @@ import React from "react";
 
 const AboutMe = () => {
   return (
-    <div className=" w-full flex items-center justify-center relative gap-8 max-sm:flex-wrap">
+    <div className="relative flex max-lg:flex-col justify-center items-center lg:items-start gap-4 lg:gap-8 w-full">
       <Image
         src="/sobreMi/micaela-aseoramiento-innovacion-social.png"
         alt="Micaela ofreciendo asesoramiento en innovación social a una empresa"
@@ -11,7 +11,7 @@ const AboutMe = () => {
         aria-description="Micaela ofreciendo asesoramiento en innovación social a una empresa"
         width={800}
         removeWrapper
-        className="relative sm:max-w-[30%] xl:max-w-[25%] z-10 max-sm:max-h-[40vh] max-sm:w-auto"
+        className="z-10 relative max-sm:w-auto sm:max-w-[40%] xl:max-w-[25%] max-sm:max-h-[40vh]"
         height={1200}
       />
       <Image
@@ -19,10 +19,13 @@ const AboutMe = () => {
         alt="flecha"
         width={200}
         height={200}
-        className="pb-20 z-20 max-lg:hidden relative max-w-[9vw] self-start mt-16"
+        className="max-lg:hidden z-20 relative self-start mt-16 pb-20 max-w-[9vw]"
       />
-      <div className="flex flex-col items-start gap-4 relative ">
-        <p className="subtitle-size-2">¡Hola! Soy Micaela Gerbeno</p>
+      <div className="relative flex flex-col items-center lg:items-start gap-4 lg:mt-10 max-lg:text-center">
+        <p className="flex gap-2 md:gap-4 xl:gap-6 h-16 sm:h-20 xl:h-24 font-smileCity text-rosaOscuro !text-3xl xsm:!text-4xl sm:!text-5xl xl:!text-6xl 3xl:text-7xl">
+          <span>¡Hola!</span>{" "}
+          <span className="self-end">Soy Micaela Gerbeno</span>
+        </p>
         <h2 className="font-semibold">
           Consultora y formadora en sostenibilidad
         </h2>

@@ -3,9 +3,9 @@ import { Card, CardBody } from "@nextui-org/react";
 const ComoAyudo = () => {
   return (
     <div className="z-10 relative bg-white pt-32 md:pt-64 xl:pt-96 pb-10">
-      <section className="relative flex flex-col items-center gap-3 pb-4 w-full h-full overflow-hidden text-center space-section">
+      <section className="relative flex flex-col items-start gap-3 pb-4 w-full h-full overflow-hidden text-left space-section">
         <h2 className="subtitle-size-2">¿Cómo puedo ayudarte?</h2>
-        <p className="md:w-3/4 lg:w-2/3">
+        <p className="lg:w-3/4 3xl:w-2/3">
           Incorporar la sostenibilidad de forma estratégica permite cumplir con
           las exigencias normativas y responder a las expectativas de
           inversores, clientes y otros grupos de interés, sin perder de vista el
@@ -59,11 +59,11 @@ const ComoAyudo = () => {
         </div>
       </section>
 
-      <section className="relative flex flex-col items-center gap-3 py-8 w-full h-full overflow-hidden text-center space-section">
+      <section className="relative flex flex-col items-start gap-3 py-8 w-full h-full overflow-hidden text-left space-section">
         <h2 className="subtitle-size-2">
           ¿A qué tipo de empresas ayudo con la consultoría de sostenibilidad?
         </h2>
-        <p className="md:w-3/4 lg:w-2/3">
+        <p className="lg:w-3/4 3xl:w-2/3">
           Cada empresa tiene su propio tamaño, sector y momento, por lo que las
           soluciones deben adaptarse a su realidad. Mi enfoque parte de entender
           ese punto de partida para proponer acciones viables, medibles y

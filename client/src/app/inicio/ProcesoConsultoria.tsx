@@ -4,24 +4,24 @@ const ProcesoConsultoria = () => {
       <h2 className="font-bold text-foreground text-2xl md:text-3xl">
         ¿Cómo trabajo la consultoría de sostenibilidad?
       </h2>
-      <p className="text-foreground/80">
+      <p className="lg:w-3/4 3xl:w-2/3 text-foreground/80">
         Mimpronta simboliza la huella única que dejamos en el mundo: una huella
         irrepetible nacida de lo que somos, de cómo actuamos y de cómo
         conectamos con los demás.
       </p>
 
       <ol
-        className="relative mt-6 w-full"
+        className="relative mt-6 w-full lg:w-3/4 3xl:w-2/3"
         aria-label="Pasos del proceso de consultoría"
       >
         <div
-          className="top-0 bottom-0 left-4 md:left-6 absolute bg-primary/30 w-0.5"
+          className="top-0 bottom-0 left-4 md:left-6 absolute bg-rosa w-0.5"
           aria-hidden="true"
         />
 
         <li className="relative flex gap-4 md:gap-6 pb-8">
           <div
-            className="z-10 relative flex justify-center items-center bg-primary rounded-full w-8 md:w-12 h-8 md:h-12 font-bold text-primary-foreground text-sm md:text-base shrink-0"
+            className="z-10 relative flex justify-center items-center bg-rosaOscuro rounded-full w-8 md:w-12 h-8 md:h-12 font-bold text-primary-foreground text-sm md:text-base shrink-0"
             aria-hidden="true"
           >
             1
@@ -39,7 +39,7 @@ const ProcesoConsultoria = () => {
 
         <li className="relative flex gap-4 md:gap-6 pb-8">
           <div
-            className="z-10 relative flex justify-center items-center bg-primary rounded-full w-8 md:w-12 h-8 md:h-12 font-bold text-primary-foreground text-sm md:text-base shrink-0"
+            className="z-10 relative flex justify-center items-center bg-rosaOscuro rounded-full w-8 md:w-12 h-8 md:h-12 font-bold text-primary-foreground text-sm md:text-base shrink-0"
             aria-hidden="true"
           >
             2
@@ -57,7 +57,7 @@ const ProcesoConsultoria = () => {
 
         <li className="relative flex gap-4 md:gap-6">
           <div
-            className="z-10 relative flex justify-center items-center bg-primary rounded-full w-8 md:w-12 h-8 md:h-12 font-bold text-primary-foreground text-sm md:text-base shrink-0"
+            className="z-10 relative flex justify-center items-center bg-rosaOscuro rounded-full w-8 md:w-12 h-8 md:h-12 font-bold text-primary-foreground text-sm md:text-base shrink-0"
             aria-hidden="true"
           >
             3
