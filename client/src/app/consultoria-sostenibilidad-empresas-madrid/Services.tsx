@@ -40,7 +40,7 @@ const Services = () => {
       <h2 className="subtitle-size-2 text-white text-left">
         Servicios de consultoría en sostenibilidad empresarial
       </h2>
-      <p className="md:w-3/4 lg:w-2/3 text-left">
+      <p className="lg:w-2/3 text-left">
         Servicios de consultoría en sostenibilidad adaptados a la realidad y al
         momento de cada organización, con un acompañamiento que abarca desde el
         diagnóstico inicial hasta la implementación y el seguimiento de las

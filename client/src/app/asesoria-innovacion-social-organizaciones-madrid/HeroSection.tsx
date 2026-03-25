@@ -6,33 +6,31 @@ const HeroSection = () => {
     <section className="relative flex xl:flex-row flex-col items-center xl:items-start gap-8 max-lg:px-[5%] pt-[4vh] md:pt-16 lg:pt-[7vh] 2xl:pt-[12vh] xl:pt-[9vh] xl:pr-[8.335%] xl:pl-0 w-full h-full min-h-screen lg:min-h-[110vh]">
       <div className="z-10 relative flex flex-col gap-3 order-1 2xl:mt-16 md:w-3/4 xl:w-1/2 xl:text-left text-center">
         <h1 className="font-semibold">
-          Consultoría de <span className="text-rosaOscuro">sostenibilidad</span>{" "}
-          para empresas en Madrid
+          Asesoría de <span className="text-rosaOscuro">innovación social</span>{" "}
+          para organizaciones en Madrid
         </h1>
         <p>
-          La sostenibilidad se ha convertido en un pilar estratégico para las
-          empresas que operan en entornos cada vez más competitivos y regulados.
+          La innovación social permite a las organizaciones generar impacto
+          social real sin perder de vista sus objetivos estratégicos. Desde la
+          asesoría de innovación social en Madrid, se trabaja para integrar la
+          dimensión social en la estrategia, conectando propósito, actividad y
+          entorno de forma coherente.
         </p>
         <p>
-          Contar con el apoyo de una consultoría en sostenibilidad ayuda a las
-          organizaciones a integrar criterios ambientales, sociales y de
-          gobernanza (ESG) de forma clara, ordenada y alineada con la normativa
-          vigente, teniendo en cuenta la realidad del tejido empresarial local.
-        </p>
-        <p>
-          Mi enfoque combina visión estratégica, análisis de impacto y
-          metodologías de innovación social para acompañar a las empresas en el
-          camino hacia una sostenibilidad real, transformándola en una ventaja
-          competitiva tangible y medible.
+          Se aborda como un proceso estratégico y continuo, no como una acción
+          aislada. El enfoque se basa en aplicar metodologías que ayudan a
+          identificar retos sociales y convertirlos en soluciones sostenibles
+          que aporten valor tanto a la organización como a la comunidad en la
+          que opera.
         </p>
       </div>
 
       <div className="z-10 relative flex justify-center max-xl:order-2 xl:order-0 w-full xl:w-2/3">
         <NextImage
           src="/collages/consultoria_sostenibilidad_empresas_madrid.png"
-          alt="Datos que analiza una consultoría ESG para empresas en madrid"
-          title="Datos que analiza una consultoría ESG para empresas en madrid"
-          aria-description="Datos que analiza una consultoría ESG para empresas en madrid"
+          alt="Asesoría de innovación social para organizaciones en Madrid"
+          title="Asesoría de innovación social para organizaciones en Madrid"
+          aria-description="Asesoría de innovación social para organizaciones en Madrid"
           priority
           quality={30}
           width={700}

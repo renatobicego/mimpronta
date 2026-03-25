@@ -3,7 +3,7 @@ import React from "react";
 
 const AboutMe = () => {
   return (
-    <div className="relative flex max-lg:flex-col justify-center items-center lg:items-start gap-4 lg:gap-8 w-full">
+    <div className="relative flex max-md:flex-col justify-center items-center lg:items-start gap-4 lg:gap-8 w-full">
       <Image
         src="/sobreMi/micaela-aseoramiento-innovacion-social.png"
         alt="Micaela ofreciendo asesoramiento en innovación social a una empresa"
@@ -22,8 +22,8 @@ const AboutMe = () => {
         aria-hidden
         className="max-lg:hidden z-20 relative self-start mt-16 pb-20 max-w-[9vw]"
       />
-      <div className="relative flex flex-col items-center lg:items-start gap-4 lg:mt-10 max-lg:text-center">
-        <p className="flex gap-2 md:gap-4 xl:gap-6 h-16 sm:h-20 xl:h-24 font-smileCity text-rosaOscuro !text-3xl xsm:!text-4xl sm:!text-5xl xl:!text-6xl 3xl:text-7xl">
+      <div className="relative flex flex-col items-center md:items-start gap-4 lg:mt-10 max-md:text-center">
+        <p className="flex md:max-lg:flex-col md:max-lg:items-start gap-2 md:gap-4 xl:gap-6 h-16 sm:h-20 md:h-28 xl:h-24 font-smileCity text-rosaOscuro !text-3xl xsm:!text-4xl sm:!text-5xl xl:!text-6xl 3xl:text-7xl">
           <span>¡Hola!</span>{" "}
           <span className="self-end">Soy Micaela Gerbeno</span>
         </p>
