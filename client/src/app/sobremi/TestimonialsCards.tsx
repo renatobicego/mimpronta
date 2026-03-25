@@ -33,27 +33,27 @@ const TestimonialsCards = () => {
   ];
   return (
     <div className="flex justify-center items-center w-full">
-      <div className="flex w-fit max-w-full overflow-x-auto relative z-20 gap-4 py-4 ">
+      <div className="z-20 relative flex gap-4 py-4 w-fit max-w-full overflow-x-auto">
         {testimonials.map((testimonial, i) => (
           <Card
             key={i}
-            className="w-[90vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw] py-4 px-4 flex-shrink-0"
+            className="flex-shrink-0 px-4 py-4 w-[90vw] md:w-[60vw] lg:w-[45vw] xl:w-[35vw]"
           >
             <CardHeader>
               <Image
                 src={testimonial.image}
-                alt={testimonial.title}
+                alt={`Imagen de ${testimonial.title}`}
                 width={50}
                 height={50}
-                className="rounded-full mr-4"
+                className="mr-4 rounded-full"
                 loading="lazy"
               />
-              <p className="font-semibold font-title subtitle-size">
+              <p className="font-title font-semibold subtitle-size">
                 {testimonial.title}
               </p>
             </CardHeader>
             <CardBody>
-              <blockquote className="italic font-text text-xs sm:text-sm md:text-base 2xl:text-lg">
+              <blockquote className="font-text text-xs sm:text-sm md:text-base 2xl:text-lg italic">
                 {testimonial.text}
               </blockquote>
             </CardBody>

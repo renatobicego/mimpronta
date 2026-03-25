@@ -13,7 +13,10 @@ const Header = () => {
 
   const headerStyle = {
     backgroundColor: `rgba(255, 255, 255, ${
-      pathname === "/" || pathname === "/sobremi" || pathname === "/inicio"
+      pathname === "/" ||
+      pathname === "/sobremi" ||
+      pathname === "/consultoria-sostenibilidad-empresas-madrid" ||
+      pathname === "/asesoria-innovacion-social-organizaciones-madrid"
         ? opacity
         : 100
     }%)`,

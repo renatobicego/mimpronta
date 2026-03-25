@@ -36,17 +36,17 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="relative flex flex-col items-center gap-4 bg-azul -mt-0.5 px-[5%] md:px-[8.335%] pt-20 pb-20 xsm:pb-24 w-full text-white">
-      <h2 className="subtitle-size-2 text-white text-center">
+    <section className="relative flex flex-col items-start gap-4 bg-azul -mt-0.5 px-[5%] md:px-[8.335%] pt-20 pb-20 xsm:pb-24 w-full text-white">
+      <h2 className="subtitle-size-2 text-white text-left">
         Servicios de consultoría en sostenibilidad empresarial
       </h2>
-      <p className="md:w-3/4 lg:w-2/3 text-center">
+      <p className="md:w-3/4 lg:w-2/3 text-left">
         Servicios de consultoría en sostenibilidad adaptados a la realidad y al
         momento de cada organización, con un acompañamiento que abarca desde el
         diagnóstico inicial hasta la implementación y el seguimiento de las
         acciones.
       </p>
-      <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-min mx-auto w-[98%]">
+      <div className="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-min mx-auto w-full">
         {services.map((service, i) => (
           <ServiceCard
             key={i}
@@ -64,7 +64,8 @@ const Services = () => {
         width={3936}
         quality={30}
         height={1661}
-        alt="collage árboles"
+        aria-hidden
+        alt=""
         className="top-[94%] md:top-[90%] lg:top-[70%] 2xl:top-[65%] 3xl:top-[60%] left-0 z-[11] absolute w-full scale-150 md:scale-100 translate-x-1/4 md:translate-x-0"
       />
     </section>

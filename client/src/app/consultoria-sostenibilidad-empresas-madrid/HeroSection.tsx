@@ -3,8 +3,8 @@ import NextImage from "next/image";
 
 const HeroSection = () => {
   return (
-    <section className="relative flex xl:flex-row flex-col items-center xl:items-start gap-8 max-lg:px-[5%] md:pt-16 lg:pt-24 xl:pt-32 xl:pr-[8.335%] xl:pl-0 w-full h-full min-h-screen lg:min-h-[110vh]">
-      <div className="z-10 relative flex flex-col gap-3 order-1 2xl:mt-16 xl:mt-8 md:w-3/4 xl:w-1/2 xl:text-left text-center">
+    <section className="relative flex xl:flex-row flex-col items-center xl:items-start gap-8 max-lg:px-[5%] md:pt-16 lg:pt-[7vh] 2xl:pt-[12vh] xl:pt-[9vh] xl:pr-[8.335%] xl:pl-0 w-full h-full min-h-screen lg:min-h-[110vh]">
+      <div className="z-10 relative flex flex-col gap-3 order-1 2xl:mt-16 md:w-3/4 xl:w-1/2 xl:text-left text-center">
         <h1 className="font-semibold">
           Consultoría de <span className="text-rosaOscuro">sostenibilidad</span>{" "}
           para empresas en Madrid

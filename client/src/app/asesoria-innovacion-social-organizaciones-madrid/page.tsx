@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import TestimonialsCards from "../sobremi/TestimonialsCards";
 import { Link } from "@nextui-org/react";
-import AboutMe from "../inicio/AboutMe";
+import AboutMe from "../consultoria-sostenibilidad-empresas-madrid/AboutMe";
 
 export const metadata: Metadata = {
   title: "Asesoría de innovación social para organizaciones en Madrid",
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 
 export default function AsesoriaInnovacionSocialPage() {
   return (
-    <main className="main overflow-hidden py-36 gap-8">
-      <section className="flex w-full space-section h-full overflow-hidden flex-col items-start gap-3 relative">
+    <main className="gap-8 py-36 overflow-hidden main">
+      <section className="relative flex flex-col items-start gap-3 w-full h-full overflow-hidden space-section">
         <h1 className="font-semibold">
           Asesoría de innovación social para organizaciones en Madrid
         </h1>
@@ -39,7 +39,7 @@ export default function AsesoriaInnovacionSocialPage() {
         </p>
       </section>
 
-      <section className="flex w-full space-section h-full overflow-hidden flex-col items-start gap-3 relative">
+      <section className="relative flex flex-col items-start gap-3 w-full h-full overflow-hidden space-section">
         <h2 className="subtitle-size-2">
           Servicios de asesoría en innovación social para organizaciones
         </h2>
@@ -50,7 +50,7 @@ export default function AsesoriaInnovacionSocialPage() {
           integración dentro de la organización.
         </p>
 
-        <h3 className="paragraph-size font-semibold">
+        <h3 className="font-semibold paragraph-size">
           Diagnóstico de impacto social y análisis de contexto
         </h3>
         <p>
@@ -60,7 +60,7 @@ export default function AsesoriaInnovacionSocialPage() {
           ámbitos donde pueda generarse un impacto social concreto y sostenible.
         </p>
 
-        <h3 className="paragraph-size font-semibold">
+        <h3 className="font-semibold paragraph-size">
           Diseño de estrategias de innovación social
         </h3>
         <p>
@@ -70,7 +70,7 @@ export default function AsesoriaInnovacionSocialPage() {
           positivo a medio y largo plazo.
         </p>
 
-        <h3 className="paragraph-size font-semibold">
+        <h3 className="font-semibold paragraph-size">
           Desarrollo de proyectos de impacto social
         </h3>
         <p>
@@ -80,7 +80,7 @@ export default function AsesoriaInnovacionSocialPage() {
           asegurando que puedan generar resultados medibles y duraderos.
         </p>
 
-        <h3 className="paragraph-size font-semibold">
+        <h3 className="font-semibold paragraph-size">
           Formación en innovación social para organizaciones
         </h3>
         <p>
@@ -96,7 +96,7 @@ export default function AsesoriaInnovacionSocialPage() {
         </p>
       </section>
 
-      <section className="flex w-full space-section h-full overflow-hidden flex-col items-start gap-3 relative">
+      <section className="relative flex flex-col items-start gap-3 w-full h-full overflow-hidden space-section">
         <h2 className="subtitle-size-2">
           Ventajas de trabajar en innovación social para tu organización
         </h2>
@@ -105,7 +105,7 @@ export default function AsesoriaInnovacionSocialPage() {
           organización.
         </p>
 
-        <p className="paragraph-size font-semibold">
+        <p className="font-semibold paragraph-size">
           Mejora del impacto social y reputación corporativa
         </p>
         <p>
@@ -113,7 +113,7 @@ export default function AsesoriaInnovacionSocialPage() {
           empleados e inversores.
         </p>
 
-        <p className="paragraph-size font-semibold">
+        <p className="font-semibold paragraph-size">
           Fortalece la cultura organizacional
         </p>
         <p>
@@ -121,7 +121,7 @@ export default function AsesoriaInnovacionSocialPage() {
           interno y alinea a los equipos con un propósito compartido.
         </p>
 
-        <p className="paragraph-size font-semibold">
+        <p className="font-semibold paragraph-size">
           Aporta diferenciación en el mercado
         </p>
         <p>
@@ -130,7 +130,7 @@ export default function AsesoriaInnovacionSocialPage() {
         </p>
       </section>
 
-      <section className="flex w-full space-section h-full overflow-hidden flex-col items-start gap-3 relative">
+      <section className="relative flex flex-col items-start gap-3 w-full h-full overflow-hidden space-section">
         <h2 className="subtitle-size-2">¿Cómo lo hago?</h2>
         <p>
           La metodología combina trabajo colaborativo, análisis y participación,
@@ -138,7 +138,7 @@ export default function AsesoriaInnovacionSocialPage() {
           organización.
         </p>
 
-        <p className="paragraph-size font-semibold">
+        <p className="font-semibold paragraph-size">
           Identificación de retos sociales y oportunidades
         </p>
         <p>
@@ -147,7 +147,7 @@ export default function AsesoriaInnovacionSocialPage() {
           puede generar un impacto positivo real.
         </p>
 
-        <p className="paragraph-size font-semibold">
+        <p className="font-semibold paragraph-size">
           Co-creación de soluciones con grupos de interés
         </p>
         <p>
@@ -156,7 +156,7 @@ export default function AsesoriaInnovacionSocialPage() {
           por las personas y comunidades a las que van dirigidas.
         </p>
 
-        <p className="paragraph-size font-semibold">
+        <p className="font-semibold paragraph-size">
           Implementación, seguimiento y escalado de proyectos
         </p>
         <p>
@@ -166,17 +166,17 @@ export default function AsesoriaInnovacionSocialPage() {
         </p>
       </section>
 
-      <section className="flex w-full space-section h-full overflow-hidden flex-col items-start gap-3 relative">
+      <section className="relative flex flex-col items-start gap-3 w-full h-full overflow-hidden space-section">
         <AboutMe />
       </section>
 
-      <section className="flex w-full space-section h-full overflow-hidden flex-col items-start gap-3 relative">
-        <h3 className="paragraph-size font-semibold">
+      <section className="relative flex flex-col items-start gap-3 w-full h-full overflow-hidden space-section">
+        <h3 className="font-semibold paragraph-size">
           Preguntas frecuentes sobre asesoría de innovación social para
           organizaciones
         </h3>
 
-        <dl className="font-text flex flex-col gap-1">
+        <dl className="flex flex-col gap-1 font-text">
           <dt className="font-semibold">
             ¿Qué es la innovación social aplicada a la empresa?
           </dt>
@@ -204,12 +204,12 @@ export default function AsesoriaInnovacionSocialPage() {
         </dl>
       </section>
 
-      <section className="flex w-full space-section h-full overflow-hidden flex-col items-start gap-3 relative">
+      <section className="relative flex flex-col items-start gap-3 w-full h-full overflow-hidden space-section">
         <h2 className="subtitle-size-2">Opiniones de mimpronta</h2>
         <TestimonialsCards />
       </section>
 
-      <section className="flex w-full space-section h-full overflow-hidden flex-col items-start gap-3 relative">
+      <section className="relative flex flex-col items-start gap-3 w-full h-full overflow-hidden space-section">
         <h2 className="subtitle-size-2">
           ¿Necesitas asesoramiento en innovación social en tu organización?
         </h2>
@@ -219,7 +219,7 @@ export default function AsesoriaInnovacionSocialPage() {
           para generar impacto con sentido estratégico.
         </p>
         <Link href={"/#contacto"}>
-          <button role="button" className="btn-primary mt-4 ">
+          <button role="button" className="mt-4 btn-primary">
             Hablemos
           </button>
         </Link>

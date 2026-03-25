@@ -16,9 +16,10 @@ const AboutMe = () => {
       />
       <Image
         src="/sobreMi/flecha.png"
-        alt="flecha"
+        alt=""
         width={200}
         height={200}
+        aria-hidden
         className="max-lg:hidden z-20 relative self-start mt-16 pb-20 max-w-[9vw]"
       />
       <div className="relative flex flex-col items-center lg:items-start gap-4 lg:mt-10 max-lg:text-center">
