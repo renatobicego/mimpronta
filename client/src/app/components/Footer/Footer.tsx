@@ -20,17 +20,22 @@ const links = [
     href: "/#contacto",
     text: "Contacto",
   },
+  {
+    href: "/consultoria-sostenibilidad-empresas-madrid",
+    text: "Consultoría de sostenibilidad para empresas en Madrid",
+  },
+  {
+    href: "/asesoria-innovacion-social-organizaciones-madrid",
+    text: "Asesoría de innovación social para organizaciones en Madrid",
+  },
 ];
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-negro text-white py-16 space-section flex flex-col font-text relative z-10">
-      <section className="w-full flex justify-between flex-wrap-reverse gap-6 items-start md:flex-nowrap md:items-end">
+    <footer className="z-10 relative flex flex-col bg-negro py-16 w-full font-text text-white space-section">
+      <section className="flex flex-wrap-reverse md:flex-nowrap justify-between items-start md:items-end gap-6 w-full">
         <div className="flex flex-col items-start gap-6 w-full sm:w-3/4 md:w-3/5">
-          <nav
-            className="flex flex-col gap-6 xsm:gap-3 xsm:justify-between xsm:flex-row sm:gap-12 sm:justify-start w-full
-                              text-sm md:text-base"
-          >
+          <nav className="flex xsm:flex-row flex-col xsm:justify-between sm:justify-start gap-6 xsm:gap-3 sm:gap-12 w-full text-sm md:text-base">
             <ul className="flex flex-col gap-3">
               {links.map((link, i) => (
                 <a key={i} href={link.href}>
@@ -72,7 +77,7 @@ const Footer = () => {
       </section>
       <hr className="mt-8" />
       <div>
-        <p className="text-xs mt-4">
+        <p className="mt-4 text-xs">
           Diseño por{" "}
           <a
             className="text-[#D2DA54]"

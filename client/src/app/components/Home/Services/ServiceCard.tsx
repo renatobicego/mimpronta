@@ -6,11 +6,15 @@ const ServiceCard = ({
   description,
   marginTop,
   colSpan,
+  titleClassName,
+  showDescriptionAsP,
 }: {
   title: string;
   description: Array<string>;
   marginTop: string;
   colSpan: string;
+  titleClassName?: string;
+  showDescriptionAsP?: boolean;
 }) => {
   let marginClass = "";
   let pBottom = "";
@@ -37,7 +41,7 @@ const ServiceCard = ({
                     ${colSpan} lg:[&>a]:hover:visible`}
     >
       <a
-        href={"/#contacto"}
+        href={"#contacto"}
         className={`absolute -left-2 -top-2 w-[105%] h-[110%] invisible paragraph-size font-semibold 
                             text-white  flex justify-center items-center lg:hover:backdrop-blur-sm 
                             z-10 rounded-[20px]`}
@@ -53,19 +57,28 @@ const ServiceCard = ({
           />
         </button>
       </a>
-      <h4 className="font-title font-semibold text-lg lg:text-xl 2xl:text-2xl">
+      <h3
+        className={`${
+          titleClassName ??
+          "font-title font-semibold text-lg lg:text-xl 2xl:text-2xl"
+        }`}
+      >
         {title}
-      </h4>
-      <ul className="flex flex-col items-start gap-2 mt-2">
-        {description.map((item, i) => (
-          <li
-            key={i}
-            className="paragraph-size lg:text-sm xl:text-base text-white"
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
+      </h3>
+      {showDescriptionAsP ? (
+        <p>{description[0]}</p>
+      ) : (
+        <ul className="flex flex-col items-start gap-2 mt-2">
+          {description.map((item, i) => (
+            <li
+              key={i}
+              className="text-white lg:text-sm xl:text-base paragraph-size"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
