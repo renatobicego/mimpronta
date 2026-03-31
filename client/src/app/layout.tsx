@@ -7,7 +7,7 @@ import Loading from "./loading";
 import Footer from "./components/Footer/Footer";
 import { Providers } from "./providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 import localFont from "next/font/local";
 const montserrat = Montserrat({
@@ -107,8 +107,8 @@ export default function RootLayout({
         </Suspense>
         <SpeedInsights />
       </body>
-      {/* <GoogleAnalytics gaId="GTM-WFZDFZ97" /> */}
       <GoogleTagManager gtmId={process.env.GTM_ID as string} />
+      <GoogleAnalytics gaId={process.env.GA_ID as string} />
     </html>
   );
 }
