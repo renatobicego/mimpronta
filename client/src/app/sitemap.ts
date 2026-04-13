@@ -24,13 +24,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: "https://mimpronta.com/consultoria-sostenibilidad-empresas-madrid",
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: "https://mimpronta.com/asesoria-innovacion-social-organizaciones-madrid",
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.9,
     },
   ];
 }
