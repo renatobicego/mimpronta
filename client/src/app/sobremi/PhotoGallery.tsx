@@ -6,9 +6,9 @@ const PhotoGallery = () => {
   return (
     <section className="w-full flex flex-col items-start relative z-20 md:max-lg:pt-10 ">
       <div className="lg:absolute lg:left-[8.5%] lg:top-[8%] xl:top-[10%] lg:max-w-[40%] max-lg:px-[5%]">
-        <h3 className="text-3xl xsm:text-4xl sm:text-5xl xl:text-6xl 3xl:text-7xl font-smileCity text-rosaOscuro">
+        <h2 className="text-3xl xsm:text-4xl sm:text-5xl xl:text-6xl 3xl:text-7xl font-smileCity text-rosaOscuro">
           Trabajo en red
-        </h3>
+        </h2>
         <p className=" lg:text-left text-sm md:text-base xl:text-lg 3xl:text-xl leading-6  md:leading-8 xl:leading-[30px] 3xl:leading-[40px]">
           En esta búsqueda no estoy sola. El{" "}
           <strong>trabajo colaborativo</strong> y los resultados se potencian si
@@ -57,9 +57,7 @@ const PhotoGallery = () => {
           height={800}
         />
         <div className="lg:absolute  flex flex-col items-start gap-2 ">
-          <h4 className="subtitle-size font-normal font-text ">
-            Formo parte de
-          </h4>
+          <p className="subtitle-size font-normal font-text ">Formo parte de</p>
           <div className="flex gap-4">
             <div className="flex flex-col items-center">
               <Link

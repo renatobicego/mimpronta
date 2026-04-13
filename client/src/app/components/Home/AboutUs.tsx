@@ -5,10 +5,7 @@ import React from "react";
 const AboutUs = () => {
   return (
     <section className="mt-0 sm:mt-[10vh] w-[80dvw] lg:w-[75dvw] flex flex-col items-center gap-8 relative">
-      <h2
-        role="definition"
-        className="phrase-size text-center leading-phrase font-semibold  lg:w-[75%] font-title mb-4 relative z-10"
-      >
+      <p className="phrase-size text-center leading-phrase font-semibold  lg:w-[75%] font-title mb-4 relative z-10">
         mi<span className="font-extrabold text-rosaOscuro">m</span>pronta
         simboli<span className="font-text">z</span>a la{" "}
         <span className="font-extrabold text-azul">huella única</span> que
@@ -18,7 +15,7 @@ const AboutUs = () => {
           contribución singular y significativa,
         </span>{" "}
         y la forma en que todo se une para influir y contribuir a la sociedad.
-      </h2>
+      </p>
       <Image
         src={"/papeles/papelMarron4.png"}
         alt="papel marron 2"

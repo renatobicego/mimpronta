@@ -5,9 +5,9 @@ import TestimonialsCards from "./TestimonialsCards";
 const Testimonals = () => {
   return (
     <section className="w-full flex flex-col items-center relative gap-6 pb-40 px-[5%] lg:px-[8.335%] lg:-mt-[10vh] max-lg:pt-14">
-      <h4 className="text-3xl xsm:text-4xl sm:text-5xl xl:text-6xl 3xl:text-7xl font-smileCity text-azul">
+      <h2 className="text-3xl xsm:text-4xl sm:text-5xl xl:text-6xl 3xl:text-7xl font-smileCity text-azul">
         Testimonios
-      </h4>
+      </h2>
       <TestimonialsCards />
       <Image
         src="/sobreMi/regadera.png"

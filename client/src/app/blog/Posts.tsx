@@ -11,9 +11,7 @@ const Posts = () => {
     <>
       <div className="w-full py-[6vh] bg-rosa space-section relative">
         <div>
-          <h3 className="title-size text-white mb-4">
-            Blog
-          </h3>
+          <h1 className="title-size text-white mb-4">Blog</h1>
           <input
             placeholder="Buscar publicaciones"
             type="search"

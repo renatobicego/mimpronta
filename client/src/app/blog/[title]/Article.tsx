@@ -68,13 +68,13 @@ const Article = () => {
                                 flex flex-col items-start gap-5 lg:gap-6"
     >
       <VolverBtn />
-      <h3 className="text-lg xsm:text-2xl md:text-3xl lg:text-4xl 3xl:text-5xl font-bold text-negro">
+      <h1 className="text-lg xsm:text-2xl md:text-3xl lg:text-4xl 3xl:text-5xl font-bold text-negro">
         {post.title}
-      </h3>
+      </h1>
       {/* <p className="py-2 px-4 rounded-3xl border border-gray-300 text-xs xsm:text-sm 3xl:text-base">
         {post.category.name}
       </p> */}
-      <h4 className="subtitle-size my-2 font-medium">{post.subtitle}</h4>
+      <h2 className="subtitle-size my-2 font-medium">{post.subtitle}</h2>
       {/* <div className="w-full flex flex-col items-center">
         <Image
           src={post.imgPost.src}
@@ -92,7 +92,7 @@ const Article = () => {
       {post.body.map((paragraph, i) => (
         <Fragment key={i}>
           {paragraph.subtitle && (
-            <h5 className="subtitle-size">{paragraph.subtitle}</h5>
+            <h2 className="subtitle-size">{paragraph.subtitle}</h2>
           )}
           {paragraph.text && (
             <div
@@ -128,12 +128,14 @@ const Article = () => {
           height={40}
           className="rounded-full h-auto w-10 object-cover aspect-square object-top"
         />
-        <h6 className="text-xs xsm:text-sm 3xl:text-base">
-          {post.author.name} -{" "}
-          {`${date.getDate()} ${
-            months[date.getMonth()]
-          }, ${date.getFullYear()}`}
-        </h6>
+        <p className="text-xs xsm:text-sm 3xl:text-base text-default-500">
+          <span>{post.author.name}</span> ·{" "}
+          <time dateTime={date.toISOString()}>
+            {`${date.getDate()} ${
+              months[date.getMonth()]
+            }, ${date.getFullYear()}`}
+          </time>
+        </p>
       </div>
       {
         post.comments && <Comments postId={post._id} comments={post.comments} />
@@ -151,7 +153,7 @@ const Article = () => {
       }
       {recommendedPosts.length > 0 && (
         <>
-          <h4 className="subtitle-size mt-6 md:mt-8">Posts Recomendados</h4>
+          <h3 className="subtitle-size mt-6 md:mt-8">Posts Recomendados</h3>
           <div className="flex flex-col w-full md:w-5/6 xl:w-3/4 gap-4">
             {recommendedPosts.map((post) => (
               <BlogCard

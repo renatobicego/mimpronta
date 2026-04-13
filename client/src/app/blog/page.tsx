@@ -3,8 +3,9 @@ import { Metadata } from "next";
 import Posts from "./Posts";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Lee los posts del blog de Mimpronta.",
+  title: "Blog | Mimpronta",
+  description:
+    "Blog de sostenibilidad de Mimpronta: estrategias, análisis y herramientas para implementar modelos de negocio sostenibles.",
 };
 const Blog = () => {
   return (

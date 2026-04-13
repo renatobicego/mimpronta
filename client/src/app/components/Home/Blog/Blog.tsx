@@ -34,7 +34,7 @@ const Blog = () => {
         className="flex flex-col gap-4 md:gap-8 xl:gap-10 xsm:self-end sm:self-stretch sm:items-start justify-center w-2/3
                           mt-36 mb-20 xsm:mt-36 s:mt-[35vw] sm:mt-44  md:mt-[18vw] 2xl:mt-[23vw] ml-6 sm:ml-0 "
       >
-        <h5 className="title-size">Blog</h5>
+        <h2 className="title-size">Blog</h2>
         {loading && (
           <p className="paragraph-size">
             <Loader />
@@ -62,9 +62,9 @@ const Blog = () => {
                     className="w-full flex flex-col items-start gap-2 sm:gap-4 p-4 md:p-6 h-full
                                 rounded-2xl shadow border hover:border-amarillo transition-all"
                   >
-                    <h6 className="font-text text-base lg:text-xl 2xl:text-2xl text-left">
+                    <h3 className="font-text text-base lg:text-xl 2xl:text-2xl text-left">
                       {post.title}
-                    </h6>
+                    </h3>
                     <p className="line-clamp-3 text-sm lg:text-base 2xl:text-lg text-left">
                       {post.subtitle}
                     </p>
