@@ -31,6 +31,8 @@ interface FormPostValues {
   imgPost: ImageBlog;
   category?: string;
   body: Array<Paragraph>;
+  metaDescription?: string;
+  keywords?: string;
 }
 
 interface AuthorServer extends IdName {
@@ -69,6 +71,8 @@ interface PostServer {
   category: CategoryServer;
   body: Array<ParagraphServer>;
   comments: Array<Comment> | null;
+  metaDescription?: string;
+  keywords?: string[];
 }
 
 export type {

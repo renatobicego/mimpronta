@@ -55,6 +55,7 @@ const FormPost = () => {
       setInitialValues((previousValues) => ({
         ...previousValues,
         ...data,
+        keywords: data.keywords?.[0],
         category: undefined,
         body: data.body.map((p: Paragraph) => {
           if (!p.imgParagraph) {

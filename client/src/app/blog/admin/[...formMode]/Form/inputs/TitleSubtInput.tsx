@@ -16,6 +16,28 @@ const TitleSubtInput = () => {
         as="textarea"
       />
       <ErrorMsg name="subtitle" />
+      <label htmlFor="metaDescription">Meta Descripción</label>
+      <Field
+        id="metaDescription"
+        name="metaDescription"
+        placeholder="Meta Descripción"
+        className="input"
+      />
+      <p className="text-sm text-foreground/80">
+        Descripción breve del contenido del post. Esta descripción será usada en
+        la metadata del post para mejorar SEO.
+      </p>
+      <label htmlFor="keywords">Palabras Claves</label>
+      <Field
+        id="keywords"
+        name="keywords"
+        placeholder="Palabras Claves"
+        className="input"
+      />
+      <p className="text-sm text-foreground/80">
+        Palabras claves separadas por comas. Estas palabras serán usadas en la
+        metadata del post para mejorar SEO.
+      </p>
     </>
   );
 };

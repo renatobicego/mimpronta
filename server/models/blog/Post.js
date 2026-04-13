@@ -40,6 +40,14 @@ const PostSchema = Schema({
       ref: "Comment",
     },
   ],
+  metaDescription: {
+    type: String,
+  },
+  keywords: [
+    {
+      type: String,
+    },
+  ],
 });
 
 module.exports = model("Post", PostSchema);
