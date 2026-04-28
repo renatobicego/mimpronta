@@ -35,8 +35,25 @@ export function CookieConsentProvider({
       null,
     ) as CookieConsent | null;
     setConsent(stored);
+
+    // If user already consented in a previous visit, update gtag as soon as
+    // it becomes available — polling ensures the Script has loaded by then.
+    if (stored !== null) {
+      const updateGtag = () => {
+        if (typeof window.gtag === "function") {
+          window.gtag("consent", "update", {
+            analytics_storage: stored.analytics,
+            ad_storage: stored.marketing,
+          });
+        } else {
+          setTimeout(updateGtag, 100);
+        }
+      };
+      updateGtag();
+    }
   }, []);
 
+  // Also update gtag immediately when the user makes a new decision
   useEffect(() => {
     if (consent === null) return;
     window.gtag?.("consent", "update", {
