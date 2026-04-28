@@ -7,7 +7,9 @@ import Loading from "./loading";
 import Footer from "./components/Footer/Footer";
 import { Providers } from "./providers";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
+import { CookieConsentProvider } from "@/lib/cookieConsentContext";
+import GoogleAnalyticsConsent from "./components/GoogleAnalyticsConsent";
+import CookieBanner from "./components/CookieBanner/CookieBanner";
 
 import localFont from "next/font/local";
 const montserrat = Montserrat({
@@ -98,17 +100,19 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Suspense fallback={<Loading />}>
-          <Providers>
-            <Header />
-            {children}
-            <Footer />
-          </Providers>
-        </Suspense>
-        <SpeedInsights />
+        <CookieConsentProvider>
+          <Suspense fallback={<Loading />}>
+            <Providers>
+              <Header />
+              {children}
+              <Footer />
+            </Providers>
+          </Suspense>
+          <SpeedInsights />
+          <GoogleAnalyticsConsent />
+          <CookieBanner />
+        </CookieConsentProvider>
       </body>
-      <GoogleTagManager gtmId={process.env.GTM_ID as string} />
-      <GoogleAnalytics gaId={process.env.GA_ID as string} />
     </html>
   );
 }

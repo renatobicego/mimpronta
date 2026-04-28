@@ -1,7 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import PrivacyPolicy from "./PrivacyPolicy";
+import ManageCookiesBtn from "../CookieBanner/ManageCookiesBtn";
 
 const links = [
   {
@@ -42,7 +41,7 @@ const Footer = () => {
                   <li>{link.text}</li>
                 </a>
               ))}
-              <PrivacyPolicy />
+              {/* <PrivacyPolicy /> */}
             </ul>
           </nav>
           <div className="flex items-center gap-3">
@@ -75,9 +74,31 @@ const Footer = () => {
           height={150}
         />
       </section>
+      <div className="flex flex-wrap gap-x-4 gap-y-1 mt-4">
+        <a
+          href="/aviso-legal"
+          className="text-gray-400 hover:text-white text-xs transition-colors"
+        >
+          Aviso Legal
+        </a>
+        <a
+          href="/politica-privacidad"
+          className="text-gray-400 hover:text-white text-xs transition-colors"
+        >
+          Política de Privacidad
+        </a>
+        <a
+          href="/politica-cookies"
+          className="text-gray-400 hover:text-white text-xs transition-colors"
+        >
+          Política de Cookies
+        </a>
+        <ManageCookiesBtn />
+      </div>
       <hr className="mt-8" />
+
       <div>
-        <p className="mt-4 text-xs">
+        <p className="mt-2 text-xs">
           Diseño por{" "}
           <a
             className="text-[#D2DA54]"
