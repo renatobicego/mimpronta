@@ -1,20 +1,16 @@
 "use client";
 
 import Script from "next/script";
-import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID as string;
 
 export default function GoogleAnalyticsConsent() {
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-
   // Track page views on route change
   useEffect(() => {
     if (!GA_ID) return;
-    const url = pathname + searchParams.toString();
+    const url = window.location.pathname + window.location.search;
     window.gtag?.("config", GA_ID, { page_path: url });
-  }, [pathname, searchParams]);
+  }, []);
 
   if (!GA_ID) return null;
 

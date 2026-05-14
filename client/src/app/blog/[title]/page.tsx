@@ -10,30 +10,37 @@ type Props = {
 
 export async function generateMetadata(
   { params, searchParams }: Props,
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  // read route params
   const title = params.title;
 
-  const { data: postData }: { data: PostServer } = await axios.get(
-    `${process.env.NEXT_PUBLIC_URL_API}/blog/title/${title}`
-  );
+  try {
+    const { data: postData }: { data: PostServer } = await axios.get(
+      `${process.env.NEXT_PUBLIC_URL_API}/blog/title/${title}`,
+    );
 
-  // optionally access and extend (rather than replace) parent metadata
-  const previousImages = (await parent).openGraph?.images || [];
-  const metaDescription =
-    postData.metaDescription || "Artículo del blog de Mimpronta";
-  const keywords = postData.keywords?.[0].split(",");
+    const previousImages = (await parent).openGraph?.images || [];
+    const metaDescription =
+      postData.metaDescription || "Artículo del blog de Mimpronta";
+    const keywords = postData.keywords?.[0].split(",");
 
-  return {
-    title: `${postData.title} | Mimpronta`,
-    description: metaDescription,
-    keywords: keywords,
-    openGraph: {
-      images: [postData.imgPost.src, ...previousImages],
-    },
-    authors: { name: postData.author.name },
-  };
+    return {
+      title: `${postData.title} | Mimpronta`,
+      description: metaDescription,
+      keywords: keywords,
+      openGraph: {
+        images: [postData.imgPost.src, ...previousImages],
+      },
+      authors: { name: postData.author.name },
+      robots: { index: true, follow: true },
+    };
+  } catch {
+    return {
+      title: "Blog | Mimpronta",
+      description: "Artículo del blog de Mimpronta",
+      robots: { index: true, follow: true },
+    };
+  }
 }
 
 const BlogPost = () => {
