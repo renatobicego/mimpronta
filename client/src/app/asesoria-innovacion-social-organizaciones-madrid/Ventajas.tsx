@@ -2,7 +2,7 @@ import NextImage from "next/image";
 
 const Ventajas = () => {
   return (
-    <section className="z-20 relative flex flex-col items-center mt-16 pt-16 md:pt-32 lg:pt-64 3xl:pt-[450px] xl:pt-96 pb-10 w-full space-section">
+    <section className="z-20 relative flex flex-col items-center mt-16 pt-16 md:pt-32 lg:pt-64 3xl:pt-[52vh] xl:pt-96 pb-10 w-full space-section">
       <h2 className="subtitle-size-2 font-bold text-foreground text-center">
         Ventajas de trabajar en innovación social para tu organización
       </h2>

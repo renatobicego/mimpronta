@@ -63,7 +63,7 @@ html {
     @apply font-text text-base md:text-lg 2xl:text-xl;
   }
   #inicio-page p {
-    @apply max-md:text-sm;
+    @apply max-md:text-sm 3xl:text-lg;
   }
   .leading-phrase {
     @apply leading-6 xsm:leading-8 md:leading-10 3xl:leading-[60px] xl:leading-[50px];

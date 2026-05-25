@@ -49,7 +49,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="relative flex flex-col items-start gap-4 bg-azul -mt-0.5 px-[5%] md:px-[8.335%] pt-20 pb-20 xsm:pb-24 w-full text-white">
+    <section className="relative flex flex-col items-start gap-4 bg-azul -mt-0.5 px-[5%] md:px-[8.335%] pt-20 3xl:pt-4 pb-20 xsm:pb-24 w-full text-white">
       <h2 className="subtitle-size-2 text-white text-left">
         Servicios de asesoría en innovación social para organizaciones
       </h2>
@@ -79,7 +79,7 @@ const Services = () => {
         height={1661}
         aria-hidden
         alt=""
-        className="top-[96%] md:top-[90%] lg:top-[80%] 2xl:top-[75%] left-0 z-[11] absolute w-full scale-150 md:scale-100 translate-x-1/4 md:translate-x-0"
+        className="top-[96%] md:top-[90%] lg:top-[80%] 2xl:top-[75%] 3xl:top-[60%] left-0 z-[11] absolute w-full scale-150 md:scale-100 translate-x-1/4 md:translate-x-0"
       />
     </section>
   );

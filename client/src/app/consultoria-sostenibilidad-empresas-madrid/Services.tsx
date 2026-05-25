@@ -36,7 +36,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="relative flex flex-col items-start gap-4 bg-azul -mt-0.5 px-[5%] md:px-[8.335%] pt-20 pb-20 xsm:pb-24 w-full text-white">
+    <section className="relative flex flex-col items-start gap-4 bg-azul -mt-0.5 px-[5%] md:px-[8.335%] pt-20 3xl:pt-8 pb-20 xsm:pb-24 w-full text-white">
       <h2 className="subtitle-size-2 text-white text-left">
         Servicios de consultoría en sostenibilidad empresarial
       </h2>

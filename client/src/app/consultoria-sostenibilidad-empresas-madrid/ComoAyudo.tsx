@@ -2,7 +2,7 @@ import { Card, CardBody } from "@nextui-org/react";
 
 const ComoAyudo = () => {
   return (
-    <div className="z-10 relative bg-white pt-32 md:pt-64 3xl:pt-[450px] xl:pt-96 pb-10">
+    <div className="z-10 relative bg-white 3xl:mt-72 pt-32 md:pt-64 3xl:pt-[450px] xl:pt-96 pb-10">
       <section className="relative flex flex-col items-start gap-3 pb-4 w-full h-full overflow-hidden text-left space-section">
         <h2 className="subtitle-size-2">¿Cómo puedo ayudarte?</h2>
         <p className="lg:w-3/4 3xl:w-2/3">

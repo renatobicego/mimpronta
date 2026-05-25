@@ -67,7 +67,7 @@ const ContactAsesoria = () => {
         validationSchema={contactSchema}
       >
         {({ errors, isSubmitting }) => (
-          <Form className="z-10 flex flex-col items-start gap-4">
+          <Form className="z-10 flex flex-col items-start gap-4 3xl:max-w-[60vw]">
             <div className="flex flex-wrap gap-4 w-full">
               <div className="flex flex-col gap-4 w-full sm:w-1/2 lg:w-2/5">
                 <Field
