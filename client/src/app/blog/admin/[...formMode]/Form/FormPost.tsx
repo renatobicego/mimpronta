@@ -12,7 +12,7 @@ import { usePosts } from "@/app/postsContext";
 import Swal from "sweetalert2";
 async function uploadImageAndUpdateProperty(
   image: string | File,
-  pathPrefix: string
+  pathPrefix: string,
 ) {
   if (image instanceof File) {
     const url = await uploadFileFirebase(image, pathPrefix);
@@ -46,27 +46,31 @@ const FormPost = () => {
   useEffect(() => {
     const getPreviousData = async () => {
       const title = decodeURIComponent(formMode[1]);
-      const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_URL_API}/blog/title/${title}`
-      );
-      if (!data) {
+      try {
+        const { data } = await axios.get(
+          `${process.env.NEXT_PUBLIC_URL_API}/blog/title/${title}`,
+        );
+        if (!data) {
+          return router.replace("/blog/admin/publicar");
+        }
+        setInitialValues((previousValues) => ({
+          ...previousValues,
+          ...data,
+          keywords: data.keywords?.[0],
+          category: undefined,
+          body: data.body.map((p: Paragraph) => {
+            if (!p.imgParagraph) {
+              p.imgParagraph = {
+                src: "",
+                epigraph: "",
+              };
+            }
+            return p;
+          }),
+        }));
+      } catch {
         return router.replace("/blog/admin/publicar");
       }
-      setInitialValues((previousValues) => ({
-        ...previousValues,
-        ...data,
-        keywords: data.keywords?.[0],
-        category: undefined,
-        body: data.body.map((p: Paragraph) => {
-          if (!p.imgParagraph) {
-            p.imgParagraph = {
-              src: "",
-              epigraph: "",
-            };
-          }
-          return p;
-        }),
-      }));
     };
     if (formMode[0] === "editar") {
       getPreviousData();
@@ -77,7 +81,7 @@ const FormPost = () => {
     try {
       values.imgPost.src = await uploadImageAndUpdateProperty(
         values.imgPost.src,
-        `blog/`
+        `blog/`,
       );
 
       await Promise.all(
@@ -87,16 +91,16 @@ const FormPost = () => {
           } else if (p.imgParagraph?.src) {
             p.imgParagraph.src = await uploadImageAndUpdateProperty(
               p.imgParagraph.src,
-              `blog/`
+              `blog/`,
             );
           }
-        })
+        }),
       );
 
       if (values.author.picture instanceof File && formMode[0] !== "editar") {
         values.author.picture = await uploadImageAndUpdateProperty(
           values.author.picture,
-          `blog/authors/`
+          `blog/authors/`,
         );
       }
 
@@ -105,7 +109,7 @@ const FormPost = () => {
       if (formMode[0] === "editar") {
         await axios.put(
           `${process.env.NEXT_PUBLIC_URL_API}/blog/${values._id}`,
-          values
+          values,
         );
         await fetchPosts();
         Swal.fire({
@@ -167,9 +171,9 @@ const FormPost = () => {
   };
 
   return (
-    <main className="size-section py-28 ">
+    <main className="py-28 size-section">
       <VolverBtn />
-      <h4 className="phrase-size font-semibold font-text mb-4">
+      <h4 className="mb-4 font-text font-semibold phrase-size">
         {formMode[0] === "editar" ? "Editar post" : "Escribir post"}
       </h4>
       <Formik

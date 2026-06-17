@@ -3,9 +3,7 @@ import Image from "next/image";
 import { Fragment, useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
 import VolverBtn from "@/app/components/VolverBtn";
-import { useParams } from "next/navigation";
 import { PostServer } from "../admin/[...formMode]/Form/formPostTypes";
-import Loading from "@/app/loading";
 import Comments from "./Comments";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -24,67 +22,54 @@ const months = [
   "Diciembre",
 ];
 
-const Article = () => {
-  const [post, setPost] = useState<PostServer | undefined>();
-  const [recommendedPosts, setRecommendedPosts] = useState<
-    Array<PostServer> | undefined
-  >();
+const Article = ({ post }: { post: PostServer }) => {
+  const [recommendedPosts, setRecommendedPosts] = useState<Array<PostServer>>(
+    [],
+  );
   const [commentsOpen, setCommentsOpen] = useState(false);
-  const { title } = useParams();
   useEffect(() => {
-    const fetchPostData = async () => {
+    const fetchRecommendedPosts = async () => {
       try {
-        const { data: postData } = await axios.get(
-          `${process.env.NEXT_PUBLIC_URL_API}/blog/title/${title}`
-        );
-
         const { data: recommendedPostData } = await axios.get(
-          `${process.env.NEXT_PUBLIC_URL_API}/blog/recommended/${postData._id}`
+          `${process.env.NEXT_PUBLIC_URL_API}/blog/recommended/${post._id}`,
         );
-        setPost(postData);
         setRecommendedPosts(
-          recommendedPostData.filter((p: PostServer) => p._id !== postData._id)
+          recommendedPostData.filter((p: PostServer) => p._id !== post._id),
         );
       } catch (error: any) {
-        Swal.fire("Error en el servidor al traer el post: " + error.message);
+        Swal.fire(
+          "Error en el servidor al traer los posts recomendados: " +
+            error.message,
+        );
       }
     };
-    if (!post || !recommendedPosts) {
-      fetchPostData();
-    }
-  }, [title]);
-
-  if (!post || !recommendedPosts) {
-    return <Loading />;
-  }
+    fetchRecommendedPosts();
+  }, [post._id]);
 
   const toggleCommentsSection = () => {
     setCommentsOpen(!commentsOpen);
   };
   const date = new Date(post.date);
   return (
-    <article
-      className="size-section md:w-3/4 lg:w-3/5 3xl:w-1/2 py-[13vh] lg:pt-[17vh] xl:py-[20vh] font-text
-                                flex flex-col items-start gap-5 lg:gap-6"
-    >
+    <article className="flex flex-col items-start gap-5 lg:gap-6 py-[13vh] xl:py-[20vh] lg:pt-[17vh] md:w-3/4 lg:w-3/5 3xl:w-1/2 size-section font-text">
       <VolverBtn />
-      <h1 className="text-lg xsm:text-2xl md:text-3xl lg:text-4xl 3xl:text-5xl font-bold text-negro">
+      <h1 className="font-bold text-negro text-lg xsm:text-2xl md:text-3xl lg:text-4xl 3xl:text-5xl">
         {post.title}
       </h1>
-      {/* <p className="py-2 px-4 rounded-3xl border border-gray-300 text-xs xsm:text-sm 3xl:text-base">
+      {/* <p className="px-4 py-2 border border-gray-300 rounded-3xl text-xs xsm:text-sm 3xl:text-base">
         {post.category.name}
       </p> */}
-      <h2 className="subtitle-size my-2 font-medium">{post.subtitle}</h2>
-      {/* <div className="w-full flex flex-col items-center">
+      <h2 className="my-2 font-medium subtitle-size">{post.subtitle}</h2>
+      {/* <div className="flex flex-col items-center w-full">
         <Image
           src={post.imgPost.src}
           alt={"Imagen de post:" + post.title}
-          className="w-full h-auto max-w-lg max-h-[550px] mx-auto object-contain"
+          className="mx-auto w-full max-w-lg h-auto max-h-[550px] object-contain"
           width={800}
           height={800}
         />
         {post.imgPost.epigraph && (
-          <p className="italic ml-1 mt-2 text-xs xsm:text-sm 3xl:text-base">
+          <p className="mt-2 ml-1 text-xs xsm:text-sm 3xl:text-base italic">
             {post.imgPost.epigraph}
           </p>
         )}
@@ -96,14 +81,12 @@ const Article = () => {
           )}
           {paragraph.text && (
             <div
-              className="text-sm md:text-base xl:text-lg leading-7 md:leading-8 xl:leading-9 
-                [&>ul]:list-disc [&>ul]:list-inside [&>ol]:list-decimal [&>ol]:list-inside
-                [&>a]:text-amarillo"
+              className="[&>a]:text-amarillo text-sm md:text-base xl:text-lg leading-7 md:leading-8 xl:leading-9 [&>ol]:list-decimal [&>ol]:list-inside [&>ul]:list-disc [&>ul]:list-inside"
               dangerouslySetInnerHTML={{ __html: paragraph.text }}
             />
           )}
           {paragraph.imgParagraph && (
-            <div className="w-fit mx-auto flex flex-col items-center">
+            <div className="flex flex-col items-center mx-auto w-fit">
               <Image
                 src={paragraph.imgParagraph.src || "/placeholder.svg"}
                 alt={"Imagen párrafo de post:" + post.title}
@@ -112,7 +95,7 @@ const Article = () => {
                 height={900}
               />
               {paragraph.imgParagraph.epigraph && (
-                <p className="italic ml-1 mt-2 text-xs xsm:text-sm 3xl:text-base mx-auto">
+                <p className="mx-auto mt-2 ml-1 text-xs xsm:text-sm 3xl:text-base italic">
                   {paragraph.imgParagraph.epigraph}
                 </p>
               )}
@@ -126,9 +109,9 @@ const Article = () => {
           alt={"Foto de perfil autor/a: " + post.author.name}
           width={40}
           height={40}
-          className="rounded-full h-auto w-10 object-cover aspect-square object-top"
+          className="rounded-full w-10 h-auto object-cover object-top aspect-square"
         />
-        <p className="text-xs xsm:text-sm 3xl:text-base text-default-500">
+        <p className="text-default-500 text-xs xsm:text-sm 3xl:text-base">
           <span>{post.author.name}</span> ·{" "}
           <time dateTime={date.toISOString()}>
             {`${date.getDate()} ${
@@ -153,8 +136,8 @@ const Article = () => {
       }
       {recommendedPosts.length > 0 && (
         <>
-          <h3 className="subtitle-size mt-6 md:mt-8">Posts Recomendados</h3>
-          <div className="flex flex-col w-full md:w-5/6 xl:w-3/4 gap-4">
+          <h3 className="mt-6 md:mt-8 subtitle-size">Posts Recomendados</h3>
+          <div className="flex flex-col gap-4 w-full md:w-5/6 xl:w-3/4">
             {recommendedPosts.map((post) => (
               <BlogCard
                 key={post._id}

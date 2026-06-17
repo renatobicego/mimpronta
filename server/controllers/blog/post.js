@@ -82,7 +82,7 @@ const blogPut = async (req, res) => {
         // Actualizar párrafp
         const updatedParagraph = await Paragraph.findByIdAndUpdate(
           paragraph._id,
-          paragraph
+          paragraph,
         );
         // Está borrando la imagen (dejando el párrafo sin imagen) (updatedParagraph es el valor anterior del registro)
         if (updatedParagraph.imgParagraph && !paragraph.imgParagraph) {
@@ -109,14 +109,13 @@ const blogPut = async (req, res) => {
     const paragraphsToDelete = post.body.filter(
       (postParagraph) =>
         !rest.body.some((restParagraph) =>
-          restParagraph._id.equals(postParagraph)
-        )
+          restParagraph._id.equals(postParagraph),
+        ),
     );
     // Borrarlos y borrar si tiene imagen
     for (const paragraphToDelete of paragraphsToDelete) {
-      const paragraphDeleted = await Paragraph.findByIdAndDelete(
-        paragraphToDelete
-      );
+      const paragraphDeleted =
+        await Paragraph.findByIdAndDelete(paragraphToDelete);
       if (paragraphDeleted.imgParagraph) {
         await Image.findByIdAndDelete(paragraphDeleted.imgParagraph);
       }
@@ -206,6 +205,10 @@ const blogGetByTitle = async (req, res) => {
         },
       })
       .lean();
+
+    if (!post) {
+      return res.status(404).json({ msg: "Post no encontrado" });
+    }
 
     return res.json(post);
   } catch (error) {
