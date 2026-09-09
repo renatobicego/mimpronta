@@ -31,9 +31,9 @@ const Comments = ({
     try {
       await axios.post(
         `${process.env.NEXT_PUBLIC_URL_API}/blog/comment`,
-        values
+        values,
       );
-    
+
       Swal.fire({
         text: "Comentario publicado",
         icon: "success",
@@ -42,7 +42,7 @@ const Comments = ({
         customClass: "font-title",
       });
 
-      window.location.reload()
+      window.location.reload();
     } catch (error: any) {
       Swal.fire({
         text: "Error al publicar el comentario " + error.message,
@@ -54,7 +54,7 @@ const Comments = ({
   return (
     <AdminProvider>
       <div className="w-full">
-        <h4 className="subtitle-size mt-6 md:mt-8">Comentarios</h4>
+        <p className="mt-6 md:mt-8 subtitle-size">Comentarios</p>
         <Formik
           className="w-full"
           initialValues={initialValues}
@@ -64,10 +64,7 @@ const Comments = ({
           validateOnChange
         >
           {({ errors, isSubmitting }) => (
-            <Form
-              className="flex flex-col gap-3 items-start w-full md:w-5/6 xl:w-3/4 mt-6 sm:mt-8 border shadow-sm 
-            rounded-2xl px-4 py-8"
-            >
+            <Form className="flex flex-col items-start gap-3 shadow-sm mt-6 sm:mt-8 px-4 py-8 border rounded-2xl w-full md:w-5/6 xl:w-3/4">
               <p className="text-xs">
                 Los comentarios no podrán ser editados o borrados
               </p>
@@ -88,7 +85,7 @@ const Comments = ({
               />
               <button
                 aria-disabled={isSubmitting}
-                className="btn-primary text-xs md:text-sm py-1 px-3 md:py-1.5 md:px-4 flex items-center gap-2"
+                className="flex items-center gap-2 px-3 md:px-4 py-1 md:py-1.5 text-xs md:text-sm btn-primary"
               >
                 <svg
                   className={`animate-spin -ml-1 mr-3 h-5 w-5 text-white ${
@@ -122,7 +119,7 @@ const Comments = ({
             Todavía no hay comentarios ¡Sé el primero!
           </p>
         ) : (
-          <div className="mt-8  w-full md:w-5/6 xl:w-3/4">
+          <div className="mt-8 w-full md:w-5/6 xl:w-3/4">
             {comments.map((comment) => (
               <CommentCard
                 router={router}

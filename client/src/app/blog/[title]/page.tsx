@@ -1,8 +1,9 @@
 import axios from "axios";
 import type { Metadata, ResolvingMetadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import Article from "./Article";
 import { PostServer } from "../admin/[...formMode]/Form/formPostTypes";
+import { slugify } from "@/app/lib/slug";
 
 type Props = {
   params: { title: string };
@@ -45,11 +46,15 @@ export async function generateMetadata(
   const metaDescription =
     postData.metaDescription || "Artículo del blog de Mimpronta";
   const keywords = postData.keywords?.[0].split(",");
+  const canonicalSlug = postData.slug || slugify(postData.title);
 
   return {
     title: `${postData.title} | Mimpronta`,
     description: metaDescription,
     keywords: keywords,
+    alternates: {
+      canonical: `/blog/${canonicalSlug}`,
+    },
     openGraph: {
       images: [postData.imgPost.src, ...previousImages],
     },
@@ -64,6 +69,16 @@ const BlogPost = async ({ params }: Props) => {
   if (!post) {
     // Devuelve un 404 real y renderiza la página not-found.
     notFound();
+  }
+
+  // Redirección canónica: si se llega por una URL antigua (con tildes/espacios)
+  // o cualquier variante que no sea el slug limpio, redirigimos de forma
+  // permanente (308) al slug. Así evitamos contenido duplicado y preservamos
+  // el SEO de los enlaces ya indexados.
+  const canonicalSlug = post.slug || slugify(post.title);
+  const requestedParam = decodeURIComponent(params.title);
+  if (canonicalSlug && requestedParam !== canonicalSlug) {
+    permanentRedirect(`/blog/${canonicalSlug}`);
   }
 
   return <Article post={post} />;

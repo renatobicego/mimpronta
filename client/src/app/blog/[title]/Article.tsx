@@ -136,13 +136,14 @@ const Article = ({ post }: { post: PostServer }) => {
       }
       {recommendedPosts.length > 0 && (
         <>
-          <h3 className="mt-6 md:mt-8 subtitle-size">Posts Recomendados</h3>
+          <p className="mt-6 md:mt-8 subtitle-size">Posts Recomendados</p>
           <div className="flex flex-col gap-4 w-full md:w-5/6 xl:w-3/4">
             {recommendedPosts.map((post) => (
               <BlogCard
                 key={post._id}
                 recommended
                 title={post.title}
+                slug={post.slug}
                 imgSrc={post.imgPost.src}
               />
             ))}

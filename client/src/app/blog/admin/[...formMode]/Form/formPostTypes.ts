@@ -64,6 +64,7 @@ interface Comment extends IdName {
 interface PostServer {
   _id: string;
   title: string;
+  slug: string;
   subtitle: string;
   date: Date;
   author: AuthorServer;

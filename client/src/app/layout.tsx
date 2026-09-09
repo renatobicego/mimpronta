@@ -34,6 +34,7 @@ const myFont = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mimpronta.com"),
   title: "Mimpronta",
   description:
     "Acompañamos a personas y empresas que buscan combinar sus habilidades con las necesidades del mundo.",

@@ -9,6 +9,7 @@ import { uploadFileFirebase } from "@/utils/files/archivosFirebase";
 import { FormPostValues, Paragraph } from "./formPostTypes";
 import { useRouter } from "next/navigation";
 import { usePosts } from "@/app/postsContext";
+import { slugify } from "@/app/lib/slug";
 import Swal from "sweetalert2";
 async function uploadImageAndUpdateProperty(
   image: string | File,
@@ -106,11 +107,15 @@ const FormPost = () => {
 
       values = { ...values, category: undefined };
 
+      // Guardamos el slug devuelto por el backend para redirigir a la URL limpia.
+      let savedSlug: string | undefined;
+
       if (formMode[0] === "editar") {
-        await axios.put(
+        const { data } = await axios.put(
           `${process.env.NEXT_PUBLIC_URL_API}/blog/${values._id}`,
           values,
         );
+        savedSlug = data?.slug;
         await fetchPosts();
         Swal.fire({
           text: "Post editado",
@@ -120,7 +125,11 @@ const FormPost = () => {
           customClass: "font-title",
         });
       } else {
-        await axios.post(`${process.env.NEXT_PUBLIC_URL_API}/blog`, values);
+        const { data } = await axios.post(
+          `${process.env.NEXT_PUBLIC_URL_API}/blog`,
+          values,
+        );
+        savedSlug = data?.slug;
         await fetchPosts();
         Swal.fire({
           text: "Post creado",
@@ -131,7 +140,8 @@ const FormPost = () => {
         });
       }
       actions.resetForm();
-      router.replace(`/blog/${values.title}`);
+      // Redirigimos a la URL con slug limpio.
+      router.replace(`/blog/${savedSlug || slugify(values.title)}`);
     } catch (error) {
       if (error instanceof AxiosError && error.status === 400) {
         const { errors } = error.response?.data;
