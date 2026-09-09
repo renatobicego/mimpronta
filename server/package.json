@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon app.js",
+    "backfill-slugs": "node scripts/backfillSlugs.js",
     "deploy": "firebase deploy"
   },
   "author": "",

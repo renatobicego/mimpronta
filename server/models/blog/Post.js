@@ -5,6 +5,11 @@ const PostSchema = Schema({
     type: String,
     required: [true, "Titulo obligatorio"],
   },
+  slug: {
+    type: String,
+    unique: true,
+    index: true,
+  },
   subtitle: {
     type: String,
     required: [true, "Subitulo obligatorio"],

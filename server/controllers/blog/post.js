@@ -1,4 +1,4 @@
-const { borrarArchivoFirebase } = require("../../helpers");
+const { borrarArchivoFirebase, slugify } = require("../../helpers");
 const {
   Post,
   Author,
@@ -9,6 +9,29 @@ const {
   CommentReply,
 } = require("../../models");
 const mongoose = require("mongoose");
+
+/**
+ * Genera un slug único a partir del título.
+ * Si ya existe otro post con el mismo slug, agrega un sufijo numérico
+ * (-2, -3, ...). Se puede excluir un post por id (útil al editar).
+ */
+const generateUniqueSlug = async (title, excludeId = null) => {
+  const baseSlug = slugify(title);
+  let slug = baseSlug;
+  let counter = 2;
+
+  // Buscamos colisiones ignorando el propio post (al editar)
+  while (true) {
+    const query = { slug };
+    if (excludeId) query._id = { $ne: excludeId };
+    const existing = await Post.findOne(query).select("_id").lean();
+    if (!existing) break;
+    slug = `${baseSlug}-${counter}`;
+    counter += 1;
+  }
+
+  return slug;
+};
 
 const createParagraph = async (paragraph) => {
   // Si el párrafo tiene imagen, crear la relación
@@ -46,6 +69,9 @@ const blogPost = async (req, res) => {
     // Crear la imagen de portada
     const imgPost = new Image(data.imgPost);
     data.imgPost = await imgPost.save();
+
+    // Generar slug único a partir del título
+    data.slug = await generateUniqueSlug(data.title);
 
     // Crear post
     const post = new Post(data);
@@ -102,7 +128,13 @@ const blogPut = async (req, res) => {
       await Image.findByIdAndUpdate(rest.imgPost._id, rest.imgPost);
     }
 
-    // actualizar
+    // Si se envía título, regeneramos el slug (por si cambió).
+    if (rest.title) {
+      rest.slug = await generateUniqueSlug(rest.title, id);
+    }
+
+    // actualizar. findByIdAndUpdate devuelve el documento ANTERIOR, que
+    // necesitamos para detectar los párrafos eliminados más abajo.
     const post = await Post.findByIdAndUpdate(id, rest);
 
     // Obtener párrafos que fueron eliminados del post
@@ -121,7 +153,9 @@ const blogPut = async (req, res) => {
       }
     }
 
-    return res.json(post);
+    // Respondemos con el post e incluimos el slug nuevo (rest.slug) para que
+    // el cliente pueda redirigir a la URL limpia tras editar.
+    return res.json({ ...post.toObject(), slug: rest.slug ?? post.slug });
   } catch (error) {
     return res.status(500).json({ msg: error.message });
   }
@@ -179,12 +213,14 @@ const blogGetRecommended = async (req, res) => {
 };
 
 const blogGetByTitle = async (req, res) => {
-  const title = decodeURIComponent(req.params.title);
+  // Normalizamos el parámetro a slug. Así aceptamos tanto el slug nuevo
+  // ("que-facil-...") como una URL antigua con tildes/espacios, que al
+  // slugificarse produce el mismo valor (retrocompatibilidad).
+  const requestedSlug = slugify(decodeURIComponent(req.params.title));
+
   try {
-    // Query
-    const post = await Post.findOne({
-      title: { $regex: title },
-    })
+    // Query directa por el campo slug persistido.
+    const post = await Post.findOne({ slug: requestedSlug })
       .populate("imgPost", ["src", "epigraph"])
       .populate("category", "name")
       .populate("author", ["name", "picture"])
